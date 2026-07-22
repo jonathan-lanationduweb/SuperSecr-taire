@@ -103,6 +103,15 @@
   color: var(--c-primary);
 }
 
+.hero-count {
+  font-weight: 650;
+  color: var(--c-primary-dark);
+}
+
+.hero-count:empty {
+  display: none;
+}
+
 .popular-searches {
   margin-top: var(--sp-5);
   display: flex;

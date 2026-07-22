@@ -21,3 +21,4 @@ Toutes les photographies proviennent de [Pexels](https://www.pexels.com) (licenc
 | sf-organisation.jpg | 8101451 | Mikhail Nilov |
 | sf-classement.jpg | 34293529 | Zulfugar Karimov |
 | sf-entretien-rh.jpg | 5439152 | Tima Miroshnichenko |
+| og-image.jpg | 8837201 | Yan Krukau (version JPEG pour le partage social) |

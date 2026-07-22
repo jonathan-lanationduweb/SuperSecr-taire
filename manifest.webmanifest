@@ -1,0 +1,15 @@
+{
+  "name": "SuperSecrétaire — L'emploi administratif",
+  "short_name": "SuperSecrétaire",
+  "description": "Offres d'emploi, annuaire d'entreprises et savoir-faire des métiers du secrétariat et de l'assistanat.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf7f1",
+  "theme_color": "#1e4f46",
+  "lang": "fr",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

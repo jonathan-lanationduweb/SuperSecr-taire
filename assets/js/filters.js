@@ -181,9 +181,13 @@
       : total + (total > 1 ? " offres trouvées" : " offre trouvée");
 
     if (total === 0) {
-      list.innerHTML = '<div class="empty-state"><h3>Aucun résultat</h3>' +
-        "<p>Essayez d'élargir vos critères : moins de filtres, une ville voisine " +
-        "ou un mot-clé plus général.</p></div>";
+      list.innerHTML = state.savedOnly
+        ? '<div class="empty-state"><h3>Aucune offre enregistrée</h3>' +
+          "<p>Repérez une offre qui vous plaît et cliquez sur le marque-page " +
+          "pour la retrouver ici à votre prochaine visite.</p></div>"
+        : '<div class="empty-state"><h3>Aucun résultat</h3>' +
+          "<p>Essayez d'élargir vos critères : moins de filtres, une ville voisine " +
+          "ou un mot-clé plus général.</p></div>";
       renderPagination(0);
       return;
     }

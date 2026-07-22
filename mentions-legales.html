@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Article — conseils emploi | SuperSecrétaire</title>
-  <meta name="description" content="Lisez cet article du blog SuperSecrétaire : conseils pratiques pour les candidats et les recruteurs des métiers du secrétariat et de l'assistanat.">
+  <title>Mentions légales | SuperSecrétaire</title>
+  <meta name="description" content="Mentions légales du prototype SuperSecrétaire : éditeur, hébergement GitHub Pages, propriété intellectuelle et crédits photographiques.">
     <meta property="og:type" content="website">
   <meta property="og:site_name" content="SuperSecrétaire">
-  <meta property="og:title" content="Article — conseils emploi | SuperSecrétaire">
-  <meta property="og:description" content="Lisez cet article du blog SuperSecrétaire : conseils pratiques pour les candidats et les recruteurs des métiers du secrétariat et de l'assistanat.">
+  <meta property="og:title" content="Mentions légales | SuperSecrétaire">
+  <meta property="og:description" content="Mentions légales du prototype SuperSecrétaire : éditeur, hébergement GitHub Pages, propriété intellectuelle et crédits photographiques.">
   <meta property="og:image" content="https://jonathan-lanationduweb.github.io/SuperSecr-taire/assets/images/photos/og-image.jpg">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <link rel="stylesheet" href="assets/css/blog.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
@@ -56,57 +56,31 @@
       </nav>
     </div>
   </header>
-
   <main id="contenu">
-    <!-- En-tête de l'article -->
-    <div class="article-header">
+    <div class="page-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
           <ol>
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="blog.html">Conseils &amp; articles</a></li>
-            <li aria-current="page">Article</li>
+            <li aria-current="page">Mentions légales</li>
           </ol>
         </nav>
-        <span class="badge badge--accent" id="article-category">Catégorie</span>
-        <h1 id="article-title">Chargement de l'article…</h1>
-        <div class="article-meta" id="article-meta"></div>
+        <h1>Mentions légales</h1>
+        <p>Informations relatives à l'éditeur et à l'hébergement de ce site de démonstration.</p>
       </div>
     </div>
-
-    <!-- Corps + colonne latérale -->
-    <div class="container article-layout">
-      <article class="article-body" id="article-body"></article>
-
-      <aside class="article-aside" aria-label="Compléments">
-        <div class="card aside-card">
-          <h2>À lire aussi</h2>
-          <ul id="aside-articles"></ul>
-        </div>
-        <div class="card newsletter-card">
-          <h2>La lettre de SuperSecrétaire</h2>
-          <p>Un conseil pratique et les nouvelles offres, une fois par mois. (Inscription simulée.)</p>
-          <form data-newsletter-form>
-            <label class="visually-hidden" for="aside-newsletter-email">Votre adresse e-mail</label>
-            <input type="email" id="aside-newsletter-email" placeholder="votre@email.fr" required>
-            <button type="submit" class="btn btn-accent">Je m'inscris</button>
-          </form>
-        </div>
-      </aside>
+    <div class="container--narrow section about-prose">
+      <h2>Éditeur du site</h2>
+      <p>SuperSecrétaire est un <strong>prototype de démonstration</strong> sans existence commerciale. Il est édité à des fins de présentation par son concepteur. Les entreprises, offres d'emploi, personnes et coordonnées qui y figurent sont entièrement fictives.</p>
+      <h2>Hébergement</h2>
+      <p>Le site est hébergé par GitHub Pages — GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>Les textes et la maquette de ce prototype sont fournis à titre de démonstration. Les photographies proviennent de <a href="https://www.pexels.com" rel="noopener">Pexels</a> et sont utilisées conformément à la licence Pexels ; les crédits complets des photographes figurent dans le dépôt du projet.</p>
+      <h2>Signalement</h2>
+      <p>Pour toute question ou demande de retrait concernant ce prototype, utilisez la <a href="contact.html">page de contact</a>.</p>
     </div>
-
-    <!-- Articles associés -->
-    <section class="related-articles" aria-labelledby="h-related">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="h-related">Articles associés</h2>
-        </div>
-        <div id="related-articles" class="grid-3"></div>
-      </div>
-    </section>
   </main>
-
-  <footer class="site-footer">
+<footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -153,10 +127,11 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/navigation.js"></script>
-  <script src="assets/js/blog.js"></script>
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
+
 
 
 

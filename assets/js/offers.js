@@ -77,6 +77,9 @@
     SS.store.set(SAVE_KEY, saved);
     btn.setAttribute("aria-pressed", index === -1 ? "true" : "false");
     document.dispatchEvent(new CustomEvent("ss:saved-changed"));
+    SS.toast(index === -1
+      ? "Offre enregistrée — retrouvez-la via le filtre « ★ Enregistrées »."
+      : "Offre retirée de vos enregistrements.");
   });
 
   /* Associe la couleur du logo de l'entreprise à chaque offre. */
@@ -109,6 +112,11 @@
         var recent = offers.sort(function (a, b) {
           return new Date(b.datePublication) - new Date(a.datePublication);
         });
+        /* Compteur honnête dans le hero : le vrai nombre d'offres actives. */
+        var counter = document.getElementById("hero-offers-count");
+        if (counter) {
+          counter.textContent = recent.length + " offres en ligne aujourd'hui.";
+        }
         if (featuredBox && listBox) {
           featuredBox.innerHTML = SS.offerFeatured(recent[0]);
           listBox.innerHTML = recent.slice(1, 6).map(SS.offerCard).join("");

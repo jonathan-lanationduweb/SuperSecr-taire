@@ -35,7 +35,7 @@ window.APP_CONFIG = {
       knowhowReports: "/supersecretaire/v1/savoir-faire/signalements",
       guidedSearch: "/supersecretaire/v1/recherche-guidee",
       recommendations: "/supersecretaire/v1/recommandations",
-      geocoding: null,   /* ex. API Adresse (adresse.data.gouv.fr) */
+      geocoding: "https://api-adresse.data.gouv.fr/search/", /* API Adresse — service public, sans clé */
       companiesDirectory: null /* ex. API Recherche d'entreprises */
     }
   },

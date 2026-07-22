@@ -128,6 +128,24 @@
         "plutôt qu'en ouvrant directement le fichier HTML.</p></div>";
     },
 
+    /* ---- Message éphémère (toast) ---- */
+    toast: function (message) {
+      var el = document.getElementById("ss-toast");
+      if (!el) {
+        el = document.createElement("p");
+        el.id = "ss-toast";
+        el.className = "toast";
+        el.setAttribute("role", "status");
+        document.body.appendChild(el);
+      }
+      el.textContent = message;
+      el.classList.add("is-visible");
+      clearTimeout(el._timer);
+      el._timer = setTimeout(function () {
+        el.classList.remove("is-visible");
+      }, 2600);
+    },
+
     /* ---- Modales <dialog> ---- */
     openModal: function (dialog) {
       if (!dialog) { return; }

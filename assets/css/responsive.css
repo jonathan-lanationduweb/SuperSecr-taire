@@ -287,6 +287,38 @@
     grid-template-columns: 1fr;
   }
 
+  /* Fiche offre : barre de candidature toujours visible en bas d'écran */
+  body:has(#offer-detail) {
+    padding-bottom: 76px;
+  }
+
+  body:has(#offer-detail) .offer-hero__actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 190;
+    flex-direction: row;
+    gap: var(--sp-3);
+    background: var(--c-surface);
+    border-top: 1px solid var(--c-line);
+    padding: var(--sp-3) var(--sp-4);
+    min-width: 0;
+  }
+
+  body:has(#offer-detail) .offer-hero__actions .btn {
+    flex: 1;
+    padding-inline: var(--sp-3);
+  }
+
+  body:has(#offer-detail) .chatbot-toggle {
+    bottom: calc(var(--sp-4) + 72px);
+  }
+
+  body:has(#offer-detail) .chatbot-panel {
+    bottom: calc(var(--sp-4) + 136px);
+  }
+
   .offer-hero__actions {
     width: 100%;
   }
