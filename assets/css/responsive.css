@@ -1,0 +1,372 @@
+/* Adaptations tablette et mobile v2 — chargé en dernier */
+
+/* ===== Grand écran étroit (≤ 1180px) ===== */
+@media (max-width: 1180px) {
+  .hero-grid {
+    gap: var(--sp-6);
+  }
+
+  .hero-visual__note {
+    left: 0;
+  }
+}
+
+/* ===== Tablette (≤ 1024px) ===== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    max-width: none;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .home-offers,
+  .home-articles {
+    grid-template-columns: 1fr;
+  }
+
+  .paths {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  .metiers-grid,
+  .trust-grid-2 {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
+  .trust-intro {
+    position: static;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3,
+  .articles-mosaic,
+  .knowhow-mosaic,
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .offers-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+
+  .filters-panel {
+    position: static;
+  }
+
+  .filters-toggle {
+    display: inline-flex;
+  }
+
+  .filters-panel.is-collapsed {
+    display: none;
+  }
+
+  .offer-detail-layout,
+  .company-layout,
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-sidebar,
+  .company-aside,
+  .article-aside {
+    position: static;
+  }
+
+  .directory-search form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .directory-search .field {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .directory-search .btn {
+    grid-column: 1 / -1;
+  }
+
+  .knowhow-toolbar form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .knowhow-toolbar .field {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .kh-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .kh-featured img {
+    min-height: 0;
+    max-height: 300px;
+  }
+
+  .payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-summary-card {
+    position: static;
+    order: -1;
+  }
+
+  .cta-final {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Navigation compacte (≤ 1200px) : menu escamotable ===== */
+@media (max-width: 1200px) {
+  .nav-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-line);
+    box-shadow: var(--shadow-m);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-5);
+    gap: var(--sp-5);
+    display: none;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: var(--sp-1);
+    white-space: normal;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: var(--sp-3);
+    border-radius: var(--radius-m);
+  }
+
+  .nav-links a::after {
+    content: none;
+  }
+
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"] {
+    background: var(--c-primary-soft);
+  }
+
+  .nav-guided {
+    display: block;
+  }
+
+  .nav-guided a {
+    color: var(--c-accent-dark);
+    font-weight: 650;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-actions::before {
+    content: none;
+  }
+
+  .nav-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ===== Mobile (≤ 768px) ===== */
+@media (max-width: 768px) {
+  :root {
+    --text-3xl: 1.8rem;
+    --text-2xl: 1.5rem;
+    --sp-8: 3rem;
+  }
+
+  /* Hero et recherche */
+  .search-panel form,
+  .search-band {
+    grid-template-columns: 1fr;
+  }
+
+  .search-panel__field + .search-panel__field,
+  .search-band__field + .search-band__field {
+    border-left: none;
+    border-top: 1px solid var(--c-line);
+  }
+
+  .search-panel form .btn,
+  .search-band .btn {
+    margin: var(--sp-3);
+    border-radius: var(--radius-m);
+  }
+
+  .grid-2,
+  .grid-3,
+  .companies-grid,
+  .articles-mosaic,
+  .knowhow-mosaic,
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .article-featured img {
+    max-height: 220px;
+  }
+
+  .metiers-list ul {
+    columns: 1;
+  }
+
+  .numbered-item {
+    grid-template-columns: 3rem 1fr;
+    gap: var(--sp-4);
+  }
+
+  /* Rangées d'offres empilées */
+  .offer-row {
+    grid-template-columns: auto 1fr;
+  }
+
+  .offer-row__side {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    text-align: left;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .directory-search form,
+  .knowhow-toolbar form {
+    grid-template-columns: 1fr;
+  }
+
+  .directory-search .field + .field,
+  .knowhow-toolbar .field + .field {
+    border-left: none;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-hero__actions {
+    width: 100%;
+  }
+
+  .wizard {
+    padding: var(--sp-5);
+  }
+
+  .progress-bar .progress-step {
+    font-size: 0;
+  }
+
+  .progress-bar .progress-step.is-active {
+    font-size: var(--text-xs);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-5);
+  }
+
+  .kh-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+  }
+
+  .chatbot-toggle {
+    right: var(--sp-4);
+    bottom: var(--sp-4);
+  }
+
+  .chatbot-toggle .chatbot-toggle__label {
+    display: none;
+  }
+
+  .chatbot-toggle {
+    width: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .chatbot-panel {
+    right: var(--sp-4);
+    bottom: calc(var(--sp-4) + 64px);
+  }
+}
+
+/* ===== Petit mobile (≤ 480px) ===== */
+@media (max-width: 480px) {
+  .container,
+  .container--narrow {
+    width: calc(100% - 2rem);
+  }
+
+  .grid-4,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-featured {
+    padding: var(--sp-5);
+  }
+
+  .results-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-search input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .blog-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cta-final {
+    padding: var(--sp-5);
+  }
+}

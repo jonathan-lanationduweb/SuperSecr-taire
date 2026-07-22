@@ -1,0 +1,876 @@
+/* Espace « Savoir-faire & Avis » : liste, fiche détaillée, notation, commentaires */
+
+/* ===== Étoiles (affichage) ===== */
+.stars {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  color: #d8d2c4;
+  letter-spacing: 2px;
+}
+
+.stars::before {
+  content: "★★★★★";
+}
+
+.stars .stars-fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--c-accent);
+  white-space: nowrap;
+}
+
+.stars .stars-fill::before {
+  content: "★★★★★";
+  letter-spacing: 2px;
+}
+
+.stars--lg {
+  font-size: 1.5rem;
+}
+
+.rating-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.rating-inline strong {
+  color: var(--c-primary-dark);
+}
+
+/* ===== Liste des savoir-faire ===== */
+.knowhow-toolbar {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-m);
+  margin-block: var(--sp-6) var(--sp-5);
+  overflow: hidden;
+}
+
+.knowhow-toolbar form {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+  align-items: stretch;
+}
+
+.knowhow-toolbar .field {
+  margin-bottom: 0;
+  padding: 0.55rem 1rem;
+  gap: 0.05rem;
+}
+
+.knowhow-toolbar .field + .field {
+  border-left: 1px solid var(--c-line);
+}
+
+.knowhow-toolbar .field label {
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.knowhow-toolbar .field input,
+.knowhow-toolbar .field select {
+  border: none;
+  background: transparent;
+  padding: 0.1rem 0;
+  font-size: var(--text-sm);
+}
+
+.knowhow-toolbar .field input:focus,
+.knowhow-toolbar .field select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.knowhow-toolbar .field:focus-within {
+  background: var(--c-primary-soft);
+}
+
+/* ===== Note sobre ===== */
+.rating-note {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.rating-note strong {
+  color: var(--c-primary-dark);
+}
+
+.rating-note__star {
+  color: var(--c-accent);
+}
+
+.rating-note__count {
+  color: var(--c-ink-soft);
+}
+
+/* ===== Composition magazine ===== */
+.knowhow-grid {
+  display: block;
+  padding-bottom: var(--sp-7);
+}
+
+.kh-featured {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: var(--c-surface);
+  margin-bottom: var(--sp-6);
+}
+
+.kh-featured img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.kh-featured__body {
+  padding: var(--sp-6);
+  display: grid;
+  gap: var(--sp-3);
+  align-content: center;
+}
+
+.kh-featured__label {
+  font-size: var(--text-xs);
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent-dark);
+}
+
+.kh-featured h3 {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+  color: var(--c-primary-dark);
+}
+
+.kh-featured h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kh-featured h3 a:hover {
+  color: var(--c-primary);
+}
+
+.kh-featured__body > p {
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.kh-featured__signature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  border-top: 1px solid var(--c-line);
+  padding-top: var(--sp-3);
+}
+
+.kh-featured__signature strong {
+  display: block;
+}
+
+.kh-featured__signature span:not(.avatar) {
+  font-size: var(--text-xs);
+  color: var(--c-ink-soft);
+}
+
+.kh-featured__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.knowhow-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.knowhow-rows {
+  margin-top: var(--sp-6);
+  border-top: 1px solid var(--c-line);
+}
+
+.kh-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-2);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.kh-row h3 {
+  font-size: var(--text-base);
+}
+
+.kh-row h3 a {
+  color: var(--c-ink);
+  text-decoration: none;
+}
+
+.kh-row h3 a:hover {
+  color: var(--c-primary);
+  text-decoration: underline;
+}
+
+.kh-row__meta {
+  font-size: var(--text-xs);
+  color: var(--c-ink-soft);
+  margin-top: 2px;
+}
+
+.knowhow-results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+
+/* (grille remplacée par la composition magazine ci-dessus) */
+
+/* Carte savoir-faire */
+.knowhow-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.knowhow-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.knowhow-card__body {
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  flex: 1;
+}
+
+.knowhow-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.knowhow-card h3 {
+  font-size: var(--text-lg);
+}
+
+.knowhow-card h3 a {
+  color: var(--c-primary-dark);
+  text-decoration: none;
+}
+
+.knowhow-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.knowhow-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.knowhow-card__author {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.knowhow-card__author strong {
+  color: var(--c-ink);
+}
+
+.knowhow-card p.knowhow-card__resume {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.knowhow-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  margin-top: auto;
+}
+
+.knowhow-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  border-top: 1px dashed var(--c-border);
+  padding-top: var(--sp-3);
+}
+
+.knowhow-card__foot .btn {
+  position: relative;
+  z-index: 1;
+}
+
+/* Badges de difficulté et statut de modération */
+.badge--facile { background: var(--c-success-soft); color: var(--c-success); }
+.badge--intermediaire { background: var(--c-accent-soft); color: var(--c-accent-dark); }
+.badge--confirme { background: #efe3f0; color: #6b4e71; }
+.badge--moderation { background: var(--c-info-soft); color: var(--c-ink-soft); border: 1px dashed var(--c-border-strong); }
+
+/* ===== Fiche savoir-faire ===== */
+.knowhow-hero {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+  padding-block: var(--sp-6);
+}
+
+.knowhow-hero h1 {
+  font-size: clamp(1.6rem, 3vw, var(--text-3xl));
+  max-width: 760px;
+  margin-block: var(--sp-2) var(--sp-3);
+}
+
+.knowhow-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.knowhow-author {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+.knowhow-author .logo-bubble {
+  width: 44px;
+  height: 44px;
+  font-size: 0.95rem;
+}
+
+.knowhow-author p {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.knowhow-author p strong {
+  display: block;
+  color: var(--c-ink);
+  font-size: var(--text-base);
+}
+
+.knowhow-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: var(--sp-7);
+  padding-block: var(--sp-7);
+  align-items: start;
+}
+
+.knowhow-main > img {
+  width: 100%;
+  border-radius: var(--radius-m);
+  border: 1px solid var(--c-border);
+  margin-bottom: var(--sp-6);
+}
+
+.knowhow-main section + section {
+  margin-top: var(--sp-6);
+}
+
+.knowhow-main h2 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-2);
+  border-bottom: 2px solid var(--c-accent-soft);
+  display: inline-block;
+}
+
+/* Étapes numérotées */
+.knowhow-steps {
+  counter-reset: knowstep;
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.knowhow-step {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-m);
+  padding: var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.knowhow-step h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--text-lg);
+}
+
+.knowhow-step h3::before {
+  counter-increment: knowstep;
+  content: counter(knowstep);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.knowhow-step img {
+  border-radius: var(--radius-s);
+  border: 1px solid var(--c-border);
+}
+
+.knowhow-step .step-tip {
+  background: var(--c-accent-soft);
+  border-left: 4px solid var(--c-accent);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--text-sm);
+  color: var(--c-accent-dark);
+}
+
+/* Résultat final */
+.knowhow-result {
+  background: var(--c-success-soft);
+  border: 1px solid var(--c-success);
+  border-radius: var(--radius-m);
+  padding: var(--sp-5);
+}
+
+/* Galerie */
+.knowhow-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+.knowhow-gallery img {
+  border-radius: var(--radius-s);
+  border: 1px solid var(--c-border);
+  width: 100%;
+}
+
+/* Colonne latérale */
+.knowhow-aside {
+  display: grid;
+  gap: var(--sp-5);
+  position: sticky;
+  top: calc(var(--header-height) + var(--sp-4));
+}
+
+.knowhow-info-card,
+.knowhow-pro-card {
+  padding: var(--sp-5);
+}
+
+.knowhow-info-card h2,
+.knowhow-pro-card h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--sp-3);
+}
+
+.knowhow-info-card dl {
+  display: grid;
+  gap: var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.knowhow-info-card dt {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-ink-soft);
+}
+
+.knowhow-info-card dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--c-primary-dark);
+}
+
+.knowhow-materials {
+  display: grid;
+  gap: var(--sp-2);
+  font-size: var(--text-sm);
+}
+
+.knowhow-aside-actions {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+/* Encadré « bien distinguer les avis » */
+.avis-explainer {
+  font-size: var(--text-sm);
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.avis-explainer li strong {
+  color: var(--c-primary-dark);
+}
+
+/* ===== Bloc de notation ===== */
+.rating-section {
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  padding-block: var(--sp-7);
+}
+
+.rating-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+}
+
+.rating-summary {
+  padding: var(--sp-5);
+}
+
+.rating-summary .rating-average {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.rating-summary .rating-average .big {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--c-primary-dark);
+}
+
+.rating-criteria {
+  display: grid;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+}
+
+.rating-criteria .crit-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--sp-3);
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.rating-criteria .crit-row strong {
+  font-weight: 600;
+  color: var(--c-primary-dark);
+  min-width: 2.2rem;
+  text-align: right;
+}
+
+.rating-distribution {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.rating-distribution .dist-row {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr 2.4rem;
+  gap: var(--sp-3);
+  align-items: center;
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.dist-bar {
+  height: 8px;
+  background: var(--c-primary-soft);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.dist-bar span {
+  display: block;
+  height: 100%;
+  background: var(--c-accent);
+  border-radius: var(--radius-pill);
+}
+
+/* Formulaire de notation (étoiles cliquables) */
+.rating-form-card {
+  padding: var(--sp-5);
+}
+
+.rate-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  padding-block: var(--sp-2);
+  border-bottom: 1px dashed var(--c-border);
+}
+
+.rate-row legend {
+  float: left;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.star-input {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.star-input input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.star-input label {
+  font-size: 1.55rem;
+  line-height: 1;
+  color: #d8d2c4;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: color 120ms ease, transform 120ms ease;
+}
+
+.star-input label:hover,
+.star-input label:hover ~ label,
+.star-input input:checked ~ label {
+  color: var(--c-accent);
+}
+
+.star-input label:hover {
+  transform: scale(1.15);
+}
+
+.star-input input:focus-visible + label {
+  outline: 3px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== Commentaires ===== */
+.comments-section {
+  padding-block: var(--sp-7);
+}
+
+.comments-list {
+  display: grid;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-6);
+}
+
+.comment-card {
+  padding: var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.comment-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.comment-card__head .who {
+  font-weight: 600;
+}
+
+.comment-card__head .when {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.comment-card h3 {
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+}
+
+.comment-card p {
+  font-size: var(--text-sm);
+  color: var(--c-ink);
+}
+
+.comment-card .comment-result {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  font-style: italic;
+}
+
+.pro-reply {
+  background: var(--c-primary-soft);
+  border-left: 4px solid var(--c-primary);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--text-sm);
+}
+
+.pro-reply strong {
+  color: var(--c-primary-dark);
+}
+
+.comment-form-card {
+  padding: var(--sp-6);
+  max-width: 640px;
+}
+
+/* ===== Signalement ===== */
+.report-link {
+  background: none;
+  border: none;
+  color: var(--c-ink-soft);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.report-link:hover {
+  color: var(--c-error);
+}
+
+.report-reasons {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.report-reasons label {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: flex-start;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.report-reasons label:hover {
+  border-color: var(--c-accent);
+}
+
+.report-reasons input {
+  accent-color: var(--c-primary);
+  margin-top: 0.2rem;
+}
+
+/* ===== Publications similaires ===== */
+.knowhow-similar {
+  padding-block: var(--sp-7);
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ===== Assistant de publication : étapes dynamiques ===== */
+.dyn-step {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-m);
+  padding: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  background: var(--c-bg);
+}
+
+.dyn-step__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-3);
+}
+
+.dyn-step__head h3 {
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+}
+
+/* Section savoir-faire sur la fiche entreprise */
+.company-knowhow-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+/* ===== Adaptations ===== */
+@media (max-width: 1024px) {
+  .knowhow-toolbar form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .knowhow-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .kh-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .kh-featured img {
+    min-height: 220px;
+    max-height: 280px;
+  }
+
+  .knowhow-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .knowhow-aside {
+    position: static;
+  }
+
+  .rating-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .knowhow-toolbar form {
+    grid-template-columns: 1fr;
+  }
+
+  .knowhow-mosaic,
+  .knowhow-gallery,
+  .company-knowhow-list {
+    grid-template-columns: 1fr;
+  }
+
+  .rate-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

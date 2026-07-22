@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperSecrétaire — L'emploi des métiers du secrétariat et de l'assistanat</title>
+  <meta name="description" content="Trouvez votre prochain poste de secrétaire, d'assistant(e) ou d'office manager partout en France. Offres vérifiées, annuaire d'entreprises et conseils d'experts. Candidature simple, sans inscription.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/guided-search.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SuperSecrétaire",
+    "description": "Plateforme française de l'emploi des métiers du secrétariat, de l'assistanat et de l'administratif (site de démonstration).",
+    "url": "https://www.supersecretaire.exemple.fr"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SuperSecrétaire",
+    "url": "https://www.supersecretaire.exemple.fr",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.supersecretaire.exemple.fr/offres.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-accent">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">La plateforme de l'emploi administratif</p>
+          <h1 id="hero-title">Les métiers du secrétariat ont enfin <em>leur adresse</em>.</h1>
+          <p class="hero-lead">Offres d'emploi relues une à une, entreprises identifiées et conseils de professionnels — pour les secrétaires, assistant(e)s et office managers de toute la France.</p>
+
+          <div class="search-panel">
+            <form id="hero-search-form" role="search" aria-label="Rechercher une offre d'emploi">
+              <div class="search-panel__field">
+                <label for="search-keyword">Métier ou mot-clé</label>
+                <input type="search" id="search-keyword" name="q" placeholder="Secrétaire médicale, assistant…" autocomplete="off">
+              </div>
+              <div class="search-panel__field">
+                <label for="search-location">Ville ou département</label>
+                <input type="text" id="search-location" name="lieu" placeholder="Lyon, Rhône…" autocomplete="off">
+              </div>
+              <button type="submit" class="btn btn-accent">Rechercher</button>
+            </form>
+            <div class="search-panel__alt">
+              <span>Vous hésitez sur le métier ou le type de poste&nbsp;?</span>
+              <a href="recherche-guidee.html" data-guided-search-open>Aidez-moi à trouver — en moins d'une minute</a>
+            </div>
+          </div>
+
+          <div class="popular-searches" aria-label="Recherches populaires">
+            <span class="label">Recherches fréquentes</span>
+            <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
+            <a class="chip" href="offres.html?categorie=assistant-direction">Assistant de direction</a>
+            <a class="chip" href="offres.html?categorie=office-manager">Office manager</a>
+            <a class="chip" href="offres.html?categorie=telesecretaire">Télésecrétaire</a>
+            <a class="link-more" href="offres.html">Toutes les offres</a>
+          </div>
+
+          <p class="hero-secondary">Vous recrutez&nbsp;? <a href="publier-offre.html">Publiez votre offre en quelques minutes</a> — renouvellement à 10&nbsp;€.</p>
+        </div>
+
+        <div class="hero-visual">
+          <figure>
+            <img src="assets/images/photos/hero-accueil.jpg" alt="Une assistante souriante travaille sur son ordinateur portable dans un bureau moderne" width="720" height="480">
+            <figcaption class="hero-visual__note">
+              <strong>Candidature simple</strong>
+              Sans compte obligatoire, votre CV part directement chez l'employeur.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Offres récentes : une vedette + une liste ===== -->
+    <section class="section section--surface" aria-labelledby="recent-title">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="eyebrow">Dernières annonces</p>
+            <h2 id="recent-title">Publiées cette semaine</h2>
+          </div>
+          <a class="link-more" href="offres.html">Consulter toutes les offres</a>
+        </div>
+        <div class="home-offers">
+          <div id="home-offer-featured" aria-live="polite"></div>
+          <div id="home-offers-list" class="home-offers__list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Deux parcours distincts ===== -->
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title" class="visually-hidden">Candidats et recruteurs : deux parcours</h2>
+        <div class="paths">
+          <div class="path-candidate">
+            <p class="eyebrow">Vous cherchez un poste</p>
+            <h3 class="path-title">Un parcours pensé pour les candidats, sans barrière inutile.</h3>
+            <ol class="steps">
+              <li class="step-item">
+                <div><h3>Recherchez librement</h3><p>Par métier, ville, contrat ou télétravail — sans créer de compte.</p></div>
+              </li>
+              <li class="step-item">
+                <div><h3>Lisez tout, vraiment tout</h3><p>Missions, salaire, avantages et fiche de l'entreprise : rien n'est caché derrière une inscription.</p></div>
+              </li>
+              <li class="step-item">
+                <div><h3>Candidatez en deux minutes</h3><p>Un formulaire court, votre CV, et c'est chez l'employeur.</p></div>
+              </li>
+              <li class="step-item">
+                <div><h3>Restez accompagné(e)</h3><p>Conseils, recherche guidée et une équipe qui répond sous un jour ouvré.</p></div>
+              </li>
+            </ol>
+            <div class="form-actions">
+              <a class="btn btn-primary" href="offres.html">Chercher une offre</a>
+              <a class="link-more" href="recherche-guidee.html" data-guided-search-open>Je préfère être guidé(e)</a>
+            </div>
+          </div>
+          <aside class="path-recruiter">
+            <p class="eyebrow">Vous recrutez</p>
+            <h3 class="path-title">Votre annonce en ligne aujourd'hui, vos candidatures dès demain.</h3>
+            <ul class="path-recruiter__points">
+              <li>Publication guidée en 6 étapes, avec aperçu avant mise en ligne</li>
+              <li>Candidatures reçues directement par e-mail et dans votre tableau de bord</li>
+              <li>Annonce visible 60 jours, renouvelable en un clic pour <strong>10&nbsp;€</strong></li>
+              <li>Relecture de chaque annonce par notre équipe</li>
+            </ul>
+            <div class="form-actions">
+              <a class="btn btn-accent" href="publier-offre.html">Publier une offre</a>
+              <a class="btn btn-outline btn-outline--light" href="connexion.html">Créer mon espace</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Métiers : présentation éditoriale ===== -->
+    <section class="section section--surface" aria-labelledby="categories-title">
+      <div class="container metiers-grid">
+        <div class="metiers-intro">
+          <p class="eyebrow">Familles de métiers</p>
+          <h2 id="categories-title">Dix façons d'exercer le métier d'organiser</h2>
+          <p>Du cabinet médical au chantier, de l'étude notariale à la boutique en ligne : les métiers administratifs se déclinent partout. Trois familles recrutent particulièrement en ce moment.</p>
+          <div class="metiers-featured">
+            <a href="offres.html?categorie=secretaire-medicale" class="metier-spot">
+              <h3>Secrétariat médical</h3>
+              <p>Cabinets, cliniques et laboratoires — le premier visage du parcours de soins.</p>
+            </a>
+            <a href="offres.html?categorie=office-manager" class="metier-spot">
+              <h3>Office management</h3>
+              <p>Le poste qui fait tourner la vie du bureau, des locaux et des équipes.</p>
+            </a>
+            <a href="offres.html?categorie=telesecretaire" class="metier-spot">
+              <h3>Télésecrétariat</h3>
+              <p>La permanence téléphonique à distance, en plein essor partout en France.</p>
+            </a>
+          </div>
+        </div>
+        <nav class="metiers-list" aria-label="Tous les métiers">
+          <h3>Explorer tous les métiers</h3>
+          <ul>
+            <li><a href="offres.html?categorie=secretaire-administrative">Secrétariat administratif</a></li>
+            <li><a href="offres.html?categorie=secretaire-medicale">Secrétariat médical</a></li>
+            <li><a href="offres.html?categorie=secretaire-juridique">Secrétariat juridique</a></li>
+            <li><a href="offres.html?categorie=assistant-direction">Assistanat de direction</a></li>
+            <li><a href="offres.html?categorie=assistant-commercial">Assistanat commercial</a></li>
+            <li><a href="offres.html?categorie=assistant-comptable">Assistanat comptable</a></li>
+            <li><a href="offres.html?categorie=assistant-rh">Assistanat RH</a></li>
+            <li><a href="offres.html?categorie=assistant-administratif">Assistanat de gestion</a></li>
+            <li><a href="offres.html?categorie=office-manager">Office management</a></li>
+            <li><a href="offres.html?categorie=telesecretaire">Télésecrétariat</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ===== Entreprises mises en avant ===== -->
+    <section class="section" aria-labelledby="companies-title">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="eyebrow">Annuaire</p>
+            <h2 id="companies-title">Elles recrutent en ce moment</h2>
+          </div>
+          <a class="link-more" href="entreprises.html">Parcourir l'annuaire</a>
+        </div>
+        <div id="featured-companies" class="grid-2" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== Engagements ===== -->
+    <section class="section section--tone" aria-labelledby="trust-title">
+      <div class="container trust-grid-2">
+        <div class="trust-intro">
+          <p class="eyebrow">Nos engagements</p>
+          <h2 id="trust-title">Une plateforme qui se lit comme elle se dit</h2>
+          <p>Pas de promesses spectaculaires ni de compteurs gonflés : quatre règles simples, appliquées à chaque annonce. (Et comme ce site est un prototype, nous n'affichons aucun chiffre inventé.)</p>
+        </div>
+        <div class="numbered-list">
+          <div class="numbered-item">
+            <div><h3>Chaque offre est relue avant publication</h3><p>Intitulé réel, salaire précisé autant que possible, lieu exact : une annonce floue est renvoyée à l'employeur.</p></div>
+          </div>
+          <div class="numbered-item">
+            <div><h3>Chaque entreprise a une fiche identifiée</h3><p>Activité, adresse, valeurs et offres en cours : vous savez chez qui vous postulez avant d'envoyer votre CV.</p></div>
+          </div>
+          <div class="numbered-item">
+            <div><h3>La consultation reste libre</h3><p>Aucune inscription pour chercher, lire ou candidater. Votre CV part chez l'employeur, pas dans une base commerciale.</p></div>
+          </div>
+          <div class="numbered-item">
+            <div><h3>Des humains derrière l'écran</h3><p>Le chatbot répond aux questions simples ; pour le reste, une équipe vous répond sous un jour ouvré.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Articles récents ===== -->
+    <section class="section section--surface" aria-labelledby="articles-title">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <p class="eyebrow">Conseils &amp; articles</p>
+            <h2 id="articles-title">Le magazine de l'emploi administratif</h2>
+          </div>
+          <a class="link-more" href="blog.html">Tous les articles</a>
+        </div>
+        <div class="home-articles">
+          <div id="home-article-featured"></div>
+          <div id="home-articles-side" class="home-articles__side"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Appel recruteur ===== -->
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-final">
+          <div class="cta-final__copy">
+            <p class="eyebrow">Pour les recruteurs</p>
+            <h2 id="cta-title">La perle rare de votre équipe lit peut-être cette page.</h2>
+            <p>Publiez votre annonce en quelques minutes et touchez des candidats spécialisés dans les métiers administratifs. Annonce relue, visible 60 jours, renouvelable pour 10&nbsp;€.</p>
+          </div>
+          <div class="cta-final__actions">
+            <a class="btn btn-accent btn-lg" href="publier-offre.html">Publier une offre</a>
+            <p>Une question avant de commencer&nbsp;? <a href="contact.html">Écrivez-nous</a>, réponse sous un jour ouvré.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/companies.js"></script>
+  <script src="assets/js/blog.js"></script>
+  <script src="assets/js/guided-search.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

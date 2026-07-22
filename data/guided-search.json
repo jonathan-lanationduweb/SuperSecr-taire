@@ -1,0 +1,467 @@
+{
+  "meta": {
+    "nom": "Recherche guidée",
+    "accroche": "Trouvez ce qu'il vous faut en quelques clics",
+    "description": "Répondez à quelques questions simples : nous vous proposons aussitôt des offres, des entreprises, des professionnels ou des conseils adaptés. Sans compte, sans engagement — de simples suggestions pour vous faire gagner du temps."
+  },
+  "start": "besoin",
+  "steps": {
+
+    "besoin": {
+      "flow": null,
+      "question": "Que recherchez-vous aujourd'hui ?",
+      "aide": "Une seule réponse suffit : le reste des questions s'adaptera.",
+      "key": "besoin",
+      "skippable": false,
+      "stepIndex": 1,
+      "stepTotal": 1,
+      "options": [
+        { "label": "Je cherche un emploi", "value": "emploi", "next": "emploi-metier" },
+        { "label": "Je cherche une entreprise", "value": "entreprise", "next": "ent-secteur" },
+        { "label": "Je cherche un professionnel", "value": "professionnel", "next": "pro-metier" },
+        { "label": "Je souhaite publier une offre", "value": "publier", "next": "pub-profil" },
+        { "label": "Je souhaite découvrir un métier", "value": "decouverte", "next": "dec-public" },
+        { "label": "Je cherche un conseil ou un savoir-faire", "value": "savoirfaire", "next": "sf-domaine" },
+        { "label": "Je ne sais pas encore", "value": "inconnu", "next": "dec-public" }
+      ]
+    },
+
+    "emploi-metier": {
+      "flow": "emploi",
+      "question": "Quel métier vous intéresse ?",
+      "aide": "Choisissez le plus proche de votre projet.",
+      "key": "metier",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Secrétaire administrative", "value": "secretaire-administrative", "next": "emploi-ville" },
+        { "label": "Secrétaire médicale", "value": "secretaire-medicale", "next": "emploi-ville" },
+        { "label": "Assistant(e) de direction", "value": "assistant-direction", "next": "emploi-ville" },
+        { "label": "Assistant(e) commercial(e)", "value": "assistant-commercial", "next": "emploi-ville" },
+        { "label": "Assistant(e) comptable", "value": "assistant-comptable", "next": "emploi-ville" },
+        { "label": "Office manager", "value": "office-manager", "next": "emploi-ville" },
+        { "label": "Télésecrétaire", "value": "telesecretaire", "next": "emploi-ville" },
+        { "label": "Autre métier administratif", "value": "autre", "next": "emploi-ville" },
+        { "label": "Je ne sais pas encore", "value": "inconnu", "next": "dec-public" }
+      ]
+    },
+
+    "emploi-ville": {
+      "flow": "emploi",
+      "question": "Dans quelle ville ou région recherchez-vous ?",
+      "aide": "Vous pourrez affiner plus tard sur la page des offres.",
+      "key": "ville",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Paris et Île-de-France", "value": "paris", "next": "emploi-contrat" },
+        { "label": "Lyon et sa région", "value": "lyon", "next": "emploi-contrat" },
+        { "label": "Marseille et le Sud-Est", "value": "marseille", "next": "emploi-contrat" },
+        { "label": "Nantes et le Grand Ouest", "value": "nantes", "next": "emploi-contrat" },
+        { "label": "Bordeaux et le Sud-Ouest", "value": "bordeaux", "next": "emploi-contrat" },
+        { "label": "Toulouse et sa région", "value": "toulouse", "next": "emploi-contrat" },
+        { "label": "Ailleurs ou à distance", "value": "distance", "next": "emploi-contrat" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "emploi-contrat" }
+      ]
+    },
+
+    "emploi-contrat": {
+      "flow": "emploi",
+      "question": "Quel type de contrat souhaitez-vous ?",
+      "key": "contrat",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 5,
+      "options": [
+        { "label": "CDI", "value": "CDI", "next": "emploi-teletravail" },
+        { "label": "CDD ou mission", "value": "CDD", "next": "emploi-teletravail" },
+        { "label": "Alternance", "value": "Alternance", "next": "emploi-teletravail" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "emploi-teletravail" }
+      ]
+    },
+
+    "emploi-teletravail": {
+      "flow": "emploi",
+      "question": "Le télétravail vous intéresse-t-il ?",
+      "key": "teletravail",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, uniquement à distance", "value": "uniquement", "next": "emploi-experience" },
+        { "label": "Oui, quelques jours par semaine", "value": "partiel", "next": "emploi-experience" },
+        { "label": "Non, je préfère être sur place", "value": "non", "next": "emploi-experience" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "emploi-experience" }
+      ]
+    },
+
+    "emploi-experience": {
+      "flow": "emploi",
+      "question": "Quel est votre niveau d'expérience ?",
+      "aide": "Cette réponse nous aide simplement à adapter nos conseils.",
+      "key": "experience",
+      "skippable": true,
+      "stepIndex": 5,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Je débute dans le métier", "value": "debutant", "next": "results" },
+        { "label": "2 à 5 ans d'expérience", "value": "intermediaire", "next": "results" },
+        { "label": "Plus de 5 ans d'expérience", "value": "experimente", "next": "results" }
+      ]
+    },
+
+    "dec-public": {
+      "flow": "decouverte",
+      "question": "Aimez-vous être en contact avec le public ?",
+      "aide": "Accueillir, renseigner, répondre au téléphone…",
+      "key": "prefPublic",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, j'aime le contact", "value": "oui", "next": "dec-organiser" },
+        { "label": "Plutôt en retrait", "value": "non", "next": "dec-organiser" },
+        { "label": "Les deux me vont", "value": "peu-importe", "next": "dec-organiser" }
+      ]
+    },
+
+    "dec-organiser": {
+      "flow": "decouverte",
+      "question": "Aimez-vous organiser, planifier et classer ?",
+      "key": "prefOrganiser",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 5,
+      "options": [
+        { "label": "C'est mon point fort", "value": "fort", "next": "dec-medical" },
+        { "label": "Oui, j'aime bien", "value": "oui", "next": "dec-medical" },
+        { "label": "Ce n'est pas ce que je préfère", "value": "non", "next": "dec-medical" }
+      ]
+    },
+
+    "dec-medical": {
+      "flow": "decouverte",
+      "question": "Le domaine médical vous attire-t-il ?",
+      "key": "prefMedical",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, beaucoup", "value": "oui", "next": "dec-polyvalent" },
+        { "label": "Pourquoi pas", "value": "peut-etre", "next": "dec-polyvalent" },
+        { "label": "Non, pas spécialement", "value": "non", "next": "dec-polyvalent" }
+      ]
+    },
+
+    "dec-polyvalent": {
+      "flow": "decouverte",
+      "question": "Préférez-vous un poste très polyvalent ?",
+      "aide": "Un peu de tout chaque jour, plutôt qu'une seule spécialité.",
+      "key": "prefPolyvalent",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, j'aime la variété", "value": "oui", "next": "dec-distance" },
+        { "label": "Je préfère me spécialiser", "value": "non", "next": "dec-distance" }
+      ]
+    },
+
+    "dec-distance": {
+      "flow": "decouverte",
+      "question": "Souhaitez-vous travailler à distance ?",
+      "key": "prefDistance",
+      "skippable": true,
+      "stepIndex": 5,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, idéalement depuis chez moi", "value": "oui", "next": "results" },
+        { "label": "Non, je préfère un lieu de travail", "value": "non", "next": "results" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "results" }
+      ]
+    },
+
+    "ent-secteur": {
+      "flow": "entreprise",
+      "question": "Dans quel secteur cherchez-vous une entreprise ?",
+      "key": "secteur",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Santé", "value": "Santé", "next": "ent-zone" },
+        { "label": "Juridique", "value": "Juridique", "next": "ent-zone" },
+        { "label": "Comptabilité et gestion", "value": "Expertise comptable", "next": "ent-zone" },
+        { "label": "Construction et bâtiment", "value": "Construction", "next": "ent-zone" },
+        { "label": "Immobilier", "value": "Immobilier", "next": "ent-zone" },
+        { "label": "Assurance", "value": "Assurance", "next": "ent-zone" },
+        { "label": "Secteur public", "value": "Secteur public", "next": "ent-zone" },
+        { "label": "Autre ou peu importe", "value": "peu-importe", "next": "ent-zone" }
+      ]
+    },
+
+    "ent-zone": {
+      "flow": "entreprise",
+      "question": "Dans quelle zone géographique ?",
+      "key": "ville",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Paris et Île-de-France", "value": "paris", "next": "ent-recrute" },
+        { "label": "Lyon et sa région", "value": "lyon", "next": "ent-recrute" },
+        { "label": "Marseille et le Sud-Est", "value": "marseille", "next": "ent-recrute" },
+        { "label": "Nantes et le Grand Ouest", "value": "nantes", "next": "ent-recrute" },
+        { "label": "Bordeaux et le Sud-Ouest", "value": "bordeaux", "next": "ent-recrute" },
+        { "label": "Toulouse et sa région", "value": "toulouse", "next": "ent-recrute" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "ent-recrute" }
+      ]
+    },
+
+    "ent-recrute": {
+      "flow": "entreprise",
+      "question": "Cherchez-vous une entreprise qui recrute en ce moment ?",
+      "key": "recrute",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Oui, avec des offres en ligne", "value": "oui", "next": "ent-avis" },
+        { "label": "Non, je veux juste la découvrir", "value": "non", "next": "ent-avis" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "ent-avis" }
+      ]
+    },
+
+    "ent-avis": {
+      "flow": "entreprise",
+      "question": "Souhaitez-vous consulter leurs savoir-faire et avis ?",
+      "aide": "Certaines entreprises publient leurs méthodes, notées par les visiteurs.",
+      "key": "avis",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Oui, ça m'intéresse", "value": "oui", "next": "results" },
+        { "label": "Non merci", "value": "non", "next": "results" }
+      ]
+    },
+
+    "pro-metier": {
+      "flow": "professionnel",
+      "question": "Quel professionnel recherchez-vous ?",
+      "key": "metierPro",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Un métier administratif (secrétaire, assistant…)", "value": "administratif", "next": "pro-besoin" },
+        { "label": "Un artisan du bâtiment (parquet, peinture…)", "value": "batiment", "next": "pro-besoin" },
+        { "label": "Un métier de bouche (boulanger…)", "value": "bouche", "next": "pro-besoin" },
+        { "label": "Un jardinier ou paysagiste", "value": "jardin", "next": "pro-besoin" },
+        { "label": "Un mécanicien", "value": "mecanique", "next": "pro-besoin" },
+        { "label": "Autre ou peu importe", "value": "peu-importe", "next": "pro-besoin" }
+      ]
+    },
+
+    "pro-besoin": {
+      "flow": "professionnel",
+      "question": "Pour quel besoin ?",
+      "key": "besoinPro",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Lui confier un travail ou un projet", "value": "projet", "next": "pro-ville" },
+        { "label": "Apprendre de ses méthodes et conseils", "value": "conseil", "next": "pro-ville" },
+        { "label": "Le recruter", "value": "recruter", "next": "pro-ville" },
+        { "label": "Autre chose", "value": "autre", "next": "pro-ville" }
+      ]
+    },
+
+    "pro-ville": {
+      "flow": "professionnel",
+      "question": "Dans quelle ville ou quel département ?",
+      "key": "ville",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Lyon et sa région", "value": "lyon", "next": "pro-avis" },
+        { "label": "Marseille et le Sud-Est", "value": "marseille", "next": "pro-avis" },
+        { "label": "Nantes / Rennes et le Grand Ouest", "value": "ouest", "next": "pro-avis" },
+        { "label": "Toulouse et sa région", "value": "toulouse", "next": "pro-avis" },
+        { "label": "Strasbourg et le Grand Est", "value": "strasbourg", "next": "pro-avis" },
+        { "label": "Tours et le Centre", "value": "tours", "next": "pro-avis" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "pro-avis" }
+      ]
+    },
+
+    "pro-avis": {
+      "flow": "professionnel",
+      "question": "Souhaitez-vous voir leurs réalisations et les avis reçus ?",
+      "key": "avis",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 4,
+      "options": [
+        { "label": "Oui, c'est important pour moi", "value": "oui", "next": "results" },
+        { "label": "Non, pas nécessaire", "value": "non", "next": "results" }
+      ]
+    },
+
+    "pub-profil": {
+      "flow": "publier",
+      "question": "Quel profil recherchez-vous ?",
+      "key": "profil",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Secrétaire administrative", "value": "secretaire-administrative", "next": "pub-ville" },
+        { "label": "Secrétaire médicale", "value": "secretaire-medicale", "next": "pub-ville" },
+        { "label": "Assistant(e) de direction", "value": "assistant-direction", "next": "pub-ville" },
+        { "label": "Assistant(e) commercial(e) ou comptable", "value": "assistant-commercial", "next": "pub-ville" },
+        { "label": "Office manager", "value": "office-manager", "next": "pub-ville" },
+        { "label": "Télésecrétaire", "value": "telesecretaire", "next": "pub-ville" },
+        { "label": "Autre profil administratif", "value": "autre", "next": "pub-ville" }
+      ]
+    },
+
+    "pub-ville": {
+      "flow": "publier",
+      "question": "Dans quelle ville se trouve le poste ?",
+      "key": "ville",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Paris et Île-de-France", "value": "paris", "next": "pub-contrat" },
+        { "label": "Lyon et sa région", "value": "lyon", "next": "pub-contrat" },
+        { "label": "Une autre grande ville", "value": "autre-ville", "next": "pub-contrat" },
+        { "label": "Poste en télétravail", "value": "distance", "next": "pub-contrat" }
+      ]
+    },
+
+    "pub-contrat": {
+      "flow": "publier",
+      "question": "Quel type de contrat proposez-vous ?",
+      "key": "contrat",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 5,
+      "options": [
+        { "label": "CDI", "value": "CDI", "next": "pub-quand" },
+        { "label": "CDD ou mission", "value": "CDD", "next": "pub-quand" },
+        { "label": "Alternance", "value": "Alternance", "next": "pub-quand" },
+        { "label": "Je ne sais pas encore", "value": "inconnu", "next": "pub-quand" }
+      ]
+    },
+
+    "pub-quand": {
+      "flow": "publier",
+      "question": "Quand souhaitez-vous recruter ?",
+      "key": "quand",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Dès que possible", "value": "urgent", "next": "pub-action" },
+        { "label": "Dans le mois", "value": "mois", "next": "pub-action" },
+        { "label": "Plus tard, je me renseigne", "value": "plus-tard", "next": "pub-action" }
+      ]
+    },
+
+    "pub-action": {
+      "flow": "publier",
+      "question": "Souhaitez-vous publier votre offre maintenant ?",
+      "key": "action",
+      "skippable": true,
+      "stepIndex": 5,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Oui, je publie mon annonce", "value": "publier", "next": "results" },
+        { "label": "Je préfère d'abord créer mon compte", "value": "compte", "next": "results" },
+        { "label": "J'ai d'abord une question", "value": "question", "next": "results" }
+      ]
+    },
+
+    "sf-domaine": {
+      "flow": "savoirfaire",
+      "question": "Quel domaine vous intéresse ?",
+      "key": "domaine",
+      "skippable": true,
+      "stepIndex": 1,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Cuisine et fabrication", "value": "Fabrication & recettes", "next": "sf-type" },
+        { "label": "Organisation et méthodes de travail", "value": "Organisation & méthodes", "next": "sf-type" },
+        { "label": "Travaux, pose et rénovation", "value": "Pose & rénovation", "next": "sf-type" },
+        { "label": "Entretien et réparation", "value": "Entretien & réparation", "next": "sf-type" },
+        { "label": "Jardin et extérieur", "value": "Aménagement & extérieur", "next": "sf-type" },
+        { "label": "Conseils de métier", "value": "Conseils de métier", "next": "sf-type" },
+        { "label": "Peu importe, je découvre", "value": "peu-importe", "next": "sf-type" }
+      ]
+    },
+
+    "sf-type": {
+      "flow": "savoirfaire",
+      "question": "Que recherchez-vous plus précisément ?",
+      "key": "type",
+      "skippable": true,
+      "stepIndex": 2,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Une recette ou une fabrication", "value": "recette", "next": "sf-niveau" },
+        { "label": "Une méthode pas à pas", "value": "methode", "next": "sf-niveau" },
+        { "label": "Des conseils de professionnel", "value": "conseil", "next": "sf-niveau" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "sf-niveau" }
+      ]
+    },
+
+    "sf-niveau": {
+      "flow": "savoirfaire",
+      "question": "Quel est votre niveau ?",
+      "key": "niveau",
+      "skippable": true,
+      "stepIndex": 3,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Débutant(e), je découvre", "value": "facile", "next": "sf-temps" },
+        { "label": "J'ai déjà quelques bases", "value": "intermediaire", "next": "sf-temps" },
+        { "label": "Je suis à l'aise, même si c'est exigeant", "value": "confirme", "next": "sf-temps" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "sf-temps" }
+      ]
+    },
+
+    "sf-temps": {
+      "flow": "savoirfaire",
+      "question": "Combien de temps souhaitez-vous y consacrer ?",
+      "key": "temps",
+      "skippable": true,
+      "stepIndex": 4,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Moins d'une heure", "value": "court", "next": "sf-format" },
+        { "label": "Une demi-journée", "value": "moyen", "next": "sf-format" },
+        { "label": "Une journée ou plus", "value": "long", "next": "sf-format" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "sf-format" }
+      ]
+    },
+
+    "sf-format": {
+      "flow": "savoirfaire",
+      "question": "Préférez-vous un guide rapide ou détaillé ?",
+      "key": "format",
+      "skippable": true,
+      "stepIndex": 5,
+      "stepTotal": 5,
+      "options": [
+        { "label": "Rapide : l'essentiel en quelques étapes", "value": "rapide", "next": "results" },
+        { "label": "Détaillé : toutes les explications", "value": "detaille", "next": "results" },
+        { "label": "Peu importe", "value": "peu-importe", "next": "results" }
+      ]
+    }
+  }
+}

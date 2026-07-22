@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Détail de l'offre d'emploi | SuperSecrétaire</title>
+  <meta name="description" content="Consultez le détail de cette offre d'emploi : missions, profil recherché, salaire, avantages et présentation de l'entreprise. Candidatez en quelques clics.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/offers.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div id="offer-detail">
+
+      <!-- En-tête de l'offre -->
+      <div class="offer-hero">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="offres.html">Offres d'emploi</a></li>
+              <li aria-current="page">Détail de l'offre</li>
+            </ol>
+          </nav>
+          <div class="offer-hero__grid">
+            <div class="offer-hero__main">
+              <p class="offer-hero__company">Chez <a id="offer-company-link" href="entreprises.html">l'entreprise</a></p>
+              <h1 id="offer-title">Chargement de l'offre…</h1>
+              <p class="text-muted"><span id="offer-city"></span> · <span id="offer-date"></span></p>
+              <div class="offer-hero__meta" id="offer-badges"></div>
+            </div>
+            <div class="offer-hero__actions">
+              <button type="button" id="apply-button" class="btn btn-accent btn-lg">Postuler à cette offre</button>
+              <button type="button" id="share-button" class="btn btn-outline">Partager cette offre</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corps de l'offre -->
+      <div class="container offer-detail-layout">
+        <div class="offer-content">
+          <section aria-labelledby="h-presentation">
+            <h2 id="h-presentation">Présentation du poste</h2>
+            <p id="offer-description"></p>
+          </section>
+          <section aria-labelledby="h-missions">
+            <h2 id="h-missions">Vos missions</h2>
+            <ul id="offer-missions"></ul>
+          </section>
+          <section aria-labelledby="h-profil">
+            <h2 id="h-profil">Le profil recherché</h2>
+            <ul id="offer-profile"></ul>
+          </section>
+          <section aria-labelledby="h-competences">
+            <h2 id="h-competences">Compétences attendues</h2>
+            <ul id="offer-skills" class="skills"></ul>
+          </section>
+          <section aria-labelledby="h-avantages">
+            <h2 id="h-avantages">Les avantages</h2>
+            <ul id="offer-benefits" class="check-list"></ul>
+          </section>
+        </div>
+
+        <aside class="offer-sidebar" aria-label="Informations complémentaires">
+          <div class="card offer-summary-card">
+            <h2 class="visually-hidden">L'essentiel de l'offre</h2>
+            <dl>
+              <div><dt>Contrat</dt><dd id="summary-contract"></dd></div>
+              <div><dt>Temps de travail</dt><dd id="summary-time"></dd></div>
+              <div><dt>Salaire</dt><dd id="summary-salary"></dd></div>
+              <div><dt>Télétravail</dt><dd id="summary-remote"></dd></div>
+              <div><dt>Candidatures ouvertes</dt><dd id="summary-expiry"></dd></div>
+            </dl>
+          </div>
+          <div class="card offer-company-card" id="offer-company-card"></div>
+        </aside>
+      </div>
+
+      <!-- Offres similaires -->
+      <section class="similar-offers" aria-labelledby="h-similaires">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="h-similaires">Ces offres pourraient aussi vous plaire</h2>
+          </div>
+          <div id="similar-offers"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modale de candidature -->
+    <dialog class="modal" id="apply-modal" aria-labelledby="apply-modal-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="apply-modal-title">Postuler</h2>
+          <p class="text-muted" id="apply-offer-title"></p>
+        </div>
+        <button type="button" class="modal-close" data-close-modal aria-label="Fermer la fenêtre">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="apply-intro">Votre candidature sera transmise directement à l'entreprise. Les champs marqués d'une * sont obligatoires.</p>
+        <form novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="apply-lastname">Nom *</label>
+              <input type="text" id="apply-lastname" autocomplete="family-name" required>
+              <p class="field-error" hidden>Veuillez indiquer votre nom.</p>
+            </div>
+            <div class="field">
+              <label for="apply-firstname">Prénom *</label>
+              <input type="text" id="apply-firstname" autocomplete="given-name" required>
+              <p class="field-error" hidden>Veuillez indiquer votre prénom.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="apply-email">Adresse e-mail *</label>
+            <input type="email" id="apply-email" autocomplete="email" required>
+            <p class="field-error" hidden>Veuillez indiquer une adresse e-mail valide.</p>
+          </div>
+          <div class="field">
+            <label for="apply-phone">Téléphone</label>
+            <input type="tel" id="apply-phone" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="apply-message">Message à l'employeur *</label>
+            <textarea id="apply-message" required placeholder="Présentez-vous en quelques lignes : expérience, disponibilité, motivation…"></textarea>
+            <p class="field-error" hidden>Veuillez écrire un court message.</p>
+          </div>
+          <div class="field">
+            <span class="hint" id="cv-hint">Votre CV (PDF ou Word) — l'envoi est simulé dans cette démonstration.</span>
+            <label class="file-drop" for="apply-cv">
+              Cliquez pour joindre votre CV
+              <input type="file" id="apply-cv" accept=".pdf,.doc,.docx" aria-describedby="cv-hint">
+              <span class="file-name"></span>
+            </label>
+          </div>
+          <div class="field field--checkbox">
+            <input type="checkbox" id="apply-consent" required>
+            <label for="apply-consent">J'accepte que mes informations soient transmises à l'entreprise dans le cadre de cette candidature, conformément à la politique de confidentialité. *</label>
+            <p class="field-error" hidden>Votre consentement est nécessaire pour envoyer la candidature.</p>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-block">Envoyer ma candidature</button>
+          </div>
+        </form>
+        <div class="apply-success" hidden>
+          <p class="notice notice--success" role="status">Merci ! Votre candidature a bien été « envoyée » (démonstration : aucune donnée n'est réellement transmise). L'entreprise vous recontactera directement par e-mail ou téléphone.</p>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" data-close-modal>Fermer</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

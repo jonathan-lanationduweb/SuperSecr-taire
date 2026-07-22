@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Savoir-faire — méthode détaillée | SuperSecrétaire</title>
+  <meta name="description" content="Découvrez cette méthode professionnelle étape par étape : matériel, étapes numérotées, conseils du pro, erreurs à éviter — puis notez la publication et partagez votre expérience.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/knowhow.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div id="knowhow-detail">
+
+      <!-- En-tête de la publication -->
+      <div class="knowhow-hero">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+              <li aria-current="page">Publication</li>
+            </ol>
+          </nav>
+          <div class="knowhow-hero__meta" id="kh-badges"></div>
+          <h1 id="kh-title">Chargement de la publication…</h1>
+          <p class="rating-inline" id="kh-hero-rating"></p>
+          <p class="text-muted"><span id="kh-date"></span> · <span id="kh-views"></span></p>
+          <div class="knowhow-author" id="kh-author"></div>
+        </div>
+      </div>
+
+      <!-- Corps de la publication -->
+      <div class="container knowhow-layout">
+        <div class="knowhow-main">
+          <img id="kh-image" src="assets/images/sf-resultat.svg" alt="">
+          <section aria-labelledby="h-kh-intro">
+            <h2 id="h-kh-intro">Présentation</h2>
+            <p id="kh-intro"></p>
+          </section>
+          <section aria-labelledby="h-kh-steps">
+            <h2 id="h-kh-steps">Les étapes</h2>
+            <ol class="knowhow-steps" id="kh-steps"></ol>
+          </section>
+          <section aria-labelledby="h-kh-tips">
+            <h2 id="h-kh-tips">Les conseils du professionnel</h2>
+            <ul id="kh-tips" class="check-list"></ul>
+          </section>
+          <section aria-labelledby="h-kh-mistakes">
+            <h2 id="h-kh-mistakes">Les erreurs à éviter</h2>
+            <ul id="kh-mistakes" class="check-list"></ul>
+          </section>
+          <section aria-labelledby="h-kh-result">
+            <h2 id="h-kh-result">Le résultat final</h2>
+            <div class="knowhow-result">
+              <p id="kh-result-text"></p>
+            </div>
+          </section>
+          <section aria-labelledby="h-kh-gallery">
+            <h2 id="h-kh-gallery">En images</h2>
+            <div class="knowhow-gallery" id="kh-gallery"></div>
+          </section>
+        </div>
+
+        <!-- Colonne latérale -->
+        <aside class="knowhow-aside" aria-label="Informations pratiques">
+          <div class="card knowhow-info-card">
+            <h2>L'essentiel</h2>
+            <dl id="kh-infos"></dl>
+          </div>
+          <div class="card knowhow-info-card">
+            <h2>Matériel &amp; ressources</h2>
+            <ul id="kh-materials" class="knowhow-materials check-list"></ul>
+          </div>
+          <div class="card knowhow-pro-card" id="kh-pro-card"></div>
+          <div class="knowhow-aside-actions">
+            <button type="button" id="kh-share" class="btn btn-outline">Partager</button>
+            <button type="button" id="kh-report" class="report-link">Signaler cette publication</button>
+          </div>
+          <div class="notice">
+            <strong>Bien distinguer les avis :</strong>
+            <ul class="avis-explainer">
+              <li><strong>Noter cette publication</strong> : la qualité de la méthode, ci-dessous.</li>
+              <li><strong>Donner un avis sur le professionnel</strong> : depuis sa fiche entreprise.</li>
+              <li><strong>Commenter</strong> : question ou retour d'expérience, en bas de page.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Notation -->
+      <section class="rating-section" aria-labelledby="h-rating">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Avis sur cette publication</span>
+            <h2 id="h-rating">Les évaluations</h2>
+            <p>Notez la qualité de la méthode publiée — pas l'entreprise elle-même. Démonstration : la note est conservée dans votre navigateur ; la version WordPress demandera un compte utilisateur.</p>
+          </div>
+          <div class="rating-grid">
+            <div class="card rating-summary">
+              <div class="rating-average" id="rating-average"></div>
+              <div class="rating-criteria" id="rating-criteria"></div>
+              <h3 class="visually-hidden">Répartition des notes</h3>
+              <div class="rating-distribution" id="rating-distribution"></div>
+            </div>
+            <div class="card rating-form-card">
+              <h3>Donner mon avis</h3>
+              <form id="rating-form" novalidate>
+                <fieldset class="rate-row">
+                  <legend>Clarté des explications</legend>
+                  <div class="star-input">
+                    <input type="radio" id="clarte-5" name="clarte" value="5"><label for="clarte-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="clarte-4" name="clarte" value="4"><label for="clarte-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="clarte-3" name="clarte" value="3"><label for="clarte-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="clarte-2" name="clarte" value="2"><label for="clarte-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="clarte-1" name="clarte" value="1"><label for="clarte-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                </fieldset>
+                <fieldset class="rate-row">
+                  <legend>Utilité des conseils</legend>
+                  <div class="star-input">
+                    <input type="radio" id="conseils-5" name="conseils" value="5"><label for="conseils-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="conseils-4" name="conseils" value="4"><label for="conseils-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="conseils-3" name="conseils" value="3"><label for="conseils-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="conseils-2" name="conseils" value="2"><label for="conseils-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="conseils-1" name="conseils" value="1"><label for="conseils-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                </fieldset>
+                <fieldset class="rate-row">
+                  <legend>Facilité à suivre les étapes</legend>
+                  <div class="star-input">
+                    <input type="radio" id="facilite-5" name="facilite" value="5"><label for="facilite-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="facilite-4" name="facilite" value="4"><label for="facilite-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="facilite-3" name="facilite" value="3"><label for="facilite-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="facilite-2" name="facilite" value="2"><label for="facilite-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="facilite-1" name="facilite" value="1"><label for="facilite-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                </fieldset>
+                <fieldset class="rate-row">
+                  <legend>Qualité du résultat</legend>
+                  <div class="star-input">
+                    <input type="radio" id="resultat-5" name="resultat" value="5"><label for="resultat-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="resultat-4" name="resultat" value="4"><label for="resultat-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="resultat-3" name="resultat" value="3"><label for="resultat-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="resultat-2" name="resultat" value="2"><label for="resultat-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="resultat-1" name="resultat" value="1"><label for="resultat-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                </fieldset>
+                <fieldset class="rate-row">
+                  <legend>Note générale</legend>
+                  <div class="star-input">
+                    <input type="radio" id="generale-5" name="generale" value="5"><label for="generale-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="generale-4" name="generale" value="4"><label for="generale-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="generale-3" name="generale" value="3"><label for="generale-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="generale-2" name="generale" value="2"><label for="generale-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="generale-1" name="generale" value="1"><label for="generale-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                </fieldset>
+                <p class="field-error" id="rating-error" hidden>Merci de noter les cinq critères avant d'envoyer.</p>
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-primary">Envoyer ma note</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Commentaires -->
+      <section class="comments-section" aria-labelledby="h-comments">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Retours d'expérience</span>
+            <h2 id="h-comments">Commentaires</h2>
+            <p id="comments-count" aria-live="polite"></p>
+          </div>
+          <div class="comments-list" id="comments-list"></div>
+
+          <div class="card comment-form-card">
+            <h3>Partager mon retour d'expérience</h3>
+            <p class="text-muted apply-intro">Posez une question ou racontez votre résultat. (Démonstration : le commentaire n'est visible que dans votre navigateur.)</p>
+            <form id="comment-form" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="comment-name">Prénom ou pseudonyme *</label>
+                  <input type="text" id="comment-name" required>
+                  <p class="field-error" hidden>Veuillez indiquer un prénom ou un pseudonyme.</p>
+                </div>
+                <div class="field">
+                  <span class="hint" id="comment-note-label">Note générale *</span>
+                  <div class="star-input" role="radiogroup" aria-labelledby="comment-note-label">
+                    <input type="radio" id="cnote-5" name="comment-note" value="5"><label for="cnote-5"><span class="visually-hidden">5 étoiles</span>★</label>
+                    <input type="radio" id="cnote-4" name="comment-note" value="4"><label for="cnote-4"><span class="visually-hidden">4 étoiles</span>★</label>
+                    <input type="radio" id="cnote-3" name="comment-note" value="3"><label for="cnote-3"><span class="visually-hidden">3 étoiles</span>★</label>
+                    <input type="radio" id="cnote-2" name="comment-note" value="2"><label for="cnote-2"><span class="visually-hidden">2 étoiles</span>★</label>
+                    <input type="radio" id="cnote-1" name="comment-note" value="1"><label for="cnote-1"><span class="visually-hidden">1 étoile</span>★</label>
+                  </div>
+                  <p class="field-error" id="comment-note-error" hidden>Veuillez attribuer une note générale.</p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="comment-title">Titre de l'avis *</label>
+                <input type="text" id="comment-title" required>
+                <p class="field-error" hidden>Veuillez donner un titre à votre avis.</p>
+              </div>
+              <div class="field">
+                <label for="comment-text">Commentaire *</label>
+                <textarea id="comment-text" required placeholder="Votre question ou votre retour sur cette méthode…"></textarea>
+                <p class="field-error" hidden>Veuillez écrire votre commentaire.</p>
+              </div>
+              <div class="field">
+                <label for="comment-outcome">Résultat obtenu (facultatif)</label>
+                <input type="text" id="comment-outcome" placeholder="Ex. : réalisé en une matinée, résultat conforme">
+              </div>
+              <div class="field field--checkbox">
+                <input type="checkbox" id="comment-tested">
+                <label for="comment-tested">J'ai testé cette méthode</label>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-accent">Publier mon retour</button>
+              </div>
+            </form>
+            <p class="notice notice--success" id="comment-success" role="status" hidden>Merci ! Votre retour a été publié ci-dessus (démonstration : il n'est conservé que dans votre navigateur, la version finale passera par une modération).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications similaires -->
+      <section class="knowhow-similar" aria-labelledby="h-kh-similar">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="h-kh-similar">D'autres savoir-faire à découvrir</h2>
+          </div>
+          <div id="kh-similar" class="knowhow-mosaic"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modale de signalement -->
+    <dialog class="modal" id="report-modal" aria-labelledby="report-title">
+      <div class="modal-header">
+        <h2 id="report-title">Signaler cette publication</h2>
+        <button type="button" class="modal-close" data-close-modal aria-label="Fermer la fenêtre">✕</button>
+      </div>
+      <div class="modal-body">
+        <form novalidate>
+          <p class="apply-intro">Votre signalement sera transmis à l'équipe de modération (démonstration : il est simplement enregistré dans votre navigateur).</p>
+          <div class="report-reasons">
+            <label><input type="radio" name="report-reason" value="inapproprie"> Contenu inapproprié</label>
+            <label><input type="radio" name="report-reason" value="fausses-informations"> Fausses informations ou méthode dangereuse</label>
+            <label><input type="radio" name="report-reason" value="insultant"> Commentaire insultant</label>
+            <label><input type="radio" name="report-reason" value="publicite"> Publicité non autorisée</label>
+            <label><input type="radio" name="report-reason" value="copie"> Contenu copié depuis un autre site</label>
+          </div>
+          <p class="field-error" hidden>Veuillez choisir un motif de signalement.</p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Envoyer le signalement</button>
+            <button type="button" class="btn btn-ghost" data-close-modal>Annuler</button>
+          </div>
+        </form>
+        <div class="report-success" hidden>
+          <p class="notice notice--success" role="status">Merci, votre signalement a bien été enregistré. Une équipe de modération l'examinera dans la version finale du site.</p>
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" data-close-modal>Fermer</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/knowhow.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+

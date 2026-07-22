@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Savoir-faire &amp; Avis — méthodes et conseils de professionnels | SuperSecrétaire</title>
+  <meta name="description" content="Des professionnels partagent leurs méthodes, recettes, techniques et conseils, étape par étape. Consultez, testez et notez leurs savoir-faire : boulangerie, organisation, rénovation, jardin…">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/knowhow.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-current="page">Savoir-faire &amp; Avis</li>
+          </ol>
+        </nav>
+        <h1>Savoir-faire &amp; Avis</h1>
+        <p>Des professionnels de tous métiers partagent ici leurs méthodes, recettes, techniques et réalisations, étape par étape. Consultez librement, testez chez vous, puis notez la publication et partagez votre expérience — c'est aussi une belle façon de vérifier l'expertise d'un professionnel avant de le contacter.</p>
+        <p><a class="btn btn-accent" href="publier-savoir-faire.html">Partager mon savoir-faire</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Recherche et filtres -->
+      <section class="knowhow-toolbar" aria-label="Rechercher un savoir-faire">
+        <form id="knowhow-filters">
+          <div class="field">
+            <label for="kh-search">Rechercher</label>
+            <input type="search" id="kh-search" placeholder="Ex. : baguette, classement, parquet…">
+          </div>
+          <div class="field">
+            <label for="kh-metier">Métier</label>
+            <select id="kh-metier">
+              <option value="">Tous les métiers</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kh-categorie">Catégorie</label>
+            <select id="kh-categorie">
+              <option value="">Toutes les catégories</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kh-difficulte">Difficulté</label>
+            <select id="kh-difficulte">
+              <option value="">Tous les niveaux</option>
+              <option value="facile">Facile</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="confirme">Confirmé</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kh-note">Note minimale</label>
+            <select id="kh-note">
+              <option value="">Toutes les notes</option>
+              <option value="4.5">4,5 étoiles et plus</option>
+              <option value="4">4 étoiles et plus</option>
+              <option value="3">3 étoiles et plus</option>
+            </select>
+          </div>
+        </form>
+      </section>
+
+      <div class="knowhow-results-head">
+        <h2 class="results-count" id="kh-count" aria-live="polite">Chargement des publications…</h2>
+        <div class="results-sort">
+          <label for="kh-sort">Trier par</label>
+          <select id="kh-sort">
+            <option value="recent">Publications récentes</option>
+            <option value="note">Meilleures notes</option>
+            <option value="vues">Les plus consultées</option>
+          </select>
+          <button type="button" id="kh-reset" class="btn btn-ghost btn-sm">Réinitialiser</button>
+        </div>
+      </div>
+
+      <section class="knowhow-grid" id="knowhow-grid" aria-label="Liste des savoir-faire" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/knowhow.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+

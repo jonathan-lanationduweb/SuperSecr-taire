@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace entreprise — tableau de bord | SuperSecrétaire</title>
+  <meta name="description" content="Gérez vos offres d'emploi depuis votre espace entreprise : offres actives et expirées, candidatures reçues, modification, désactivation et renouvellement pour 10 €.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div id="dashboard" class="container">
+      <div class="dashboard-head">
+        <div>
+          <h1 id="dashboard-welcome">Bonjour !</h1>
+          <p>Voici l'activité de <strong>Fiduciaire Bellecour</strong> (compte de démonstration).</p>
+        </div>
+        <a class="btn btn-accent" href="publier-offre.html">Publier une offre</a>
+      </div>
+
+      <!-- Statistiques -->
+      <section class="stats-grid" aria-label="Statistiques de votre compte">
+        <div class="card stat-card">
+          <span class="stat-value" id="stat-active">—</span>
+          <span class="stat-label">Offres actives</span>
+        </div>
+        <div class="card stat-card stat-card--accent">
+          <span class="stat-value" id="stat-expired">—</span>
+          <span class="stat-label">Offres expirées ou désactivées</span>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-value" id="stat-applications">—</span>
+          <span class="stat-label">Candidatures reçues</span>
+        </div>
+      </section>
+
+      <!-- Liste des offres -->
+      <section class="dashboard-section" aria-labelledby="h-mes-offres">
+        <h2 id="h-mes-offres">Mes offres</h2>
+        <div class="table-wrap" id="dashboard-table-wrap">
+          <table class="data-table">
+            <caption class="visually-hidden">Liste de vos offres d'emploi avec statut, expiration, candidatures et actions</caption>
+            <thead>
+              <tr>
+                <th scope="col">Offre</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Expire le</th>
+                <th scope="col">Candidatures</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-offers">
+              <tr><td colspan="5">Chargement de vos offres…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="notice notice--demo">Lorsqu'une offre expire, le bouton « Renouveler pour 10&nbsp;€ » vous permet de la prolonger de 60 jours. Dans ce prototype, le paiement est simulé et vos modifications sont conservées dans votre navigateur.</p>
+      </section>
+
+      <!-- Activité et profil -->
+      <section class="dashboard-section" aria-labelledby="h-suivi">
+        <h2 id="h-suivi">Votre suivi</h2>
+        <div class="dash-duo">
+          <div class="card dash-card">
+            <h3>Activité récente</h3>
+            <div id="dashboard-activity" class="dash-activity"></div>
+          </div>
+          <div class="card dash-card">
+            <h3>Profil entreprise</h3>
+            <p class="text-muted">Une fiche complète attire davantage de candidatures.</p>
+            <div class="profile-meter" role="img" aria-label="Profil complété à 75 %">
+              <span class="profile-meter__fill-75"></span>
+            </div>
+            <p class="profile-meter__label"><strong>75&nbsp;%</strong> — il manque une photo de vos locaux et un savoir-faire publié.</p>
+            <div class="form-actions">
+              <a class="link-more" href="entreprise-detail.html?id=fiduciaire-bellecour">Voir ma fiche</a>
+              <a class="link-more" href="publier-savoir-faire.html">Publier un savoir-faire</a>
+            </div>
+          </div>
+        </div>
+        <p class="notice dash-tip">Conseil du moment : les annonces qui affichent une fourchette de salaire reçoivent nettement plus de candidatures qualifiées. Pensez-y lors de votre prochaine publication.</p>
+      </section>
+
+      <!-- Aide rapide -->
+      <section class="dashboard-section" aria-labelledby="h-questions">
+        <h2 id="h-questions">Questions fréquentes</h2>
+        <details class="accordion">
+          <summary>Combien de temps une offre reste-t-elle en ligne ?</summary>
+          <div class="accordion-body">Une offre est publiée pour 60 jours. Vous recevez un rappel avant son expiration et pouvez la renouveler pour 10&nbsp;€ depuis ce tableau de bord, ou la laisser expirer.</div>
+        </details>
+        <details class="accordion">
+          <summary>Comment sont transmises les candidatures ?</summary>
+          <div class="accordion-body">Chaque candidature est envoyée à l'adresse e-mail indiquée lors de la publication de l'offre, et comptabilisée ici. Vous répondez ensuite directement au candidat.</div>
+        </details>
+        <details class="accordion">
+          <summary>Puis-je modifier une offre déjà publiée ?</summary>
+          <div class="accordion-body">Oui, l'action « Modifier » rouvre le formulaire de publication pré-rempli avec les informations de votre annonce. Les modifications sont relues avant remise en ligne.</div>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

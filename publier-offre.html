@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publier une offre d'emploi | SuperSecrétaire</title>
+  <meta name="description" content="Publiez votre offre d'emploi de secrétaire ou d'assistant(e) en 6 étapes guidées : entreprise, poste, description, contrat, aperçu et validation. Simple et rapide.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="espace-entreprise.html" class="btn btn-primary">Mon espace entreprise</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-current="page">Publier une offre</li>
+          </ol>
+        </nav>
+        <h1>Publier une offre d'emploi</h1>
+        <p>Six étapes guidées, un aperçu avant mise en ligne, et votre annonce touche des candidats spécialisés dans les métiers administratifs.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="wizard" id="publish-wizard">
+
+        <!-- Barre de progression -->
+        <div class="progress-bar" aria-hidden="true">
+          <div class="progress-step is-active">1. Entreprise</div>
+          <div class="progress-step">2. Poste</div>
+          <div class="progress-step">3. Description</div>
+          <div class="progress-step">4. Contrat</div>
+          <div class="progress-step">5. Aperçu</div>
+          <div class="progress-step">6. Validation</div>
+        </div>
+
+        <form id="publish-form" novalidate>
+
+          <!-- Étape 1 : entreprise -->
+          <section class="wizard-step is-active" aria-label="Étape 1 sur 6 : informations sur l'entreprise">
+            <h2>Votre entreprise</h2>
+            <p>Ces informations apparaîtront sur l'annonce et rassureront les candidats.</p>
+            <div class="field">
+              <label for="pub-company">Nom de l'entreprise *</label>
+              <input type="text" id="pub-company" required>
+              <p class="field-error" hidden>Veuillez indiquer le nom de votre entreprise.</p>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="pub-city">Ville du poste *</label>
+                <input type="text" id="pub-city" required>
+                <p class="field-error" hidden>Veuillez indiquer la ville du poste.</p>
+              </div>
+              <div class="field">
+                <label for="pub-email">E-mail de réception des candidatures *</label>
+                <input type="email" id="pub-email" required>
+                <p class="field-error" hidden>Veuillez indiquer une adresse e-mail valide.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Étape 2 : poste -->
+          <section class="wizard-step" aria-label="Étape 2 sur 6 : informations sur le poste">
+            <h2>Le poste proposé</h2>
+            <p>Un intitulé simple et une catégorie précise aident les candidats à vous trouver.</p>
+            <div class="field">
+              <label for="pub-title">Intitulé du poste *</label>
+              <input type="text" id="pub-title" placeholder="Ex. : Secrétaire médicale, Assistant de direction…" required>
+              <p class="field-error" hidden>Veuillez indiquer l'intitulé du poste.</p>
+            </div>
+            <div class="field">
+              <label for="pub-category">Famille de métier *</label>
+              <select id="pub-category" required>
+                <option value="">Choisissez une catégorie…</option>
+                <option value="secretaire-administrative">Secrétariat administratif</option>
+                <option value="secretaire-medicale">Secrétariat médical</option>
+                <option value="secretaire-juridique">Secrétariat juridique</option>
+                <option value="assistant-direction">Assistanat de direction</option>
+                <option value="assistant-commercial">Assistanat commercial</option>
+                <option value="assistant-comptable">Assistanat comptable</option>
+                <option value="assistant-rh">Assistanat RH</option>
+                <option value="assistant-administratif">Assistanat de gestion</option>
+                <option value="office-manager">Office management</option>
+                <option value="telesecretaire">Télésecrétariat</option>
+              </select>
+              <p class="field-error" hidden>Veuillez choisir une famille de métier.</p>
+            </div>
+          </section>
+
+          <!-- Étape 3 : description -->
+          <section class="wizard-step" aria-label="Étape 3 sur 6 : description de l'offre">
+            <h2>Décrivez le poste</h2>
+            <p>Décrivez le quotidien, les missions et le profil attendu. Une ligne par mission ou critère.</p>
+            <div class="field">
+              <label for="pub-description">Présentation du poste *</label>
+              <textarea id="pub-description" required placeholder="Contexte, équipe, environnement de travail…"></textarea>
+              <p class="field-error" hidden>Veuillez décrire le poste en quelques lignes.</p>
+            </div>
+            <div class="field">
+              <label for="pub-missions">Missions principales *</label>
+              <textarea id="pub-missions" required placeholder="Une mission par ligne&#10;Ex. : Accueillir les visiteurs et gérer le standard"></textarea>
+              <p class="field-error" hidden>Veuillez lister au moins une mission.</p>
+            </div>
+            <div class="field">
+              <label for="pub-profile">Profil recherché</label>
+              <textarea id="pub-profile" placeholder="Un critère par ligne&#10;Ex. : 2 ans d'expérience en secrétariat"></textarea>
+            </div>
+            <div class="field">
+              <label for="pub-skills">Compétences attendues</label>
+              <input type="text" id="pub-skills" placeholder="Séparées par des virgules — Ex. : Accueil, Pack Office, Facturation">
+              <p class="hint">Ces compétences serviront de mots-clés pour la recherche.</p>
+            </div>
+          </section>
+
+          <!-- Étape 4 : contrat -->
+          <section class="wizard-step" aria-label="Étape 4 sur 6 : modalités du contrat">
+            <h2>Les modalités du contrat</h2>
+            <p>Les annonces qui affichent un salaire reçoivent davantage de candidatures qualifiées.</p>
+            <div class="form-row">
+              <div class="field">
+                <label for="pub-contract">Type de contrat *</label>
+                <select id="pub-contract" required>
+                  <option value="">Choisissez…</option>
+                  <option value="CDI">CDI</option>
+                  <option value="CDD">CDD</option>
+                  <option value="Intérim">Intérim</option>
+                  <option value="Alternance">Alternance</option>
+                </select>
+                <p class="field-error" hidden>Veuillez choisir un type de contrat.</p>
+              </div>
+              <div class="field">
+                <label for="pub-duration">Durée (si CDD, intérim ou alternance)</label>
+                <input type="text" id="pub-duration" placeholder="Ex. : 6 mois">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="pub-time">Temps de travail *</label>
+                <input type="text" id="pub-time" placeholder="Ex. : Temps plein — 35h" required>
+                <p class="field-error" hidden>Veuillez préciser le temps de travail.</p>
+              </div>
+              <div class="field">
+                <label for="pub-salary">Salaire proposé</label>
+                <input type="text" id="pub-salary" placeholder="Ex. : 26 000 à 29 000 € brut / an">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="pub-remote">Télétravail</label>
+                <select id="pub-remote">
+                  <option value="non">Pas de télétravail</option>
+                  <option value="partiel">Télétravail partiel</option>
+                  <option value="complet">Télétravail complet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pub-expiry">Date d'expiration de l'annonce *</label>
+                <input type="date" id="pub-expiry" required>
+                <p class="field-error" hidden>Veuillez choisir une date d'expiration.</p>
+                <p class="hint">Vous pourrez ensuite renouveler l'offre pour 10&nbsp;€.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Étape 5 : aperçu -->
+          <section class="wizard-step" aria-label="Étape 5 sur 6 : aperçu de l'annonce">
+            <h2>Vérifiez votre annonce</h2>
+            <p>Voici comment votre offre apparaîtra aux candidats. Revenez en arrière pour corriger si besoin.</p>
+            <div class="offer-preview" id="offer-preview"></div>
+            <div class="field field--checkbox wizard-consent">
+              <input type="checkbox" id="pub-consent" required>
+              <label for="pub-consent">Je certifie que cette annonce est conforme à la réglementation (non-discrimination, offre réelle) et j'accepte les conditions de publication. *</label>
+              <p class="field-error" hidden>Veuillez accepter les conditions de publication.</p>
+            </div>
+          </section>
+
+          <!-- Étape 6 : confirmation -->
+          <section class="wizard-step" aria-label="Étape 6 sur 6 : confirmation">
+            <h2>Votre annonce est en ligne !</h2>
+            <p class="notice notice--success" role="status">Félicitations, votre offre a été publiée (démonstration : elle est enregistrée dans votre navigateur uniquement). Elle est valable 60 jours, puis pourra être renouvelée pour 10&nbsp;€.</p>
+            <div class="form-actions">
+              <a class="btn btn-primary" id="published-offer-link" href="offres.html">Voir mon annonce</a>
+              <a class="btn btn-outline" href="espace-entreprise.html">Aller à mon tableau de bord</a>
+            </div>
+          </section>
+
+          <!-- Récapitulatif permanent -->
+          <p class="wizard-recap" id="wizard-recap" aria-live="polite" hidden></p>
+
+          <!-- Navigation du formulaire -->
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-ghost" id="wizard-prev" hidden>← Étape précédente</button>
+            <button type="button" class="btn btn-ghost" id="wizard-draft">Enregistrer le brouillon</button>
+            <button type="button" class="btn btn-primary" id="wizard-next">Étape suivante →</button>
+            <button type="submit" class="btn btn-accent" id="wizard-submit" hidden>Publier mon annonce</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/publish.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

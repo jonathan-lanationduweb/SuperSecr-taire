@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fiche entreprise | SuperSecrétaire</title>
+  <meta name="description" content="Présentation de l'entreprise : activité, coordonnées, valeurs, avantages et offres d'emploi actuellement disponibles pour les métiers du secrétariat et de l'assistanat.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/companies.css">
+  <link rel="stylesheet" href="assets/css/offers.css">
+  <link rel="stylesheet" href="assets/css/knowhow.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div id="company-detail">
+
+      <!-- En-tête de la fiche -->
+      <div class="company-hero">
+        <div class="container">
+          <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+              <li aria-current="page">Fiche entreprise</li>
+            </ol>
+          </nav>
+          <div class="company-hero__grid">
+            <span class="logo-bubble logo-bubble--lg" id="company-bubble" aria-hidden="true"></span>
+            <div>
+              <h1 id="company-name">Chargement…</h1>
+              <p class="text-muted" id="company-activity"></p>
+              <span class="badge badge--accent" id="company-sector"></span>
+            </div>
+            <div class="company-hero__actions">
+              <a class="btn btn-primary" id="company-contact-btn" href="contact.html">Contacter l'entreprise</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corps de la fiche -->
+      <div class="container company-layout">
+        <div class="company-main">
+          <section aria-labelledby="h-presentation">
+            <h2 id="h-presentation">Présentation</h2>
+            <p id="company-description"></p>
+          </section>
+          <section aria-labelledby="h-valeurs">
+            <h2 id="h-valeurs">Ses valeurs</h2>
+            <ul id="company-values" class="check-list"></ul>
+          </section>
+          <section aria-labelledby="h-avantages">
+            <h2 id="h-avantages">Les avantages proposés</h2>
+            <ul id="company-benefits" class="check-list"></ul>
+          </section>
+          <section aria-labelledby="h-offres">
+            <h2 id="h-offres">Offres actuellement disponibles</h2>
+            <div id="company-offers" class="company-offers-list"></div>
+          </section>
+          <section aria-labelledby="h-savoir-faire" id="company-knowhow-section" hidden>
+            <h2 id="h-savoir-faire">Ses conseils et savoir-faire</h2>
+            <p class="text-muted">Les méthodes et conseils publiés par les professionnels de cette entreprise — une façon concrète de vérifier leur expertise avant de les contacter, de candidater ou de demander un devis.</p>
+            <div id="company-knowhow" class="company-knowhow-list"></div>
+          </section>
+        </div>
+
+        <aside class="company-aside" aria-label="Coordonnées de l'entreprise">
+          <div class="card company-contact-card">
+            <h2>Coordonnées</h2>
+            <dl id="company-coordinates"></dl>
+          </div>
+          <div class="notice notice--demo">Les coordonnées affichées sont fictives : cette fiche fait partie de la démonstration SuperSecrétaire.</div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/knowhow.js"></script>
+  <script src="assets/js/companies.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

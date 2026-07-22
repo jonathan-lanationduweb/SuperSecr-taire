@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offres d'emploi secrétariat et assistanat | SuperSecrétaire</title>
+  <meta name="description" content="Consultez toutes les offres d'emploi de secrétaire, assistant(e), office manager et télésecrétaire en France. Filtres par métier, ville, contrat, salaire et télétravail.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/offers.css">
+  <link rel="stylesheet" href="assets/css/guided-search.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.supersecretaire.exemple.fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Offres d'emploi", "item": "https://www.supersecretaire.exemple.fr/offres.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="page-hero offers-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-current="page">Offres d'emploi</li>
+          </ol>
+        </nav>
+        <h1>Offres d'emploi en secrétariat et assistanat</h1>
+        <p>Consultation libre, sans inscription. <a href="recherche-guidee.html" data-guided-search-open>Vous hésitez sur le métier&nbsp;? Laissez-vous guider en moins d'une minute.</a></p>
+
+        <form id="offers-search-band" class="search-band" role="search" aria-label="Rechercher une offre">
+          <div class="search-band__field">
+            <label for="filter-keyword">Métier ou mot-clé</label>
+            <input type="search" id="filter-keyword" placeholder="Secrétaire médicale, assistant…">
+          </div>
+          <div class="search-band__field">
+            <label for="filter-location">Ville ou département</label>
+            <input type="text" id="filter-location" placeholder="Lyon, Rhône…">
+          </div>
+          <button type="submit" class="btn btn-accent">Rechercher</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container offers-layout">
+
+      <!-- Panneau de filtres -->
+      <aside>
+        <button type="button" id="filters-toggle" class="btn btn-outline filters-toggle" aria-expanded="true" aria-controls="filters-panel">Afficher / masquer les filtres</button>
+        <div class="filters-panel" id="filters-panel">
+          <h2>Affiner</h2>
+          <form id="filters-form">
+            <div class="field">
+              <label for="filter-category">Famille de métier</label>
+              <select id="filter-category">
+                <option value="">Tous les métiers</option>
+                <option value="secretaire-administrative">Secrétariat administratif</option>
+                <option value="secretaire-medicale">Secrétariat médical</option>
+                <option value="secretaire-juridique">Secrétariat juridique</option>
+                <option value="assistant-direction">Assistanat de direction</option>
+                <option value="assistant-commercial">Assistanat commercial</option>
+                <option value="assistant-comptable">Assistanat comptable</option>
+                <option value="assistant-rh">Assistanat RH</option>
+                <option value="assistant-administratif">Assistanat de gestion</option>
+                <option value="office-manager">Office management</option>
+                <option value="telesecretaire">Télésecrétariat</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filter-contract">Type de contrat</label>
+              <select id="filter-contract">
+                <option value="">Tous les contrats</option>
+                <option value="CDI">CDI</option>
+                <option value="CDD">CDD</option>
+                <option value="Intérim">Intérim</option>
+                <option value="Alternance">Alternance</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filter-salary">Salaire annuel minimum</label>
+              <select id="filter-salary">
+                <option value="">Indifférent</option>
+                <option value="20000">20 000 € et plus</option>
+                <option value="24000">24 000 € et plus</option>
+                <option value="28000">28 000 € et plus</option>
+                <option value="32000">32 000 € et plus</option>
+                <option value="38000">38 000 € et plus</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filter-date">Date de publication</label>
+              <select id="filter-date">
+                <option value="">Toutes les dates</option>
+                <option value="3">Moins de 3 jours</option>
+                <option value="7">Moins d'une semaine</option>
+                <option value="14">Moins de deux semaines</option>
+                <option value="30">Moins d'un mois</option>
+              </select>
+            </div>
+            <div class="field field--checkbox">
+              <input type="checkbox" id="filter-remote">
+              <label for="filter-remote">Télétravail possible uniquement</label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-sm">Appliquer</button>
+              <button type="button" id="filters-reset" class="btn btn-ghost btn-sm">Réinitialiser les filtres</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Résultats -->
+      <section aria-label="Résultats de la recherche">
+        <div class="results-head">
+          <h2 class="results-count" id="results-count" aria-live="polite">Chargement des offres…</h2>
+          <div class="results-sort">
+            <label for="sort-select">Trier par</label>
+            <select id="sort-select">
+              <option value="pertinence">Pertinence</option>
+              <option value="date">Plus récentes</option>
+              <option value="salaire">Salaire</option>
+            </select>
+          </div>
+        </div>
+        <div id="offers-list" class="offers-list"></div>
+        <nav id="pagination" class="pagination" aria-label="Pagination des résultats"></nav>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/filters.js"></script>
+  <script src="assets/js/guided-search.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

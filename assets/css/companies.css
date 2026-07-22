@@ -1,0 +1,238 @@
+/* Annuaire des entreprises v2 : fiches liste, statut de recrutement,
+   fiche entreprise détaillée */
+
+.directory-search {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-m);
+  margin-block: var(--sp-6) var(--sp-5);
+  overflow: hidden;
+}
+
+.directory-search form {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr auto;
+  align-items: stretch;
+}
+
+.directory-search .field {
+  margin-bottom: 0;
+  padding: 0.55rem 1rem;
+  gap: 0.05rem;
+}
+
+.directory-search .field + .field {
+  border-left: 1px solid var(--c-line);
+}
+
+.directory-search .field label {
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+}
+
+.directory-search .field input,
+.directory-search .field select {
+  border: none;
+  background: transparent;
+  padding: 0.1rem 0;
+  font-size: var(--text-base);
+}
+
+.directory-search .field input:focus,
+.directory-search .field select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.directory-search .field:focus-within {
+  background: var(--c-primary-soft);
+}
+
+.directory-search .btn {
+  border-radius: 0;
+  padding-inline: 1.4rem;
+}
+
+.directory-count {
+  margin-bottom: var(--sp-5);
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+  padding-bottom: var(--sp-7);
+}
+
+/* ===== Fiche d'annuaire ===== */
+.company-card {
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.company-card--hiring {
+  border-left: 3px solid var(--c-success);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+}
+
+.company-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3) var(--sp-4);
+  align-items: center;
+}
+
+.company-card__head > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.company-card__head h3 {
+  font-size: var(--text-lg);
+  color: var(--c-primary-dark);
+}
+
+.company-card__meta {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+}
+
+.hiring-flag {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-success);
+  background: var(--c-success-soft);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-s);
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.hiring-flag--off {
+  color: var(--c-ink-soft);
+  background: var(--c-bg-alt);
+}
+
+.company-card__activity {
+  font-size: var(--text-sm);
+  color: var(--c-ink);
+}
+
+.company-card__distinct {
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  font-style: italic;
+  border-left: 2px solid var(--c-accent);
+  padding-left: var(--sp-3);
+}
+
+.company-card__foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  border-top: 1px solid var(--c-line);
+  padding-top: var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+/* ===== Fiche entreprise ===== */
+.company-hero {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-line);
+  padding-block: var(--sp-4) var(--sp-6);
+}
+
+.company-hero__grid {
+  display: flex;
+  gap: var(--sp-5);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.company-hero h1 {
+  font-size: clamp(1.6rem, 3vw, var(--text-3xl));
+}
+
+.company-hero .badge {
+  margin-top: var(--sp-2);
+}
+
+.company-hero__actions {
+  margin-left: auto;
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.company-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: var(--sp-7);
+  padding-block: var(--sp-7);
+  align-items: start;
+}
+
+.company-main section + section {
+  margin-top: var(--sp-6);
+}
+
+.company-main h2 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--sp-3);
+  padding-bottom: var(--sp-2);
+  border-bottom: 2px solid var(--c-accent-soft);
+  display: inline-block;
+}
+
+.company-aside {
+  display: grid;
+  gap: var(--sp-5);
+  position: sticky;
+  top: calc(var(--header-height) + var(--sp-4));
+}
+
+.company-contact-card {
+  padding: var(--sp-5);
+  border-left: 3px solid var(--c-primary);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+}
+
+.company-contact-card h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--sp-4);
+}
+
+.company-contact-card dl {
+  display: grid;
+  gap: var(--sp-3);
+  font-size: var(--text-sm);
+}
+
+.company-contact-card dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--c-ink-soft);
+}
+
+.company-contact-card dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--c-primary-dark);
+  overflow-wrap: anywhere;
+}
+
+.company-offers-list {
+  display: grid;
+  border-top: 1px solid var(--c-line);
+}

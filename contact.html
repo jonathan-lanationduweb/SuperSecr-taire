@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacter l'équipe SuperSecrétaire | SuperSecrétaire</title>
+  <meta name="description" content="Une question sur une offre, une publication d'annonce ou un renouvellement ? Contactez l'équipe SuperSecrétaire, nous répondons sous un jour ouvré.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li aria-current="page">Contact</li>
+          </ol>
+        </nav>
+        <h1>Contacter l'équipe</h1>
+        <p>Une question sur une offre, une candidature, une publication d'annonce ou un renouvellement ? Écrivez-nous : nous répondons sous un jour ouvré.</p>
+      </div>
+    </div>
+
+    <div class="container contact-layout">
+      <!-- Formulaire -->
+      <div class="card contact-card">
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="contact-name">Votre nom *</label>
+              <input type="text" id="contact-name" autocomplete="name" required>
+              <p class="field-error" hidden>Veuillez indiquer votre nom.</p>
+            </div>
+            <div class="field">
+              <label for="contact-email">Votre e-mail *</label>
+              <input type="email" id="contact-email" autocomplete="email" required>
+              <p class="field-error" hidden>Veuillez indiquer une adresse e-mail valide.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="contact-subject">Vous êtes… *</label>
+            <select id="contact-subject" required>
+              <option value="">Choisissez votre situation…</option>
+              <option value="candidat">Candidat(e) — question sur une offre ou une candidature</option>
+              <option value="entreprise">Entreprise — publication ou renouvellement d'annonce</option>
+              <option value="autre">Autre demande</option>
+            </select>
+            <p class="field-error" hidden>Veuillez préciser votre situation.</p>
+          </div>
+          <div class="field">
+            <label for="contact-message">Votre message *</label>
+            <textarea id="contact-message" required placeholder="Expliquez-nous votre demande, nous vous répondrons rapidement."></textarea>
+            <p class="field-error" hidden>Veuillez écrire votre message.</p>
+          </div>
+          <div class="field field--checkbox">
+            <input type="checkbox" id="contact-consent" required>
+            <label for="contact-consent">J'accepte que ces informations soient utilisées uniquement pour répondre à ma demande. *</label>
+            <p class="field-error" hidden>Votre consentement est nécessaire pour envoyer le message.</p>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">Envoyer mon message</button>
+          </div>
+        </form>
+        <div id="contact-success" hidden tabindex="-1">
+          <p class="notice notice--success" role="status">Merci pour votre message ! Il a bien été « envoyé » (démonstration : aucune donnée n'est réellement transmise). Notre équipe vous répondrait sous un jour ouvré.</p>
+        </div>
+      </div>
+
+      <!-- Autres moyens de contact -->
+      <aside class="contact-info" aria-label="Autres moyens de nous joindre">
+        <div class="info-item">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.9 8.9 0 0 1-3.2-.6L3 21l1.9-5.5a8 8 0 0 1-1.4-4A8.4 8.4 0 0 1 12 3.2a8.4 8.4 0 0 1 9 8.3z"/></svg></span>
+          <div>
+            <h3>L'assistant en ligne</h3>
+            <p>Clémence, notre chatbot, répond immédiatement aux questions les plus courantes. Ouvrez la bulle en bas à droite de l'écran.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <div>
+            <h3>Par e-mail</h3>
+            <p>bonjour@supersecretaire.exemple.fr<br>(adresse fictive de démonstration)</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L17 12l5 2v3a2 2 0 0 1-2 2A17 17 0 0 1 4 6a2 2 0 0 1 2-2z" transform="translate(1 1) scale(0.92)"/></svg></span>
+          <div>
+            <h3>Horaires de l'équipe</h3>
+            <p>Du lundi au vendredi, de 9h à 18h. En dehors de ces horaires, le formulaire et le chatbot restent disponibles.</p>
+          </div>
+        </div>
+        <div class="notice notice--demo">Prototype : les coordonnées ci-dessus sont fictives et le formulaire n'envoie aucun e-mail réel.</div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/contact.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+

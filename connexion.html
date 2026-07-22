@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connexion à votre espace entreprise | SuperSecrétaire</title>
+  <meta name="description" content="Connectez-vous à votre espace entreprise SuperSecrétaire ou créez votre compte pour publier des offres d'emploi et suivre vos candidatures.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="container auth-layout">
+      <!-- Pourquoi créer un espace -->
+      <aside class="auth-aside" aria-label="Les avantages de l'espace entreprise">
+        <p class="eyebrow">Espace entreprise</p>
+        <h2>Tout votre recrutement au même endroit.</h2>
+        <ul class="auth-aside__points">
+          <li>Publiez et modifiez vos annonces en 6 étapes guidées</li>
+          <li>Suivez vos candidatures depuis un tableau de bord simple</li>
+          <li>Renouvelez une offre expirée en un clic, pour 10&nbsp;€</li>
+          <li>Présentez votre entreprise et vos savoir-faire aux candidats</li>
+        </ul>
+        <p class="auth-aside__note">La recherche d'emploi, elle, reste libre : les candidats n'ont pas besoin de compte.</p>
+      </aside>
+
+      <!-- Connexion / création -->
+      <div class="card auth-card">
+        <h1>Se connecter</h1>
+        <p>Accédez à votre espace ou créez votre compte en une minute.</p>
+
+        <div class="auth-tabs" role="tablist" aria-label="Connexion ou création de compte">
+          <button type="button" role="tab" aria-selected="true" data-panel="login" id="tab-login">Se connecter</button>
+          <button type="button" role="tab" aria-selected="false" data-panel="register" id="tab-register">Créer un compte</button>
+        </div>
+
+        <!-- Connexion -->
+        <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="login-email">Adresse e-mail *</label>
+              <input type="email" id="login-email" autocomplete="email" required>
+              <p class="field-error" hidden>Veuillez indiquer une adresse e-mail valide.</p>
+            </div>
+            <div class="field">
+              <label for="login-password">Mot de passe *</label>
+              <input type="password" id="login-password" autocomplete="current-password" required>
+              <p class="field-error" hidden>Veuillez indiquer votre mot de passe.</p>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary btn-block">Me connecter</button>
+            </div>
+          </form>
+          <p class="auth-demo-note">Démonstration : n'importe quels identifiants ouvrent le compte fictif « Fiduciaire Bellecour ». Rien n'est vérifié ni conservé.</p>
+        </div>
+
+        <!-- Création de compte -->
+        <div id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+          <form id="register-form" novalidate>
+            <div class="field">
+              <label for="register-company">Nom de l'entreprise *</label>
+              <input type="text" id="register-company" autocomplete="organization" required>
+              <p class="field-error" hidden>Veuillez indiquer le nom de votre entreprise.</p>
+            </div>
+            <div class="field">
+              <label for="register-name">Votre nom et prénom *</label>
+              <input type="text" id="register-name" autocomplete="name" required>
+              <p class="field-error" hidden>Veuillez indiquer votre nom.</p>
+            </div>
+            <div class="field">
+              <label for="register-email">Adresse e-mail professionnelle *</label>
+              <input type="email" id="register-email" autocomplete="email" required>
+              <p class="field-error" hidden>Veuillez indiquer une adresse e-mail valide.</p>
+            </div>
+            <div class="field">
+              <label for="register-password">Mot de passe *</label>
+              <input type="password" id="register-password" autocomplete="new-password" required>
+              <p class="hint">Démonstration : le mot de passe n'est ni vérifié ni enregistré.</p>
+              <p class="field-error" hidden>Veuillez choisir un mot de passe.</p>
+            </div>
+            <div class="field field--checkbox">
+              <input type="checkbox" id="register-consent" required>
+              <label for="register-consent">J'accepte les conditions d'utilisation de la plateforme. *</label>
+              <p class="field-error" hidden>Veuillez accepter les conditions d'utilisation.</p>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-accent btn-block">Créer mon espace entreprise</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/offers.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+
+
+

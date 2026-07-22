@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partager un savoir-faire | SuperSecrétaire</title>
+  <meta name="description" content="Professionnels : partagez votre méthode, recette, technique ou réalisation en 6 étapes guidées. Votre publication sera relue avant mise en ligne.">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/knowhow.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
+          </svg>
+        </span>
+        <span class="logo-text">Super<strong>Secrétaire</strong></span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul class="nav-links">
+          <li><a href="offres.html">Offres d'emploi</a></li>
+          <li><a href="entreprises.html">Entreprises</a></li>
+          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+          <li><a href="blog.html">Conseils</a></li>
+          <li><a href="a-propos.html">Qui sommes-nous</a></li>
+          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+          <a href="publier-offre.html" class="btn btn-primary">Publier une offre</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li aria-current="page">Partager un savoir-faire</li>
+          </ol>
+        </nav>
+        <h1>Partager votre savoir-faire</h1>
+        <p>Recette, méthode, technique, réalisation : montrez votre expertise aux visiteurs. Six étapes guidées, un aperçu avant envoi, puis une relecture par notre équipe avant la mise en ligne.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="wizard" id="kh-publish-wizard">
+
+        <div class="progress-bar" aria-hidden="true">
+          <div class="progress-step is-active">1. Général</div>
+          <div class="progress-step">2. Ressources</div>
+          <div class="progress-step">3. Étapes</div>
+          <div class="progress-step">4. Conseils</div>
+          <div class="progress-step">5. Images</div>
+          <div class="progress-step">6. Aperçu</div>
+        </div>
+
+        <form id="kh-publish-form" novalidate>
+          <div id="khw-panels">
+
+            <!-- Étape 1 : informations générales -->
+            <section class="wizard-step is-active" aria-label="Étape 1 sur 6 : informations générales">
+              <h2>Informations générales</h2>
+              <p>Présentez votre publication : ces informations apparaîtront sur la carte de la liste.</p>
+              <div class="field">
+                <label for="khp-titre">Titre de la publication *</label>
+                <input type="text" id="khp-titre" placeholder="Ex. : Réussir une baguette de tradition croustillante" required>
+                <p class="field-error" hidden>Veuillez donner un titre à votre publication.</p>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="khp-nom">Votre nom *</label>
+                  <input type="text" id="khp-nom" required>
+                  <p class="field-error" hidden>Veuillez indiquer votre nom.</p>
+                </div>
+                <div class="field">
+                  <label for="khp-metier">Votre métier *</label>
+                  <input type="text" id="khp-metier" placeholder="Ex. : Boulanger, Secrétaire, Paysagiste…" required>
+                  <p class="field-error" hidden>Veuillez indiquer votre métier.</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="khp-entreprise">Entreprise associée (facultatif)</label>
+                  <input type="text" id="khp-entreprise" placeholder="Le nom de votre entreprise">
+                </div>
+                <div class="field">
+                  <label for="khp-ville">Ville *</label>
+                  <input type="text" id="khp-ville" required>
+                  <p class="field-error" hidden>Veuillez indiquer votre ville.</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="khp-categorie">Catégorie *</label>
+                  <select id="khp-categorie" required>
+                    <option value="">Choisissez…</option>
+                    <option value="Fabrication &amp; recettes">Fabrication &amp; recettes</option>
+                    <option value="Organisation &amp; méthodes">Organisation &amp; méthodes</option>
+                    <option value="Pose &amp; rénovation">Pose &amp; rénovation</option>
+                    <option value="Entretien &amp; réparation">Entretien &amp; réparation</option>
+                    <option value="Conseils de métier">Conseils de métier</option>
+                    <option value="Aménagement &amp; extérieur">Aménagement &amp; extérieur</option>
+                  </select>
+                  <p class="field-error" hidden>Veuillez choisir une catégorie.</p>
+                </div>
+                <div class="field">
+                  <label for="khp-difficulte">Niveau de difficulté *</label>
+                  <select id="khp-difficulte" required>
+                    <option value="">Choisissez…</option>
+                    <option value="facile">Facile</option>
+                    <option value="intermediaire">Intermédiaire</option>
+                    <option value="confirme">Confirmé</option>
+                  </select>
+                  <p class="field-error" hidden>Veuillez indiquer la difficulté.</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="khp-duree">Durée estimée *</label>
+                  <input type="text" id="khp-duree" placeholder="Ex. : 2 h, une demi-journée…" required>
+                  <p class="field-error" hidden>Veuillez estimer la durée.</p>
+                </div>
+                <div class="field">
+                  <label for="khp-resume">Courte description *</label>
+                  <input type="text" id="khp-resume" placeholder="Une ou deux phrases de présentation" required>
+                  <p class="field-error" hidden>Veuillez écrire une courte description.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Étape 2 : matériel / ressources -->
+            <section class="wizard-step" aria-label="Étape 2 sur 6 : matériel ou ressources nécessaires">
+              <h2>Matériel ou ressources nécessaires</h2>
+              <p>Listez ce qu'il faut pour suivre votre méthode : ingrédients, outils, logiciels, documents… Une ligne par élément.</p>
+              <div class="field">
+                <label for="khp-materiel">Matériel ou ressources *</label>
+                <textarea id="khp-materiel" required placeholder="Ex. :&#10;500 g de farine T65&#10;Un four avec pierre&#10;Une lame de boulanger"></textarea>
+                <p class="field-error" hidden>Veuillez lister au moins un élément.</p>
+              </div>
+            </section>
+
+            <!-- Étape 3 : étapes dynamiques -->
+            <section class="wizard-step" aria-label="Étape 3 sur 6 : les étapes de votre méthode">
+              <h2>Les étapes de votre méthode</h2>
+              <p>Décrivez chaque étape dans l'ordre. Vous pouvez en ajouter ou en supprimer librement.</p>
+              <div id="dynamic-steps"></div>
+              <button type="button" id="add-step" class="btn btn-outline">+ Ajouter une étape</button>
+            </section>
+
+            <!-- Étape 4 : conseils et erreurs -->
+            <section class="wizard-step" aria-label="Étape 4 sur 6 : conseils et erreurs à éviter">
+              <h2>Conseils et erreurs à éviter</h2>
+              <p>Vos conseils de professionnel font toute la valeur de la publication. Une ligne par conseil ou erreur.</p>
+              <div class="field">
+                <label for="khp-conseils">Vos conseils de professionnel *</label>
+                <textarea id="khp-conseils" required placeholder="Une ligne par conseil"></textarea>
+                <p class="field-error" hidden>Veuillez partager au moins un conseil.</p>
+              </div>
+              <div class="field">
+                <label for="khp-erreurs">Les erreurs à éviter</label>
+                <textarea id="khp-erreurs" placeholder="Une ligne par erreur fréquente"></textarea>
+              </div>
+              <div class="field">
+                <label for="khp-resultat">Le résultat final *</label>
+                <textarea id="khp-resultat" required placeholder="Décrivez le résultat que l'on obtient en suivant votre méthode"></textarea>
+                <p class="field-error" hidden>Veuillez décrire le résultat final.</p>
+              </div>
+            </section>
+
+            <!-- Étape 5 : images -->
+            <section class="wizard-step" aria-label="Étape 5 sur 6 : images">
+              <h2>Vos images</h2>
+              <p>Une belle image principale et quelques photos du résultat donnent envie de lire. (Dans ce prototype, l'envoi d'images est simulé : une illustration générique sera utilisée.)</p>
+              <div class="field">
+                <span class="hint" id="khp-image-hint">Image principale</span>
+                <label class="file-drop" for="khp-image">Cliquez pour choisir l'image principale
+                  <input type="file" id="khp-image" accept="image/*" aria-describedby="khp-image-hint">
+                  <span class="file-name"></span>
+                </label>
+              </div>
+              <div class="field">
+                <span class="hint" id="khp-galerie-hint">Galerie (plusieurs images possibles)</span>
+                <label class="file-drop" for="khp-galerie">Cliquez pour ajouter des images à la galerie
+                  <input type="file" id="khp-galerie" accept="image/*" multiple aria-describedby="khp-galerie-hint">
+                  <span class="file-name"></span>
+                </label>
+              </div>
+            </section>
+
+            <!-- Étape 6 : aperçu -->
+            <section class="wizard-step" aria-label="Étape 6 sur 6 : aperçu et publication">
+              <h2>Vérifiez votre publication</h2>
+              <p>Voici un aperçu de votre savoir-faire. Après envoi, notre équipe le relit avant sa mise en ligne (statut « en attente de validation »).</p>
+              <div class="offer-preview" id="khp-preview"></div>
+              <div class="field field--checkbox wizard-consent">
+                <input type="checkbox" id="khp-consent" required>
+                <label for="khp-consent">Je certifie être l'auteur de ce contenu et j'accepte qu'il soit relu, modéré et publié sur SuperSecrétaire. *</label>
+                <p class="field-error" hidden>Veuillez accepter les conditions de publication.</p>
+              </div>
+            </section>
+          </div>
+
+          <!-- Confirmation -->
+          <div id="khw-confirmation" hidden tabindex="-1">
+            <h2>Merci pour votre partage !</h2>
+            <p class="notice notice--success" role="status">Votre savoir-faire a bien été envoyé avec le statut <strong>« en attente de validation »</strong> (démonstration : il est enregistré dans votre navigateur et apparaît dans la liste avec ce badge). Dans la version finale, l'équipe de modération le relira avant publication : brouillon → en attente → publié / refusé.</p>
+            <div class="form-actions">
+              <a class="btn btn-primary" id="khw-published-link" href="savoir-faire.html">Voir ma publication</a>
+              <a class="btn btn-outline" href="savoir-faire.html">Retour aux savoir-faire</a>
+            </div>
+          </div>
+
+          <div class="wizard-nav">
+            <button type="button" class="btn btn-ghost" id="khw-prev" hidden>← Étape précédente</button>
+            <button type="button" class="btn btn-primary" id="khw-next">Étape suivante →</button>
+            <button type="submit" class="btn btn-accent" id="khw-submit" hidden>Envoyer ma publication</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Super<strong>Secrétaire</strong></span>
+          <p>L'emploi des métiers du secrétariat, de l'assistanat et de l'administratif, partout en France.</p>
+        </div>
+        <nav class="footer-col" aria-label="Liens candidats">
+          <h2>Candidats</h2>
+          <ul>
+            <li><a href="offres.html">Offres d'emploi</a></li>
+            <li><a href="recherche-guidee.html">Recherche guidée</a></li>
+            <li><a href="entreprises.html">Annuaire des entreprises</a></li>
+            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
+            <li><a href="blog.html">Conseils &amp; articles</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens recruteurs">
+          <h2>Recruteurs</h2>
+          <ul>
+            <li><a href="publier-offre.html">Publier une offre</a></li>
+            <li><a href="publier-savoir-faire.html">Partager un savoir-faire</a></li>
+            <li><a href="espace-entreprise.html">Espace entreprise</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Liens de la plateforme">
+          <h2>La plateforme</h2>
+          <ul>
+            <li><a href="a-propos.html">Qui sommes-nous</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="paiement.html">Renouvellement d'offre (10&nbsp;€)</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> SuperSecrétaire</span>
+        <span>Prototype de démonstration — offres, entreprises et personnes fictives.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/knowhow-publish.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
+
+

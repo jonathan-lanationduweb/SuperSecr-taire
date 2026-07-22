@@ -1,0 +1,66 @@
+/* Jetons de design — SuperSecrétaire (v2, refonte)
+   Palette « vert sapin & miel » conservée, redistribuée :
+   blanc pour le contenu, crème en respiration, une section sapin forte
+   par page, orange réservé aux actions clés. */
+
+:root {
+  /* Couleurs */
+  --c-primary: #1e4f46;
+  --c-primary-dark: #14372f;
+  --c-primary-soft: #e9f0ec;
+  --c-accent: #e8a33d;
+  --c-accent-dark: #855805;
+  --c-accent-soft: #f9edd8;
+  --c-bg: #faf7f1;          /* crème : fond général */
+  --c-bg-alt: #f3efe5;      /* beige légèrement plus soutenu */
+  --c-surface: #ffffff;     /* blanc : contenu, respiration */
+  --c-ink: #22302b;
+  --c-ink-soft: #5a675f;
+  --c-line: #e8e2d5;        /* filet fin */
+  --c-border: #e8e2d5;
+  --c-border-strong: #cfc7b6;
+  --c-error: #a83232;
+  --c-error-soft: #f7e5e5;
+  --c-success: #2f6b5e;
+  --c-success-soft: #e3efe9;
+  --c-info-soft: #eef1f6;
+
+  /* Typographie */
+  --font-serif: "Georgia", "Iowan Old Style", "Times New Roman", serif;
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --text-base: 1rem;
+  --text-sm: 0.9rem;
+  --text-xs: 0.78rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.3rem;
+  --text-2xl: 1.7rem;
+  --text-3xl: 2.15rem;
+  --text-hero: clamp(2.2rem, 4.5vw, 3.4rem);
+
+  /* Espacements */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+
+  /* Formes et ombres — 3 rayons seulement, ombres quasi absentes */
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 8px;
+  --radius-pill: 999px;      /* réservé aux avatars et pastilles d'état */
+  --shadow-s: none;
+  --shadow-m: 0 12px 32px rgba(20, 55, 47, 0.09);
+  --shadow-focus: 0 0 0 3px rgba(232, 163, 61, 0.4);
+
+  /* Mise en page */
+  --container: 1200px;
+  --container-narrow: 780px;
+  --header-height: 78px;
+
+  /* Transitions */
+  --transition: 160ms ease;
+}
