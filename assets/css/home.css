@@ -5,30 +5,40 @@
 .hero-stage {
   position: relative;
   overflow: hidden;
-  background: #6b7570;
+  background: #e9e7df;
   padding: clamp(24px, 5.5vh, 50px) clamp(16px, 4.9vw, 70px) clamp(18px, 4.4vh, 40px);
 }
 
-/* Fond : la même vidéo, agrandie, fortement floutée mais VISIBLE
-   (couleurs naturelles conservées, léger assombrissement seulement). */
+/* Fond : la même vidéo, agrandie, fortement floutée et LUMINEUSE
+   (continuation claire de l'image, comme la référence). */
 .hero-stage__bg {
   position: absolute;
   inset: -60px;
   width: calc(100% + 120px);
   height: calc(100% + 120px);
   object-fit: cover;
-  filter: blur(32px) brightness(0.82) saturate(0.92);
+  filter: blur(36px) brightness(1.06) saturate(1.05);
   transform: scale(1.08);
+}
+
+/* Léger voile clair qui fond le flou dans la page, sans l'assombrir */
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(246, 243, 235, 0.22);
 }
 
 .hero-frame {
   position: relative;
+  z-index: 1;
   max-width: 1300px;
   margin: 0 auto;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.35);
-  background: var(--c-primary-dark);
+  box-shadow: 0 30px 80px -14px rgba(30, 40, 35, 0.28);
+  background: #c8ccc6;
 }
 
 .hero-frame__media {
@@ -43,23 +53,23 @@
   object-fit: cover;
 }
 
-/* Dégradés légers : protection du texte à gauche + assise en bas,
-   la droite de la vidéo reste claire. */
+/* Dégradés discrets : juste assez pour asseoir le texte en bas à gauche
+   et la nav en haut — la vidéo reste claire et bien visible partout. */
 .hero-frame__shade {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(to right,
-      rgba(8, 22, 18, 0.66) 0%,
-      rgba(8, 22, 18, 0.34) 36%,
-      rgba(8, 22, 18, 0) 62%),
+      rgba(10, 24, 20, 0.38) 0%,
+      rgba(10, 24, 20, 0.14) 32%,
+      rgba(10, 24, 20, 0) 55%),
     linear-gradient(to top,
-      rgba(8, 22, 18, 0.72) 0%,
-      rgba(8, 22, 18, 0.18) 34%,
-      rgba(8, 22, 18, 0) 52%),
+      rgba(10, 24, 20, 0.55) 0%,
+      rgba(10, 24, 20, 0.12) 30%,
+      rgba(10, 24, 20, 0) 50%),
     linear-gradient(to bottom,
-      rgba(8, 22, 18, 0.28) 0%,
-      rgba(8, 22, 18, 0) 16%);
+      rgba(10, 24, 20, 0.30) 0%,
+      rgba(10, 24, 20, 0) 18%);
 }
 
 /* --- Navbar en verre --- */
@@ -117,7 +127,7 @@
   display: flex;
   gap: 4px;
   padding: 5px 7px;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(16, 28, 24, 0.28);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 999px;
@@ -217,7 +227,7 @@
 }
 
 .glass-nav .nav-toggle {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(16, 28, 24, 0.28);
   border: none;
   backdrop-filter: blur(10px);
   border-radius: 999px;
@@ -227,26 +237,26 @@
   background: #fff;
 }
 
-/* --- Contenu principal --- */
+/* --- Contenu principal : ancré bas-gauche, large respiration au-dessus --- */
 .hero-frame__content {
   position: absolute;
   z-index: 5;
   left: clamp(22px, 5.4%, 70px);
   right: clamp(22px, 5.4%, 70px);
-  bottom: 148px;
+  bottom: 168px;
   color: #fff;
 }
 
-/* Titre imposant : 68 px sur desktop, deux lignes */
+/* Titre imposant : 64 px sur desktop, exactement deux lignes */
 .hero-frame__content h1 {
   color: #fff;
   font-family: var(--font-sans);
-  font-weight: 750;
-  font-size: clamp(2.4rem, 4.75vw, 4.25rem);
-  line-height: 1.05;
+  font-weight: 650;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
-  max-width: 900px;
-  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.28);
+  max-width: 1000px;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.32);
 }
 
 .hero-frame__content h1 em {
@@ -257,10 +267,11 @@
 
 .hero-frame__content p {
   margin-top: var(--sp-4);
-  max-width: 540px;
+  max-width: 560px;
   font-size: 1.06rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.3);
 }
 
 .hero-frame__actions {
@@ -471,18 +482,18 @@
   font-weight: 700;
 }
 
-/* --- Écrans de portable peu hauts : tout doit rester visible --- */
+/* --- Écrans de portable peu hauts : garder la respiration au-dessus du titre --- */
 @media (max-height: 820px) and (min-width: 1025px) {
   .hero-frame__media video {
-    min-height: 520px;
+    min-height: 540px;
   }
 
   .hero-frame__content {
-    bottom: 116px;
+    bottom: 128px;
   }
 
   .hero-frame__content h1 {
-    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-size: clamp(2.4rem, 4.1vw, 3.875rem);
   }
 
   .hero-frame__content p {
@@ -495,15 +506,15 @@
   }
 
   .hero-btn {
-    height: 46px;
+    height: 48px;
   }
 
   .hero-frame__bottom {
-    height: 88px;
+    height: 90px;
   }
 
   .hero-band {
-    min-height: 96px;
+    min-height: 100px;
   }
 }
 
