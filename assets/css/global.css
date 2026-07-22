@@ -166,31 +166,35 @@ a:hover {
   color: #fff;
 }
 
-/* Bandeau de démonstration — discret */
+/* Bandeau de démonstration — hauteur stable (le hero en tient compte) */
 .demo-banner {
   background: var(--c-bg-alt);
   color: var(--c-ink-soft);
   text-align: center;
   font-size: 0.72rem;
   letter-spacing: 0.03em;
-  padding: 0.3rem var(--sp-4);
+  min-height: var(--banner-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem var(--sp-4);
   border-bottom: 1px solid var(--c-line);
 }
 
-/* ===== En-tête ===== */
+/* ===== En-tête : COMPOSANT UNIQUE, deux variantes =====
+   Structure canonique : partials/header.html (synchronisée par
+   tools/sync-header.mjs). Deux apparences via une classe contextuelle :
+   .site-header--light   → pages intérieures (fond crème, sticky)
+   .site-header--overlay → accueil (posée sur la vidéo du hero)
+   En WordPress, ce bloc deviendra header.php (variante par body_class). */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background: rgba(250, 247, 241, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--c-line);
+  width: 100%;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
-  gap: var(--sp-7);
+  gap: var(--sp-4);
   min-height: var(--header-height);
 }
 
@@ -223,7 +227,7 @@ a:hover {
 
 .logo-text {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   letter-spacing: -0.01em;
   color: var(--c-primary-dark);
 }
@@ -241,142 +245,187 @@ a:hover {
   min-width: 0;
 }
 
-.nav-links {
+/* Menu central en pilule — structure commune aux deux variantes.
+   Les tailles de base doivent tenir dans la fenêtre du hero (1320 px
+   moins les marges intérieures), quelle que soit la largeur d'écran. */
+.site-header .nav-links {
   display: flex;
-  gap: clamp(1rem, 2.2vw, 2.2rem);
+  gap: 3px;
+  padding: 5px 7px;
+  border-radius: 999px;
+  margin-inline: auto;
   white-space: nowrap;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--c-ink-soft);
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.4rem 0;
-  position: relative;
-  transition: color var(--transition);
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: -2px;
-  height: 2px;
-  background: var(--c-accent);
-  transition: right var(--transition);
-}
-
-.nav-links a:hover {
-  color: var(--c-primary-dark);
-}
-
-.nav-links a:hover::after,
-.nav-links a[aria-current="page"]::after {
-  right: 0;
-}
-
-.nav-links a[aria-current="page"] {
-  color: var(--c-primary-dark);
-  font-weight: 650;
-}
-
-/* En-tête des pages intérieures : même menu pilule que la navbar du hero
-   (version claire — l'actif devient une pastille pleine). */
-.site-header .nav-links {
-  gap: 4px;
-  padding: 5px 7px;
-  background: rgba(31, 51, 42, 0.07);
-  border-radius: 999px;
-  margin-inline: auto;
-}
-
-.site-header .nav-links a {
   display: inline-flex;
   align-items: center;
   line-height: 1;
-  padding: 0.65rem 1.15rem;
+  padding: 0.7rem 0.95rem;
   border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
   font-size: 0.906rem;
-}
-
-.site-header .nav-links a::after {
-  content: none;
-}
-
-.site-header .nav-links a:hover {
-  background: rgba(31, 51, 42, 0.08);
-}
-
-.site-header .nav-links a[aria-current="page"] {
-  background: var(--c-primary);
-  color: #fff;
-}
-
-.site-header .nav-actions .btn {
-  border-radius: 999px;
-}
-
-.site-header .nav-actions .btn-primary,
-.site-header .nav-actions .btn-accent {
-  padding: 0.72rem 1.3rem;
-}
-
-/* Palier compact : tout tient sur une ligne entre 1201 et 1380 px
-   (« Se connecter » repasse par le menu mobile / pied de page, comme sur l'accueil) */
-@media (min-width: 1201px) and (max-width: 1380px) {
-  .site-header .header-inner {
-    gap: var(--sp-4);
-  }
-
-  .site-header .nav-links a {
-    padding-inline: 0.75rem;
-    font-size: 0.87rem;
-  }
-
-  .site-header .logo-text {
-    font-size: 1.15rem;
-  }
-
-  .site-header .nav-actions .btn-ghost {
-    display: none;
-  }
-
-  .site-header .nav-actions::before {
-    content: none;
-  }
+  transition: background var(--transition), color var(--transition);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: var(--sp-4);
+  gap: 10px;
   flex-shrink: 0;
 }
 
-/* Lien de connexion sobre, séparé du bouton recruteur par un filet */
+.nav-actions .btn {
+  border-radius: 999px;
+}
+
 .nav-actions .btn-ghost {
-  padding: 0.45rem 0.4rem;
-  font-size: 0.95rem;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.92rem;
 }
 
 .nav-actions .btn-primary,
 .nav-actions .btn-accent {
-  padding: 0.55rem 1.1rem;
+  padding: 0.75rem 1.15rem;
   font-size: 0.92rem;
 }
 
-.nav-actions::before {
-  content: "";
-  order: 1;
-  width: 1px;
-  height: 22px;
-  background: var(--c-line);
+/* --- Variante CLAIRE : pages intérieures --- */
+.site-header--light {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(250, 247, 241, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--c-line);
 }
 
-.nav-actions .btn-ghost { order: 0; }
-.nav-actions .btn-primary, .nav-actions .btn-accent { order: 2; }
+/* Le header claire peut respirer un peu plus large que le contenu éditorial */
+.site-header--light .header-inner {
+  width: min(1280px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+.site-header--light .nav-links {
+  background: rgba(31, 51, 42, 0.07);
+}
+
+.site-header--light .nav-links a {
+  color: var(--c-ink-soft);
+}
+
+.site-header--light .nav-links a:hover {
+  background: rgba(31, 51, 42, 0.08);
+  color: var(--c-primary-dark);
+}
+
+.site-header--light .nav-links a[aria-current="page"] {
+  background: var(--c-primary);
+  color: #fff;
+  font-weight: 650;
+}
+
+/* --- Variante OVERLAY : posée sur la vidéo du hero (accueil) --- */
+.site-header--overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  background: transparent;
+}
+
+.site-header--overlay .header-inner {
+  padding-inline: clamp(20px, 3vw, 40px);
+  min-height: 88px;
+}
+
+.site-header--overlay .logo-text,
+.site-header--overlay .logo-text strong {
+  color: #fff;
+}
+
+.site-header--overlay .nav-links {
+  background: rgba(16, 28, 24, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.site-header--overlay .nav-links a {
+  color: #fff;
+}
+
+.site-header--overlay .nav-links a:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.site-header--overlay .nav-links a[aria-current="page"] {
+  background: #fff;
+  color: var(--c-primary-dark);
+  font-weight: 650;
+}
+
+.site-header--overlay .nav-actions .btn-ghost {
+  color: #fff;
+  border-color: transparent;
+}
+
+.site-header--overlay .nav-actions .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.site-header--overlay .nav-actions .btn-primary {
+  background: #fff;
+  border-color: #fff;
+  color: var(--c-primary-dark);
+}
+
+.site-header--overlay .nav-actions .btn-primary:hover {
+  background: #fff;
+  color: var(--c-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.site-header--overlay .nav-toggle {
+  background: rgba(16, 28, 24, 0.28);
+  border: none;
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+}
+
+.site-header--overlay .nav-toggle span {
+  background: #fff;
+}
+
+/* Palier compact 1281–1440 px : tout tient sur une ligne sans passer
+   sous 14 px ; en dessous de 1281 px on bascule sur le menu mobile. */
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .header-inner {
+    gap: var(--sp-4);
+  }
+
+  .nav-links a {
+    padding-inline: 0.72rem;
+    font-size: 0.875rem;
+  }
+
+  .logo-text {
+    font-size: 1.18rem;
+  }
+
+  .nav-actions .btn-primary,
+  .nav-actions .btn-accent {
+    padding-inline: 1rem;
+  }
+
+  .nav-actions .btn-ghost {
+    padding-inline: 0.4rem;
+  }
+}
 
 /* Lien « Recherche guidée » : réservé au menu mobile. */
 .nav-guided {

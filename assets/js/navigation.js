@@ -8,24 +8,26 @@
     var toggle = document.querySelector(".nav-toggle");
     var nav = document.getElementById("main-nav");
     if (toggle && nav) {
-      toggle.addEventListener("click", function () {
-        var open = nav.classList.toggle("is-open");
+      /* Ouverture / fermeture : aria-expanded + défilement bloqué. */
+      var setOpen = function (open) {
+        nav.classList.toggle("is-open", open);
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        document.body.classList.toggle("menu-open", open);
+      };
+
+      toggle.addEventListener("click", function () {
+        setOpen(!nav.classList.contains("is-open"));
       });
 
       /* Fermer le menu mobile après un clic sur un lien. */
       nav.addEventListener("click", function (event) {
-        if (event.target.closest("a")) {
-          nav.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
-        }
+        if (event.target.closest("a")) { setOpen(false); }
       });
 
       /* Fermer avec la touche Échap. */
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && nav.classList.contains("is-open")) {
-          nav.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
+          setOpen(false);
           toggle.focus();
         }
       });

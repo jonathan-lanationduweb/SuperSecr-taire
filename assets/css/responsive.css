@@ -3,7 +3,8 @@
 /* ===== Tablette (≤ 1024px) ===== */
 @media (max-width: 1024px) {
   .hero-frame__media video {
-    height: min(72vh, 640px);
+    height: min(74vh, 640px);
+    height: min(74svh, 640px);
     min-height: 520px;
   }
 
@@ -124,8 +125,10 @@
   }
 }
 
-/* ===== Navigation compacte (≤ 1200px) : menu escamotable ===== */
-@media (max-width: 1200px) {
+/* ===== Navigation compacte (<= 1280 px) : menu escamotable =====
+   Meme composant pour les deux variantes ; le panneau deroulant est
+   toujours clair et lisible, y compris depuis la navbar overlay. */
+@media (max-width: 1280px) {
   .nav-toggle {
     display: flex;
     margin-left: auto;
@@ -150,25 +153,40 @@
     display: flex;
   }
 
-  .nav-links {
+  /* La pilule redevient une liste verticale sur fond clair */
+  .site-header .nav-links,
+  .site-header--overlay .nav-links {
     flex-direction: column;
     gap: var(--sp-1);
     white-space: normal;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    border-radius: 0;
+    margin-inline: 0;
   }
 
-  .nav-links a {
+  .site-header .nav-links a,
+  .site-header--overlay .nav-links a {
     display: block;
+    line-height: 1.4;
     padding: var(--sp-3);
     border-radius: var(--radius-m);
+    font-size: 1rem;
+    color: var(--c-ink);
   }
 
-  .nav-links a::after {
-    content: none;
-  }
-
-  .nav-links a:hover,
-  .nav-links a[aria-current="page"] {
+  .site-header .nav-links a:hover,
+  .site-header--overlay .nav-links a:hover {
     background: var(--c-primary-soft);
+    color: var(--c-primary-dark);
+  }
+
+  .site-header .nav-links a[aria-current="page"],
+  .site-header--overlay .nav-links a[aria-current="page"] {
+    background: var(--c-primary-soft);
+    color: var(--c-primary-dark);
   }
 
   .nav-guided {
@@ -185,83 +203,26 @@
     align-items: stretch;
   }
 
-  .nav-actions::before {
-    content: none;
-  }
-
   .nav-actions .btn {
     width: 100%;
-  }
-
-  /* En-tête des pages intérieures : la pilule redevient une liste verticale */
-  .site-header .nav-links {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    margin-inline: 0;
-    gap: var(--sp-1);
-  }
-
-  .site-header .nav-links a {
-    display: block;
-    line-height: 1.4;
-    padding: var(--sp-3);
-    border-radius: var(--radius-m);
-    font-size: 1rem;
-  }
-
-  .site-header .nav-links a[aria-current="page"] {
-    background: var(--c-primary-soft);
-    color: var(--c-primary-dark);
-  }
-
-  /* Navbar en verre (accueil) : panneau déroulant blanc lisible */
-  .glass-nav .main-nav {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .glass-nav .main-nav.is-open {
-    display: flex;
-  }
-
-  .glass-nav .nav-links {
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding: 0;
-    border-radius: 0;
-    margin-inline: 0;
-    white-space: normal;
-  }
-
-  .glass-nav .nav-links a {
-    color: var(--c-ink);
-    font-size: 1rem;
-  }
-
-  .glass-nav .nav-links a:hover {
-    background: var(--c-primary-soft);
-    color: var(--c-primary-dark);
-  }
-
-  .glass-nav .nav-links a[aria-current="page"] {
-    background: var(--c-primary-soft);
-    color: var(--c-primary-dark);
-  }
-
-  .glass-nav__login {
-    color: var(--c-primary-dark);
     text-align: center;
   }
 
-  .glass-nav__cta {
-    background: var(--c-accent);
-    text-align: center;
+  .site-header--overlay .nav-actions .btn-ghost {
+    color: var(--c-primary-dark);
+  }
+
+  .site-header--overlay .nav-actions .btn-primary {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    color: #fff;
+  }
+
+  /* Defilement bloque quand le menu mobile est ouvert */
+  body.menu-open {
+    overflow: hidden;
   }
 }
-
 /* ===== Mobile (≤ 768px) ===== */
 @media (max-width: 768px) {
   :root {
@@ -273,6 +234,7 @@
   /* Hero immersif sur mobile */
   .hero-frame__media video {
     height: 78vh;
+    height: 78svh;
     min-height: 540px;
   }
 

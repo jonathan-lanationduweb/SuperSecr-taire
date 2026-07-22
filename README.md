@@ -128,7 +128,16 @@ supersecretaire/
 
 ## Recommandations pour la conversion en thème WordPress
 
-- **Header / footer** : identiques sur toutes les pages → `header.php` / `footer.php` directs.
+- **Header** : composant UNIQUE, deux variantes visuelles.
+  - Source de vérité : `partials/header.html` (ne jamais éditer les `<header>` des pages à la main).
+  - Synchronisation : `node tools/sync-header.mjs` réécrit le header de toutes les pages,
+    choisit la variante (`site-header--overlay` sur l'accueil, posée sur la vidéo du hero ;
+    `site-header--light` partout ailleurs) et pose `aria-current="page"` sur le lien actif.
+  - En WordPress : ce fragment devient `header.php` ; la variante se choisit via `body_class()`
+    (ex. `is_front_page() ? 'site-header--overlay' : 'site-header--light'`), le lien actif via le menu WP.
+  - Exception assumée : `404.html` (page GitHub Pages servie sur des chemins arbitraires,
+    liens absolus uniquement) n'embarque pas la navbar.
+- **Footer** : identique sur toutes les pages → `footer.php` direct.
 - `index.html` → `front-page.php` ; chaque section (hero, offres récentes, catégories…) devient un bloc ou un template part réutilisable.
 - `offres.html` → `archive-offre.php` (CPT `offre`), `offre-detail.html` → `single-offre.php` ;
   `entreprises.html` → `archive-entreprise.php`, `entreprise-detail.html` → `single-entreprise.php` ;
