@@ -48,7 +48,7 @@
 .hero-frame__media video {
   display: block;
   width: 100%;
-  height: min(700px, calc(100vh - 212px));
+  height: min(700px, calc(100vh - 228px));
   min-height: 560px;
   object-fit: cover;
 }
@@ -482,9 +482,16 @@
   font-weight: 700;
 }
 
-/* --- Écrans de portable peu hauts : garder la respiration au-dessus du titre --- */
+/* --- Écrans de portable peu hauts : le hero remplit exactement le 1er écran --- */
 @media (max-height: 820px) and (min-width: 1025px) {
+  .hero-stage {
+    padding-top: 22px;
+    padding-bottom: 14px;
+  }
+
+  /* 100vh − bandeau démo 28 − marges 22+14 − bande blanche 100 */
   .hero-frame__media video {
+    height: calc(100vh - 164px);
     min-height: 540px;
   }
 

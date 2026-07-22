@@ -202,14 +202,18 @@ a:hover {
   flex-shrink: 0;
 }
 
+/* Même pastille « S » que la navbar du hero (cohérence entre pages) */
 .logo-mark {
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-m);
-  background: var(--c-primary);
-  color: var(--c-accent);
+  border-radius: 10px;
+  background: var(--c-accent);
+  color: var(--c-primary-dark);
   display: grid;
   place-items: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
 .logo-mark svg {
@@ -276,6 +280,72 @@ a:hover {
 .nav-links a[aria-current="page"] {
   color: var(--c-primary-dark);
   font-weight: 650;
+}
+
+/* En-tête des pages intérieures : même menu pilule que la navbar du hero
+   (version claire — l'actif devient une pastille pleine). */
+.site-header .nav-links {
+  gap: 4px;
+  padding: 5px 7px;
+  background: rgba(31, 51, 42, 0.07);
+  border-radius: 999px;
+  margin-inline: auto;
+}
+
+.site-header .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.906rem;
+}
+
+.site-header .nav-links a::after {
+  content: none;
+}
+
+.site-header .nav-links a:hover {
+  background: rgba(31, 51, 42, 0.08);
+}
+
+.site-header .nav-links a[aria-current="page"] {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+.site-header .nav-actions .btn {
+  border-radius: 999px;
+}
+
+.site-header .nav-actions .btn-primary,
+.site-header .nav-actions .btn-accent {
+  padding: 0.72rem 1.3rem;
+}
+
+/* Palier compact : tout tient sur une ligne entre 1201 et 1380 px
+   (« Se connecter » repasse par le menu mobile / pied de page, comme sur l'accueil) */
+@media (min-width: 1201px) and (max-width: 1380px) {
+  .site-header .header-inner {
+    gap: var(--sp-4);
+  }
+
+  .site-header .nav-links a {
+    padding-inline: 0.75rem;
+    font-size: 0.87rem;
+  }
+
+  .site-header .logo-text {
+    font-size: 1.15rem;
+  }
+
+  .site-header .nav-actions .btn-ghost {
+    display: none;
+  }
+
+  .site-header .nav-actions::before {
+    content: none;
+  }
 }
 
 .nav-actions {
@@ -358,6 +428,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
 }
 
 .breadcrumb li + li::before {

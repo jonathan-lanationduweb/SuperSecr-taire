@@ -193,6 +193,28 @@
     width: 100%;
   }
 
+  /* En-tête des pages intérieures : la pilule redevient une liste verticale */
+  .site-header .nav-links {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-inline: 0;
+    gap: var(--sp-1);
+  }
+
+  .site-header .nav-links a {
+    display: block;
+    line-height: 1.4;
+    padding: var(--sp-3);
+    border-radius: var(--radius-m);
+    font-size: 1rem;
+  }
+
+  .site-header .nav-links a[aria-current="page"] {
+    background: var(--c-primary-soft);
+    color: var(--c-primary-dark);
+  }
+
   /* Navbar en verre (accueil) : panneau déroulant blanc lisible */
   .glass-nav .main-nav {
     display: none;
