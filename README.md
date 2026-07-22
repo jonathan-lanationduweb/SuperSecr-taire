@@ -16,7 +16,8 @@
 ## Direction artistique (v2 — refonte)
 
 - Palette « **vert sapin & miel** » conservée mais redistribuée : blanc pour les sections de contenu, crème en respiration, une section sapin forte par page, orange réservé aux actions clés.
-- **Photographies locales** (Pexels, crédits dans `assets/images/photos/credits.md`) pour le hero, les articles, l'à-propos et les savoir-faire ; les schémas SVG restent pour les étapes.
+- **Hero éditorial** : typographie serif géante sur deux lignes (seconde en italique), accroche en colonne droite, et **vidéo locale pleine largeur** arrondie (Pexels, HD/SD selon l'écran, lecture automatique silencieuse, bouton Lire/Suspendre, `prefers-reduced-motion` respecté). Maquette Figma d'origine : fichier « SuperSecrétaire — Hero éditorial vidéo ».
+- **Photographies locales** (Pexels, format WebP, crédits dans `assets/images/photos/credits.md`) pour les articles, l'à-propos et les savoir-faire ; les schémas SVG restent pour les étapes.
 - Typographie : la **serif** (Georgia) est réservée aux grands titres éditoriaux ; les titres de cartes et l'interface sont en sans-serif.
 - **3 rayons de bordure seulement** (4 px, 8 px, cercle pour les avatars), boutons rectangulaires, étiquettes typographiques à la place des pilules, ombres quasi absentes, filets fins.
 - Compositions variées : offre vedette + liste à filets, colonnes asymétriques, blocs numérotés, cartes à bordure partielle, listes éditoriales.
