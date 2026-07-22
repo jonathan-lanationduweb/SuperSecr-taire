@@ -22,3 +22,9 @@ Toutes les photographies proviennent de [Pexels](https://www.pexels.com) (licenc
 | sf-classement.jpg | 34293529 | Zulfugar Karimov |
 | sf-entretien-rh.jpg | 5439152 | Tima Miroshnichenko |
 | og-image.jpg | 8837201 | Yan Krukau (version JPEG pour le partage social) |
+
+## Vidéo
+
+| Fichier | Vidéo Pexels | Créateur |
+| --- | --- | --- |
+| assets/videos/hero-bureau(.mp4/-sd.mp4/-poster.webp) | 7640073 | Yan Krukau |

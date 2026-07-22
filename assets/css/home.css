@@ -1,36 +1,102 @@
 /* Page d'accueil v2 : hero photographique, offre vedette + liste,
    parcours asymétriques, métiers éditoriaux, engagements numérotés */
 
-/* ===== Hero ===== */
+/* ===== Hero éditorial : grande typographie + vidéo pleine largeur ===== */
 .hero {
   background: var(--c-bg);
   padding-block: var(--sp-7) var(--sp-8);
   overflow: hidden;
 }
 
-.hero-grid {
+.hero--editorial {
+  padding-top: var(--sp-8);
+}
+
+.hero-editorial__copy {
   display: grid;
-  grid-template-columns: 1.05fr 0.85fr;
-  gap: var(--sp-8);
-  align-items: center;
+  grid-template-columns: 1fr minmax(240px, 320px);
+  gap: var(--sp-7);
+  align-items: end;
+  margin-bottom: var(--sp-6);
 }
 
 .hero h1 {
-  font-size: var(--text-hero);
-  margin-bottom: var(--sp-4);
-  max-width: 15ch;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.06;
+  max-width: 14ch;
+  margin-top: var(--sp-3);
 }
 
 .hero h1 em {
   font-style: italic;
   color: var(--c-accent-dark);
+  display: block;
 }
 
-.hero-lead {
-  font-size: var(--text-lg);
+.hero-editorial__aside {
+  display: grid;
+  gap: var(--sp-3);
+  justify-items: start;
+  padding-bottom: 0.4rem;
+}
+
+.hero-editorial__aside p {
+  font-size: var(--text-sm);
   color: var(--c-ink-soft);
-  max-width: 52ch;
-  margin-bottom: var(--sp-5);
+  line-height: 1.7;
+}
+
+/* Panneau vidéo */
+.hero-media {
+  position: relative;
+  margin-top: var(--sp-6);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--c-primary-dark);
+}
+
+.hero-media video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+}
+
+.hero-media__caption {
+  position: absolute;
+  left: var(--sp-5);
+  bottom: var(--sp-5);
+  background: rgba(20, 55, 47, 0.85);
+  color: #dbe6de;
+  border-radius: var(--radius-m);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  max-width: 280px;
+}
+
+.hero-media__caption strong {
+  display: block;
+  color: #fff;
+  font-size: var(--text-sm);
+}
+
+.hero-media__toggle {
+  position: absolute;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  background: rgba(250, 247, 241, 0.92);
+  color: var(--c-primary-dark);
+  border: none;
+  border-radius: var(--radius-m);
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  transition: background var(--transition);
+}
+
+.hero-media__toggle:hover {
+  background: #fff;
 }
 
 /* Panneau de recherche : champs séparés par des filets, plus aéré */
@@ -144,50 +210,7 @@
   font-weight: 600;
 }
 
-/* Visuel du hero : photo + cadre décalé + note */
-.hero-visual figure {
-  position: relative;
-  margin-right: var(--sp-3);
-}
-
-.hero-visual img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-m);
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-visual figure::before {
-  content: "";
-  position: absolute;
-  inset: var(--sp-4) calc(-1 * var(--sp-3)) calc(-1 * var(--sp-4)) var(--sp-4);
-  border: 2px solid var(--c-accent);
-  border-radius: var(--radius-m);
-}
-
-.hero-visual__note {
-  position: absolute;
-  z-index: 2;
-  left: calc(-1 * var(--sp-4));
-  bottom: var(--sp-5);
-  background: var(--c-primary-dark);
-  color: #dbe6de;
-  border-radius: var(--radius-m);
-  padding: var(--sp-3) var(--sp-4);
-  font-size: var(--text-xs);
-  max-width: 230px;
-  line-height: 1.5;
-}
-
-.hero-visual__note strong {
-  display: block;
-  color: #fff;
-  font-size: var(--text-sm);
-  margin-bottom: 0.1rem;
-}
+/* (l'ancien visuel photo du hero a été remplacé par le panneau vidéo) */
 
 /* ===== Offres : vedette + liste ===== */
 .home-offers {

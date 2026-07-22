@@ -179,6 +179,43 @@
       if (closer) { SS.closeModal(closer.closest("dialog")); }
     });
 
+    /* Vidéo du hero : source adaptée à l'écran, lecture automatique
+       silencieuse sauf préférence de mouvement réduit, bouton pause/lecture. */
+    var heroVideo = document.getElementById("hero-video");
+    if (heroVideo) {
+      var videoToggle = document.getElementById("hero-video-toggle");
+      var wantsReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      heroVideo.src = window.innerWidth < 700
+        ? heroVideo.getAttribute("data-src-sd")
+        : heroVideo.getAttribute("data-src-hd");
+
+      var setVideoState = function (playing) {
+        if (!videoToggle) { return; }
+        videoToggle.setAttribute("aria-pressed", playing ? "true" : "false");
+        videoToggle.textContent = playing ? "Suspendre la vidéo" : "Lire la vidéo";
+      };
+
+      if (!wantsReduced) {
+        heroVideo.autoplay = true;
+        heroVideo.play().then(function () { setVideoState(true); })
+          .catch(function () { setVideoState(false); });
+      } else {
+        setVideoState(false);
+      }
+
+      if (videoToggle) {
+        videoToggle.addEventListener("click", function () {
+          if (heroVideo.paused) {
+            heroVideo.play();
+            setVideoState(true);
+          } else {
+            heroVideo.pause();
+            setVideoState(false);
+          }
+        });
+      }
+    }
+
     /* Révélation douce des sections marquées .reveal. */
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var revealables = document.querySelectorAll(".reveal");

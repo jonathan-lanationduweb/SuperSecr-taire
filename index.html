@@ -82,54 +82,62 @@
 
   <main id="contenu">
 
-    <!-- ===== Hero ===== -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">La plateforme de l'emploi administratif</p>
-          <h1 id="hero-title">Les métiers du secrétariat ont enfin <em>leur adresse</em>.</h1>
-          <p class="hero-lead">Offres d'emploi relues une à une, entreprises identifiées et conseils de professionnels — pour les secrétaires, assistant(e)s et office managers de toute la France.</p>
+    <!-- ===== Hero éditorial ===== -->
+    <section class="hero hero--editorial" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-editorial__copy">
+          <div>
+            <p class="eyebrow">La plateforme de l'emploi administratif</p>
+            <h1 id="hero-title">L'emploi administratif, <em>simple et humain.</em></h1>
+          </div>
+          <div class="hero-editorial__aside">
+            <p>Des offres relues une à une, des entreprises identifiées et des conseils de professionnels — pour les secrétaires, assistant(e)s et office managers de toute la France.</p>
+            <a class="link-more" href="offres.html">Découvrir les offres</a>
+          </div>
+        </div>
 
-          <div class="search-panel">
-            <form id="hero-search-form" role="search" aria-label="Rechercher une offre d'emploi">
-              <div class="search-panel__field">
-                <label for="search-keyword">Métier ou mot-clé</label>
-                <input type="search" id="search-keyword" name="q" placeholder="Secrétaire médicale, assistant…" autocomplete="off">
-              </div>
-              <div class="search-panel__field">
-                <label for="search-location">Ville ou département</label>
-                <input type="text" id="search-location" name="lieu" placeholder="Lyon, Rhône…" autocomplete="off">
-              </div>
-              <button type="submit" class="btn btn-accent">Rechercher</button>
-            </form>
-            <div class="search-panel__alt">
-              <span id="hero-offers-count" class="hero-count"></span>
-              <span>Vous hésitez sur le métier ou le type de poste&nbsp;?</span>
-              <a href="recherche-guidee.html" data-guided-search-open>Aidez-moi à trouver — en moins d'une minute</a>
+        <div class="search-panel">
+          <form id="hero-search-form" role="search" aria-label="Rechercher une offre d'emploi">
+            <div class="search-panel__field">
+              <label for="search-keyword">Métier ou mot-clé</label>
+              <input type="search" id="search-keyword" name="q" placeholder="Secrétaire médicale, assistant…" autocomplete="off">
             </div>
+            <div class="search-panel__field">
+              <label for="search-location">Ville ou département</label>
+              <input type="text" id="search-location" name="lieu" placeholder="Lyon, Rhône…" autocomplete="off">
+            </div>
+            <button type="submit" class="btn btn-accent">Rechercher</button>
+          </form>
+          <div class="search-panel__alt">
+            <span id="hero-offers-count" class="hero-count"></span>
+            <span>Vous hésitez sur le métier ou le type de poste&nbsp;?</span>
+            <a href="recherche-guidee.html" data-guided-search-open>Aidez-moi à trouver — en moins d'une minute</a>
           </div>
-
-          <div class="popular-searches" aria-label="Recherches populaires">
-            <span class="label">Recherches fréquentes</span>
-            <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
-            <a class="chip" href="offres.html?categorie=assistant-direction">Assistant de direction</a>
-            <a class="chip" href="offres.html?categorie=office-manager">Office manager</a>
-            <a class="chip" href="offres.html?categorie=telesecretaire">Télésecrétaire</a>
-            <a class="link-more" href="offres.html">Toutes les offres</a>
-          </div>
-
-          <p class="hero-secondary">Vous recrutez&nbsp;? <a href="publier-offre.html">Publiez votre offre en quelques minutes</a> — renouvellement à 10&nbsp;€.</p>
         </div>
 
-        <div class="hero-visual">
-          <figure>
-            <img src="assets/images/photos/hero-accueil.webp" alt="Une assistante souriante travaille sur son ordinateur portable dans un bureau moderne" width="720" height="480">
-            <figcaption class="hero-visual__note">
-              <strong>Candidature simple</strong>
-              Sans compte obligatoire, votre CV part directement chez l'employeur.
-            </figcaption>
-          </figure>
+        <figure class="hero-media">
+          <video id="hero-video" muted loop playsinline preload="metadata"
+            poster="assets/images/photos/sf-organisation.webp"
+            data-src-hd="assets/videos/hero-bureau.mp4"
+            data-src-sd="assets/videos/hero-bureau-sd.mp4"
+            aria-label="Vidéo d'illustration : une assistante organise son bureau"></video>
+          <figcaption class="hero-media__caption">
+            <strong>Le métier en images</strong>
+            Une journée au cœur d'un bureau — vidéo d'illustration.
+          </figcaption>
+          <button type="button" class="hero-media__toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
+        </figure>
+
+        <div class="popular-searches" aria-label="Recherches populaires">
+          <span class="label">Recherches fréquentes</span>
+          <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
+          <a class="chip" href="offres.html?categorie=assistant-direction">Assistant de direction</a>
+          <a class="chip" href="offres.html?categorie=office-manager">Office manager</a>
+          <a class="chip" href="offres.html?categorie=telesecretaire">Télésecrétaire</a>
+          <a class="link-more" href="offres.html">Toutes les offres</a>
         </div>
+
+        <p class="hero-secondary">Vous recrutez&nbsp;? <a href="publier-offre.html">Publiez votre offre en quelques minutes</a> — renouvellement à 10&nbsp;€.</p>
       </div>
     </section>
 

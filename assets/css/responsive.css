@@ -1,28 +1,18 @@
 /* Adaptations tablette et mobile v2 — chargé en dernier */
 
-/* ===== Grand écran étroit (≤ 1180px) ===== */
-@media (max-width: 1180px) {
-  .hero-grid {
-    gap: var(--sp-6);
-  }
-
-  .hero-visual__note {
-    left: 0;
-  }
-}
-
 /* ===== Tablette (≤ 1024px) ===== */
 @media (max-width: 1024px) {
-  .hero-grid {
+  .hero-editorial__copy {
     grid-template-columns: 1fr;
+    gap: var(--sp-4);
   }
 
   .hero h1 {
     max-width: none;
   }
 
-  .hero-visual {
-    display: none;
+  .hero-media video {
+    aspect-ratio: 16 / 9;
   }
 
   .home-offers,
@@ -207,6 +197,22 @@
   }
 
   /* Hero et recherche */
+  .hero-media video {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-media__caption {
+    position: static;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .hero-media__toggle {
+    bottom: auto;
+    top: var(--sp-4);
+    right: var(--sp-4);
+  }
+
   .search-panel form,
   .search-band {
     grid-template-columns: 1fr;
