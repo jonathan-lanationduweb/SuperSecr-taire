@@ -27,5 +27,6 @@ Toutes les photographies proviennent de [Pexels](https://www.pexels.com) (licenc
 
 | Fichier | Vid�o Pexels | Cr�ateur |
 | --- | --- | --- |
-| assets/videos/hero-bureau(.mp4/-sd.mp4/-poster.jpg) | 4475908 | August de Richelieu |
+| assets/videos/hero-bureau.mp4/-sd.mp4 + assets/images/hero-bureau-poster.jpg | 5483214 | Tima Miroshnichenko |
+
 

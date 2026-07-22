@@ -194,6 +194,16 @@
   }
 
   /* Navbar en verre (accueil) : panneau déroulant blanc lisible */
+  .glass-nav .main-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .glass-nav .main-nav.is-open {
+    display: flex;
+  }
+
   .glass-nav .nav-links {
     background: transparent;
     backdrop-filter: none;
@@ -255,10 +265,24 @@
   }
 
   .hero-frame__bottom {
-    bottom: 16px;
+    height: 84px;
   }
 
-  .hero-trust > span:not(.hero-trust__avatars) {
+  .hero-frame__bottom-left {
+    gap: var(--sp-2);
+  }
+
+  .hero-video-toggle {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-scroll {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-trust > .hero-trust__text {
     display: none;
   }
 

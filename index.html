@@ -55,17 +55,16 @@
     <!-- ===== Hero immersif : fond vidéo flouté + fenêtre centrale ===== -->
     <section class="hero-stage" aria-labelledby="hero-title">
       <video class="hero-stage__bg" aria-hidden="true" tabindex="-1" muted loop playsinline preload="metadata"
-        poster="assets/videos/hero-bureau-poster.jpg"></video>
+        poster="assets/images/hero-bureau-poster.jpg"></video>
 
       <div class="hero-frame">
         <div class="hero-frame__media">
           <video id="hero-video" muted loop playsinline preload="metadata"
-            poster="assets/videos/hero-bureau-poster.jpg"
+            poster="assets/images/hero-bureau-poster.jpg"
             data-src-hd="assets/videos/hero-bureau.mp4"
             data-src-sd="assets/videos/hero-bureau-sd.mp4"
-            aria-label="Vidéo d'illustration : une assistante remet un document dans un bureau"></video>
+            aria-label="Vidéo d'illustration : un bureau panoramique et lumineux en pleine journée"></video>
           <div class="hero-frame__shade" aria-hidden="true"></div>
-        </div>
 
         <!-- Navbar en verre sur la vidéo -->
         <nav class="glass-nav" aria-label="Navigation principale">
@@ -111,9 +110,13 @@
           </div>
           <div class="hero-trust">
             <span class="hero-trust__avatars" aria-hidden="true"><span>CF</span><span>DL</span><span>NV</span></span>
-            <span>Candidature sans inscription · Entreprises identifiées</span>
+            <span class="hero-trust__text">
+              <strong>Offres spécialisées</strong>
+              Candidature sans inscription
+            </span>
           </div>
         </div>
+        </div><!-- /hero-frame__media -->
 
         <!-- Bande blanche -->
         <div class="hero-band">
@@ -387,6 +390,7 @@
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/hero-video.js"></script>
   <script src="assets/js/navigation.js"></script>
   <script src="assets/js/search.js"></script>
   <script src="assets/js/offers.js"></script>
@@ -397,6 +401,7 @@
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
 
 
 
