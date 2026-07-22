@@ -50,52 +50,92 @@
   <a class="skip-link" href="#contenu">Aller au contenu principal</a>
   <p class="demo-banner">Site de démonstration — toutes les offres, entreprises et personnes citées sont fictives.</p>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
-        <span class="logo-mark">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M20.5 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.2 8.2a1.65 1.65 0 0 1-2.3-2.3l7.6-7.6"/>
-          </svg>
-        </span>
-        <span class="logo-text">Super<strong>Secrétaire</strong></span>
-      </a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
-        <ul class="nav-links">
-          <li><a href="offres.html">Offres d'emploi</a></li>
-          <li><a href="entreprises.html">Entreprises</a></li>
-          <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
-          <li><a href="blog.html">Conseils</a></li>
-          <li><a href="a-propos.html">Qui sommes-nous</a></li>
-          <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
-        </ul>
-        <div class="nav-actions">
-          <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
-          <a href="publier-offre.html" class="btn btn-accent">Publier une offre</a>
+<main id="contenu">
+
+    <!-- ===== Hero immersif : fond vidéo flouté + fenêtre centrale ===== -->
+    <section class="hero-stage" aria-labelledby="hero-title">
+      <video class="hero-stage__bg" aria-hidden="true" tabindex="-1" muted loop playsinline preload="metadata"
+        poster="assets/videos/hero-bureau-poster.jpg"></video>
+
+      <div class="hero-frame">
+        <div class="hero-frame__media">
+          <video id="hero-video" muted loop playsinline preload="metadata"
+            poster="assets/videos/hero-bureau-poster.jpg"
+            data-src-hd="assets/videos/hero-bureau.mp4"
+            data-src-sd="assets/videos/hero-bureau-sd.mp4"
+            aria-label="Vidéo d'illustration : une assistante remet un document dans un bureau"></video>
+          <div class="hero-frame__shade" aria-hidden="true"></div>
         </div>
-      </nav>
-    </div>
-  </header>
 
-  <main id="contenu">
+        <!-- Navbar en verre sur la vidéo -->
+        <nav class="glass-nav" aria-label="Navigation principale">
+          <a class="glass-nav__logo" href="index.html" aria-label="SuperSecrétaire, accueil">
+            <span class="glass-nav__mark" aria-hidden="true">S</span>
+            <span>SuperSecrétaire</span>
+          </a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="main-nav" id="main-nav">
+            <ul class="nav-links">
+              <li><a href="index.html" aria-current="page">Accueil</a></li>
+              <li><a href="offres.html">Offres d'emploi</a></li>
+              <li><a href="entreprises.html">Entreprises</a></li>
+              <li><a href="savoir-faire.html">Savoir-faire</a></li>
+              <li><a href="blog.html">Conseils</a></li>
+              <li><a href="a-propos.html">Qui sommes-nous</a></li>
+              <li class="nav-guided"><a href="recherche-guidee.html">Recherche guidée</a></li>
+            </ul>
+            <div class="nav-actions">
+              <a href="connexion.html" class="btn btn-ghost glass-nav__login">Se connecter</a>
+              <a href="publier-offre.html" class="glass-nav__cta">Publier une offre</a>
+            </div>
+          </div>
+        </nav>
 
-    <!-- ===== Hero éditorial ===== -->
-    <section class="hero hero--editorial" aria-labelledby="hero-title">
+        <!-- Contenu principal en bas à gauche -->
+        <div class="hero-frame__content">
+          <h1 id="hero-title">Les métiers administratifs<br>méritent <em>leur propre espace.</em></h1>
+          <p>Offres spécialisées, entreprises identifiées et conseils de professionnels : trouvez plus facilement votre place dans les métiers du secrétariat et de l'assistanat.</p>
+          <div class="hero-frame__actions">
+            <a class="hero-btn hero-btn--accent" href="offres.html">Trouver un emploi <span aria-hidden="true">↗</span></a>
+            <a class="hero-btn hero-btn--ghost" href="publier-offre.html">Je recrute</a>
+          </div>
+        </div>
+
+        <!-- Rangée basse : découvrir + réassurance -->
+        <div class="hero-frame__bottom">
+          <div class="hero-frame__bottom-left">
+            <a class="hero-scroll" href="#recherche">Découvrir <span aria-hidden="true">↓</span></a>
+            <button type="button" class="hero-video-toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
+          </div>
+          <div class="hero-trust">
+            <span class="hero-trust__avatars" aria-hidden="true"><span>CF</span><span>DL</span><span>NV</span></span>
+            <span>Candidature sans inscription · Entreprises identifiées</span>
+          </div>
+        </div>
+
+        <!-- Bande blanche -->
+        <div class="hero-band">
+          <p>Pensé pour celles et ceux<br><strong>qui font tourner les entreprises.</strong></p>
+          <ul aria-label="Nos engagements">
+            <li>Offres vérifiées</li>
+            <li>Candidature simple</li>
+            <li>Entreprises identifiées</li>
+            <li>Accompagnement humain</li>
+            <li>Conseils métiers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Recherche ===== -->
+    <section class="section hero-search-section" id="recherche" aria-labelledby="search-title">
       <div class="container">
-        <div class="hero-editorial__copy">
-          <div>
-            <p class="eyebrow">La plateforme de l'emploi administratif</p>
-            <h1 id="hero-title">L'emploi administratif, <em>simple et humain.</em></h1>
-          </div>
-          <div class="hero-editorial__aside">
-            <p>Des offres relues une à une, des entreprises identifiées et des conseils de professionnels — pour les secrétaires, assistant(e)s et office managers de toute la France.</p>
-            <a class="link-more" href="offres.html">Découvrir les offres</a>
-          </div>
+        <div class="section-head">
+          <p class="eyebrow">Par où commencer</p>
+          <h2 id="search-title">Cherchez, ou laissez-vous guider</h2>
         </div>
-
         <div class="search-panel">
           <form id="hero-search-form" role="search" aria-label="Rechercher une offre d'emploi">
             <div class="search-panel__field">
@@ -114,20 +154,6 @@
             <a href="recherche-guidee.html" data-guided-search-open>Aidez-moi à trouver — en moins d'une minute</a>
           </div>
         </div>
-
-        <figure class="hero-media">
-          <video id="hero-video" muted loop playsinline preload="metadata"
-            poster="assets/images/photos/sf-organisation.webp"
-            data-src-hd="assets/videos/hero-bureau.mp4"
-            data-src-sd="assets/videos/hero-bureau-sd.mp4"
-            aria-label="Vidéo d'illustration : une assistante organise son bureau"></video>
-          <figcaption class="hero-media__caption">
-            <strong>Le métier en images</strong>
-            Une journée au cœur d'un bureau — vidéo d'illustration.
-          </figcaption>
-          <button type="button" class="hero-media__toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
-        </figure>
-
         <div class="popular-searches" aria-label="Recherches populaires">
           <span class="label">Recherches fréquentes</span>
           <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
@@ -136,8 +162,6 @@
           <a class="chip" href="offres.html?categorie=telesecretaire">Télésecrétaire</a>
           <a class="link-more" href="offres.html">Toutes les offres</a>
         </div>
-
-        <p class="hero-secondary">Vous recrutez&nbsp;? <a href="publier-offre.html">Publiez votre offre en quelques minutes</a> — renouvellement à 10&nbsp;€.</p>
       </div>
     </section>
 
@@ -373,6 +397,7 @@
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
 
 
 

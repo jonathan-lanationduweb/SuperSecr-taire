@@ -17,8 +17,9 @@
   var STATE_KEY = "ss_gs_reponses";
   var state = { stepId: null, answers: {}, labels: {}, history: [] };
   var quiz = null;
-  var root = null;      /* conteneur de rendu (modale ou pleine page) */
+  var root = null;      /* conteneur de rendu actif (modale, pleine page ou chatbot) */
   var dialog = null;    /* la modale, si le quiz est ouvert en panneau */
+  var mountOpts = {};   /* options du montage externe (ex. onQuit du chatbot) */
 
   /* Correspondances ville → mots-clés dans les données. */
   var CITY_KEYWORDS = {
@@ -46,6 +47,17 @@
     "telesecretaire": "Télésecrétariat"
   };
 
+  /* Montage externe : permet à un autre composant (le chatbot) d'héberger
+     le quiz dans son propre conteneur. opts.onQuit est appelé quand
+     l'utilisateur quitte le parcours. */
+  SS.guidedSearchMount = function (container, opts) {
+    root = container;
+    dialog = null;
+    mountOpts = opts || {};
+    restoreState();
+    start();
+  };
+
   document.addEventListener("DOMContentLoaded", function () {
     var inline = document.getElementById("guided-search-inline");
     var openers = document.querySelectorAll("[data-guided-search-open]");
@@ -59,12 +71,21 @@
     }
 
     if (openers.length) {
-      if (!inline) { injectModal(); }
+      var modalDialog = null;
+      var modalRoot = null;
+      if (!inline) {
+        injectModal();
+        modalDialog = dialog;
+        modalRoot = root;
+      }
       openers.forEach(function (btn) {
         btn.addEventListener("click", function (event) {
           /* Sans JavaScript, le lien mène à recherche-guidee.html. */
-          if (dialog) {
+          if (modalDialog) {
             event.preventDefault();
+            root = modalRoot;
+            dialog = modalDialog;
+            mountOpts = {};
             SS.openModal(dialog);
             start();
           }
@@ -206,6 +227,7 @@
   }
 
   function quitQuiz() {
+    if (mountOpts.onQuit) { mountOpts.onQuit(); return; }
     if (dialog && dialog.open) { SS.closeModal(dialog); }
     else { window.location.href = "index.html"; }
   }

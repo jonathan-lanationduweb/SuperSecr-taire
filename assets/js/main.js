@@ -180,19 +180,30 @@
     });
 
     /* Vidéo du hero : source adaptée à l'écran, lecture automatique
-       silencieuse sauf préférence de mouvement réduit, bouton pause/lecture. */
+       silencieuse sauf préférence de mouvement réduit, bouton pause/lecture.
+       La vidéo de fond floutée (même séquence) reste synchronisée. */
     var heroVideo = document.getElementById("hero-video");
     if (heroVideo) {
+      var bgVideo = document.querySelector(".hero-stage__bg");
       var videoToggle = document.getElementById("hero-video-toggle");
       var wantsReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       heroVideo.src = window.innerWidth < 700
         ? heroVideo.getAttribute("data-src-sd")
         : heroVideo.getAttribute("data-src-hd");
+      if (bgVideo) {
+        /* Le fond flouté utilise toujours la version légère. */
+        bgVideo.src = heroVideo.getAttribute("data-src-sd");
+      }
 
       var setVideoState = function (playing) {
-        if (!videoToggle) { return; }
-        videoToggle.setAttribute("aria-pressed", playing ? "true" : "false");
-        videoToggle.textContent = playing ? "Suspendre la vidéo" : "Lire la vidéo";
+        if (videoToggle) {
+          videoToggle.setAttribute("aria-pressed", playing ? "true" : "false");
+          videoToggle.textContent = playing ? "Suspendre la vidéo" : "Lire la vidéo";
+        }
+        if (bgVideo) {
+          if (playing) { bgVideo.play().catch(function () { /* fond figé */ }); }
+          else { bgVideo.pause(); }
+        }
       };
 
       if (!wantsReduced) {

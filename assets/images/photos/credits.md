@@ -1,4 +1,4 @@
-# CrÃ©dits photographiques
+ï»¿# CrÃ©dits photographiques
 
 Toutes les photographies proviennent de [Pexels](https://www.pexels.com) (licence Pexels, libre d'utilisation).
 
@@ -23,8 +23,9 @@ Toutes les photographies proviennent de [Pexels](https://www.pexels.com) (licenc
 | sf-entretien-rh.jpg | 5439152 | Tima Miroshnichenko |
 | og-image.jpg | 8837201 | Yan Krukau (version JPEG pour le partage social) |
 
-## Vidéo
+## Vidï¿½o
 
-| Fichier | Vidéo Pexels | Créateur |
+| Fichier | Vidï¿½o Pexels | Crï¿½ateur |
 | --- | --- | --- |
-| assets/videos/hero-bureau(.mp4/-sd.mp4/-poster.webp) | 7640073 | Yan Krukau |
+| assets/videos/hero-bureau(.mp4/-sd.mp4/-poster.jpg) | 4475908 | August de Richelieu |
+

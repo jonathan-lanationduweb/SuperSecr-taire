@@ -872,6 +872,128 @@
   border-color: var(--c-accent);
 }
 
+/* Bouton mini-quiz mis en avant */
+.chatbot-shortcuts .chatbot-quiz-btn {
+  width: 100%;
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.chatbot-shortcuts .chatbot-quiz-btn:hover {
+  background: var(--c-primary-dark);
+  border-color: var(--c-primary-dark);
+}
+
+/* Apparition douce des messages */
+.chatbot-msg {
+  animation: chat-in 240ms ease;
+}
+
+@keyframes chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* Indicateur « Clémence écrit… » */
+.chatbot-typing {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 1.2rem;
+}
+
+.chatbot-typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  opacity: 0.35;
+  animation: chat-dot 1s ease-in-out infinite;
+}
+
+.chatbot-typing span:nth-child(2) { animation-delay: 0.15s; }
+.chatbot-typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes chat-dot {
+  0%, 60%, 100% { opacity: 0.35; transform: none; }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Invitation : rebond + point orange sur la bulle */
+.chatbot-toggle {
+  position: fixed;
+}
+
+.chatbot-toggle.is-nudge {
+  animation: chat-nudge 1.4s ease 3;
+}
+
+@keyframes chat-nudge {
+  0%, 100% { transform: none; }
+  20% { transform: translateY(-7px); }
+  40% { transform: none; }
+  60% { transform: translateY(-3px); }
+}
+
+.chatbot-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  border: 2px solid var(--c-bg);
+}
+
+/* Mini-quiz monté dans la conversation */
+.chatbot-quiz {
+  border-top: 1px solid var(--c-line);
+  padding: var(--sp-4);
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--c-bg);
+}
+
+.chatbot-quiz .gs-question {
+  font-size: var(--text-base);
+}
+
+.chatbot-quiz .gs-help {
+  font-size: var(--text-xs);
+}
+
+.chatbot-quiz .gs-option {
+  padding: 0.55rem 0.85rem;
+  font-size: var(--text-sm);
+}
+
+.chatbot-quiz .gs-options {
+  gap: var(--sp-2);
+  margin-block: var(--sp-3);
+}
+
+.chatbot-quiz .gs-result {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+}
+
+.chatbot-quiz .gs-cta .btn {
+  padding: 0.6rem 1rem;
+  font-size: var(--text-sm);
+}
+
+.chatbot-quiz .gs-footer {
+  padding-top: var(--sp-3);
+  margin-top: var(--sp-3);
+}
+
 /* ===== Tableaux (adaptatifs en blocs sur mobile) ===== */
 .table-wrap {
   border: 1px solid var(--c-line);
