@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Offres d'emploi secrétariat et assistanat | SuperSecrétaire</title>
   <meta name="description" content="Consultez toutes les offres d'emploi de secrétaire, assistant(e), office manager et télésecrétaire en France. Filtres par métier, ville, contrat, salaire et télétravail.">
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SuperSecrétaire">
+  <meta property="og:title" content="Offres d'emploi secrétariat et assistanat | SuperSecrétaire">
+  <meta property="og:description" content="Consultez toutes les offres d'emploi de secrétaire, assistant(e), office manager et télésecrétaire en France. Filtres par métier, ville, contrat, salaire et télétravail.">
+  <meta property="og:image" content="https://jonathan-lanationduweb.github.io/SuperSecr-taire/assets/images/photos/hero-accueil.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1e4f46">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/variables.css">
@@ -156,6 +164,7 @@
         <div class="results-head">
           <h2 class="results-count" id="results-count" aria-live="polite">Chargement des offres…</h2>
           <div class="results-sort">
+            <button type="button" id="saved-filter" class="chip" aria-pressed="false">★ Enregistrées <span id="saved-count">(0)</span></button>
             <label for="sort-select">Trier par</label>
             <select id="sort-select">
               <option value="pertinence">Pertinence</option>
@@ -221,6 +230,7 @@
   <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
 
 
 

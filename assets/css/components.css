@@ -186,6 +186,12 @@
   color: var(--c-ink);
 }
 
+.chip[aria-pressed="true"] {
+  background: var(--c-primary);
+  border-color: var(--c-primary);
+  color: #fff;
+}
+
 /* ===== Cartes — filet fin, sans ombre par défaut ===== */
 .card {
   background: var(--c-surface);
@@ -472,6 +478,21 @@
   border-left-color: var(--c-accent);
   background: var(--c-accent-soft);
   color: var(--c-accent-dark);
+}
+
+/* ===== Page 404 ===== */
+.error-404-wrap {
+  padding-block: var(--sp-8);
+}
+
+.error-404 {
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+.error-404 h1 {
+  font-size: var(--text-2xl);
+  margin-block: var(--sp-3);
 }
 
 /* ===== État vide ===== */

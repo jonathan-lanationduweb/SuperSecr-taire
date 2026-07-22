@@ -519,3 +519,47 @@ a:hover {
 .text-center {
   text-align: center;
 }
+
+/* ===== Impression : contenu seul, sans interface =====
+   Permet d'imprimer proprement une offre ou un savoir-faire. */
+@media print {
+  .site-header,
+  .site-footer,
+  .demo-banner,
+  .skip-link,
+  .breadcrumb,
+  .chatbot-toggle,
+  .chatbot-panel,
+  .save-btn,
+  .offer-hero__actions,
+  .search-band,
+  .filters-panel,
+  .filters-toggle,
+  .pagination,
+  .knowhow-aside-actions,
+  .form-actions {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .offer-detail-layout,
+  .company-layout,
+  .knowhow-layout,
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    border-color: #bbb;
+    break-inside: avoid;
+  }
+}

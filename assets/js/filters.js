@@ -6,7 +6,16 @@
   "use strict";
 
   var PAGE_SIZE = 6;
-  var state = { offers: [], filtered: [], page: 1 };
+  var state = { offers: [], filtered: [], page: 1, savedOnly: false };
+
+  function savedIds() {
+    return SS.store.get("ss_offres_enregistrees", []);
+  }
+
+  function updateSavedCount() {
+    var el = document.getElementById("saved-count");
+    if (el) { el.textContent = "(" + savedIds().length + ")"; }
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
     var list = document.getElementById("offers-list");
@@ -79,6 +88,21 @@
 
     document.getElementById("sort-select").addEventListener("change", applyFilters);
 
+    /* Filtre « offres enregistrées » : bascule + compteur vivant. */
+    var savedBtn = document.getElementById("saved-filter");
+    if (savedBtn) {
+      updateSavedCount();
+      savedBtn.addEventListener("click", function () {
+        state.savedOnly = !state.savedOnly;
+        savedBtn.setAttribute("aria-pressed", state.savedOnly ? "true" : "false");
+        applyFilters();
+      });
+      document.addEventListener("ss:saved-changed", function () {
+        updateSavedCount();
+        if (state.savedOnly) { applyFilters(); }
+      });
+    }
+
     /* Repli des filtres sur mobile. */
     var toggle = document.getElementById("filters-toggle");
     var panel = document.getElementById("filters-panel");
@@ -104,7 +128,10 @@
     var salary = document.getElementById("filter-salary").value;
     var recency = document.getElementById("filter-date").value;
 
+    var saved = state.savedOnly ? savedIds() : null;
+
     state.filtered = state.offers.filter(function (o) {
+      if (saved && saved.indexOf(o.id) === -1) { return false; }
       if (keyword) {
         var haystack = normalize(o.titre + " " + o.entrepriseNom + " " +
           o.categorieLabel + " " + (o.competences || []).join(" "));

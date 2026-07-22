@@ -76,6 +76,7 @@
     if (index === -1) { saved.push(id); } else { saved.splice(index, 1); }
     SS.store.set(SAVE_KEY, saved);
     btn.setAttribute("aria-pressed", index === -1 ? "true" : "false");
+    document.dispatchEvent(new CustomEvent("ss:saved-changed"));
   });
 
   /* Associe la couleur du logo de l'entreprise à chaque offre. */
