@@ -80,6 +80,24 @@
     position: static;
   }
 
+  /* Offres similaires : 2 colonnes en tablette */
+  #similar-offers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hero de la fiche : titre puis panneau d'action empilés, pleine largeur
+     (flex-column garantit l'ordre — le wrap laissait le panneau flotter) */
+  .offer-hero__grid {
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+
+  .offer-hero__actions {
+    min-width: 0;
+    width: 100%;
+  }
+
   .directory-search form {
     grid-template-columns: 1fr 1fr;
   }
@@ -295,9 +313,14 @@
     grid-template-columns: 1fr;
   }
 
-  .search-band__field + .search-band__field {
-    border-left: none;
-    border-top: 1px solid var(--c-line);
+  /* Séparateur : trait horizontal entre champs empilés */
+  .search-band__field + .search-band__field::before {
+    left: 1.15rem;
+    right: 1.15rem;
+    top: 0;
+    bottom: auto;
+    width: auto;
+    height: 1px;
   }
 
   .search-band .btn {
@@ -312,6 +335,21 @@
   .knowhow-mosaic,
   .values-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Offres similaires : une colonne en mobile */
+  #similar-offers {
+    grid-template-columns: 1fr;
+  }
+
+  /* Rangées d'offres : padding réduit dans le conteneur bordé */
+  .offers-list .offer-row {
+    padding-inline: var(--sp-3);
+  }
+
+  /* Colonnes de la liste : autorisées à rétrécir sous leur contenu */
+  .offers-layout > * {
+    min-width: 0;
   }
 
   .article-featured {
@@ -368,41 +406,8 @@
     grid-template-columns: 1fr;
   }
 
-  /* Fiche offre : barre de candidature toujours visible en bas d'écran */
-  body:has(#offer-detail) {
-    padding-bottom: 76px;
-  }
-
-  body:has(#offer-detail) .offer-hero__actions {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 190;
-    flex-direction: row;
-    gap: var(--sp-3);
-    background: var(--c-surface);
-    border-top: 1px solid var(--c-line);
-    padding: var(--sp-3) var(--sp-4);
-    min-width: 0;
-  }
-
-  body:has(#offer-detail) .offer-hero__actions .btn {
-    flex: 1;
-    padding-inline: var(--sp-3);
-  }
-
-  body:has(#offer-detail) .chatbot-toggle {
-    bottom: calc(var(--sp-4) + 72px);
-  }
-
-  body:has(#offer-detail) .chatbot-panel {
-    bottom: calc(var(--sp-4) + 136px);
-  }
-
-  .offer-hero__actions {
-    width: 100%;
-  }
+  /* La fiche offre présente désormais un panneau d'action complet (salaire +
+     Postuler + outils) directement sous le titre : plus de barre fixe. */
 
   .wizard {
     padding: var(--sp-5);

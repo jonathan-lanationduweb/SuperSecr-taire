@@ -149,6 +149,8 @@
         fillDetail(offer, company);
         setupApplyModal(offer);
         setupShare(offer);
+        setupDetailSave(offer);
+        setupCopyLink();
         renderSimilar(offer, offers, companies);
         injectJobPostingSchema(offer, company);
       })
@@ -173,6 +175,7 @@
     set("summary-salary", offer.salaire);
     set("summary-remote", SS.teletravailLabel(offer.teletravail) || "Sur site");
     set("summary-expiry", "Jusqu'au " + SS.formatDate(offer.dateExpiration));
+    set("offer-hero-salary", offer.salaire || "Salaire selon profil");
 
     var companyLink = document.getElementById("offer-company-link");
     if (companyLink) {
@@ -284,24 +287,57 @@
   }
   SS.validateForm = validateForm;
 
+  /* ---- Enregistrer (fiche offre) : même stockage que la liste ---- */
+  function setupDetailSave(offer) {
+    var btn = document.getElementById("save-button");
+    if (!btn) { return; }
+    var label = btn.querySelector(".offer-tool__label");
+    var icon = btn.querySelector(".offer-tool__icon");
+    var sync = function () {
+      var saved = isSaved(offer.id);
+      btn.setAttribute("aria-pressed", saved ? "true" : "false");
+      btn.classList.toggle("is-active", saved);
+      if (icon) { icon.textContent = saved ? "★" : "☆"; }
+      if (label) { label.textContent = saved ? "Enregistrée" : "Enregistrer"; }
+    };
+    sync();
+    btn.addEventListener("click", function () {
+      var list = SS.store.get(SAVE_KEY, []);
+      var i = list.indexOf(offer.id);
+      if (i === -1) { list.push(offer.id); } else { list.splice(i, 1); }
+      SS.store.set(SAVE_KEY, list);
+      sync();
+      SS.toast(i === -1 ? "Offre enregistrée." : "Offre retirée de vos enregistrements.");
+    });
+  }
+
+  /* ---- Copier le lien de l'offre ---- */
+  function setupCopyLink() {
+    var btn = document.getElementById("copy-link-button");
+    if (!btn || !navigator.clipboard) { if (btn) { btn.hidden = true; } return; }
+    var label = btn.querySelector(".offer-tool__label");
+    btn.addEventListener("click", function () {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        if (label) { label.textContent = "Lien copié !"; }
+        SS.toast("Lien de l'offre copié dans le presse-papiers.");
+        setTimeout(function () { if (label) { label.textContent = "Copier le lien"; } }, 2500);
+      });
+    });
+  }
+
   /* ---- Partage ---- */
   function setupShare(offer) {
     var btn = document.getElementById("share-button");
     if (!btn) { return; }
+    /* Partage natif si disponible ; sinon le bouton « Copier le lien »
+       voisin couvre déjà le besoin, on masque celui-ci. */
+    if (!navigator.share) { btn.hidden = true; return; }
     btn.addEventListener("click", function () {
-      var payload = {
+      navigator.share({
         title: offer.titre + " — SuperSecrétaire",
         text: "Offre d'emploi : " + offer.titre + " à " + offer.ville,
         url: window.location.href
-      };
-      if (navigator.share) {
-        navigator.share(payload).catch(function () { /* partage annulé */ });
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(function () {
-          btn.textContent = "Lien copié !";
-          setTimeout(function () { btn.textContent = "Partager cette offre"; }, 2500);
-        });
-      }
+      }).catch(function () { /* partage annulé */ });
     });
   }
 
@@ -323,7 +359,27 @@
       container.closest("section").hidden = true;
       return;
     }
-    container.innerHTML = similar.map(SS.offerCard).join("");
+    container.innerHTML = similar.map(similarCard).join("");
+  }
+
+  /* Carte compacte, distincte des rangées de la liste principale :
+     monogramme, titre, entreprise, salaire, puis lien fléché. */
+  function similarCard(offer) {
+    var e = SS.escapeHtml;
+    var url = "offre-detail.html?id=" + encodeURIComponent(offer.id);
+    var initials = e((offer.entrepriseNom || "??").split(/\s+/).slice(0, 2)
+      .map(function (w) { return w.charAt(0); }).join("").toUpperCase());
+    var remote = SS.teletravailLabel(offer.teletravail);
+    return '<article class="similar-card">' +
+      '<div class="similar-card__head">' +
+        '<span class="logo-bubble" style="background:' + e(offer.couleur || "#1E4F46") + '" aria-hidden="true">' + initials + "</span>" +
+        '<span class="similar-card__contract">' + e(offer.contrat) + (remote ? " · " + e(remote) : "") + "</span>" +
+      "</div>" +
+      '<h3 class="similar-card__title"><a href="' + url + '">' + e(offer.titre) + "</a></h3>" +
+      '<p class="similar-card__company">' + e(offer.entrepriseNom) + " · " + e(offer.ville) + "</p>" +
+      '<p class="similar-card__salary">' + e(offer.salaire || "Salaire selon profil") + "</p>" +
+      '<span class="similar-card__cta" aria-hidden="true">Voir l\'offre →</span>' +
+    "</article>";
   }
 
   /* ---- Données structurées JobPosting (SEO) ---- */

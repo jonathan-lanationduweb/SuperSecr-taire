@@ -72,12 +72,28 @@
             <div class="offer-hero__main">
               <p class="offer-hero__company">Chez <a id="offer-company-link" href="entreprises.html">l'entreprise</a></p>
               <h1 id="offer-title">Chargement de l'offre…</h1>
-              <p class="text-muted"><span id="offer-city"></span> · <span id="offer-date"></span></p>
+              <p class="text-muted offer-hero__place"><span id="offer-city"></span> · <span id="offer-date"></span></p>
               <div class="offer-hero__meta" id="offer-badges"></div>
             </div>
             <div class="offer-hero__actions">
-              <button type="button" id="apply-button" class="btn btn-accent btn-lg">Postuler à cette offre</button>
-              <button type="button" id="share-button" class="btn btn-outline">Partager cette offre</button>
+              <div class="offer-action-panel">
+                <p class="offer-action-panel__salary">
+                  <span class="offer-action-panel__salary-label">Rémunération</span>
+                  <strong id="offer-hero-salary">—</strong>
+                </p>
+                <button type="button" id="apply-button" class="btn btn-accent offer-apply-btn">Postuler à cette offre</button>
+                <div class="offer-action-panel__tools">
+                  <button type="button" id="save-button" class="offer-tool" aria-pressed="false">
+                    <span class="offer-tool__icon" aria-hidden="true">☆</span><span class="offer-tool__label">Enregistrer</span>
+                  </button>
+                  <button type="button" id="copy-link-button" class="offer-tool">
+                    <span class="offer-tool__icon" aria-hidden="true">🔗</span><span class="offer-tool__label">Copier le lien</span>
+                  </button>
+                  <button type="button" id="share-button" class="offer-tool">
+                    <span class="offer-tool__icon" aria-hidden="true">↗</span><span class="offer-tool__label">Partager</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
