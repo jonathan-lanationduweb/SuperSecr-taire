@@ -54,7 +54,7 @@
     var remote = SS.teletravailLabel(offer.teletravail);
     var url = "offre-detail.html?id=" + encodeURIComponent(offer.id);
     return '<article class="offer-featured">' +
-      '<span class="offer-featured__label">L\'offre à la une</span>' +
+      '<span class="offer-featured__badge">★ Offre premium</span>' +
       '<h3><a href="' + url + '">' + e(offer.titre) + "</a></h3>" +
       '<p class="offer-featured__company"><strong>' + e(offer.entrepriseNom) + "</strong> · " + e(offer.ville) +
         " · " + e(offer.contrat) + (remote ? " · " + e(remote) : "") + "</p>" +

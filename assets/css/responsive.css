@@ -457,6 +457,10 @@
 
 /* ===== Petit mobile (≤ 480px) ===== */
 @media (max-width: 480px) {
+  .metiers-list ul {
+    grid-template-columns: 1fr;
+  }
+
   .container,
   .container--narrow {
     width: calc(100% - 2rem);

@@ -19,8 +19,15 @@
     border-color var(--transition), transform var(--transition);
 }
 
+/* Hover : légère montée, ombre douce — identique sur tous les boutons */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-s);
+}
+
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .btn-primary {
@@ -106,7 +113,7 @@
   pointer-events: none;
 }
 
-/* Lien fléché éditorial — alternative aux boutons */
+/* Lien fléché éditorial — soulignement fluide, flèche qui glisse */
 .link-more {
   display: inline-flex;
   align-items: center;
@@ -114,7 +121,12 @@
   font-weight: 600;
   color: var(--c-primary);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  background-image: linear-gradient(var(--c-accent), var(--c-accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--transition), color var(--transition);
 }
 
 .link-more::after {
@@ -124,7 +136,7 @@
 
 .link-more:hover {
   color: var(--c-primary-dark);
-  border-bottom-color: var(--c-accent);
+  background-size: 100% 2px;
 }
 
 .link-more:hover::after {
@@ -195,16 +207,19 @@
   color: #fff;
 }
 
-/* ===== Cartes — filet fin, sans ombre par défaut ===== */
+/* ===== Cartes — filet fin, légère élévation au survol ===== */
 .card {
   background: var(--c-surface);
   border: 1px solid var(--c-line);
   border-radius: var(--radius-m);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition),
+    transform var(--transition);
 }
 
 .card:hover {
   border-color: var(--c-border-strong);
+  box-shadow: var(--shadow-m);
+  transform: translateY(-2px);
 }
 
 /* Carte à bordure partielle (accent gauche) */
@@ -260,6 +275,7 @@
 
 .offer-row:hover {
   background: var(--c-surface);
+  box-shadow: inset 3px 0 0 var(--c-accent);
 }
 
 .offer-row__title {

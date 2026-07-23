@@ -173,10 +173,25 @@
     var yearEl = document.querySelector("[data-year]");
     if (yearEl) { yearEl.textContent = String(new Date().getFullYear()); }
 
+    /* Newsletter du pied de page — simulée, comme le reste du prototype. */
+    var newsletter = document.querySelector("[data-newsletter]");
+    if (newsletter) {
+      newsletter.addEventListener("submit", function (event) {
+        event.preventDefault();
+        newsletter.reset();
+        SS.toast("Inscription enregistrée — prototype : aucun e-mail ne sera envoyé.");
+      });
+    }
+
     /* Fermeture générique des modales via [data-close-modal]. */
     document.addEventListener("click", function (event) {
       var closer = event.target.closest("[data-close-modal]");
       if (closer) { SS.closeModal(closer.closest("dialog")); }
+    });
+
+    /* Chaque grande section éditoriale apparaît en douceur. */
+    document.querySelectorAll("main > .section > .container").forEach(function (el) {
+      el.classList.add("reveal");
     });
 
     /* Révélation douce des sections marquées .reveal. */
@@ -185,6 +200,8 @@
     if (reduceMotion || !("IntersectionObserver" in window)) {
       revealables.forEach(function (el) { el.classList.add("is-visible"); });
     } else {
+      /* rootMargin étendu vers le haut : une section dépassée d'un coup
+         (ancre, restauration de défilement) est considérée comme vue. */
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -192,7 +209,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
+      }, { threshold: 0.12, rootMargin: "4000px 0px 0px 0px" });
       revealables.forEach(function (el) { observer.observe(el); });
     }
   });

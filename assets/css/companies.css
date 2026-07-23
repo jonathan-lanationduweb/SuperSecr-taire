@@ -75,6 +75,17 @@
   gap: var(--sp-4);
 }
 
+/* Monogramme plus présent sur les fiches mises en avant */
+.company-card .logo-bubble {
+  width: 58px;
+  height: 58px;
+  font-size: 1.2rem;
+}
+
+.company-card__head h3 {
+  font-size: 1.25rem;
+}
+
 .company-card--hiring {
   border-left: 3px solid var(--c-success);
   border-radius: 0 var(--radius-m) var(--radius-m) 0;

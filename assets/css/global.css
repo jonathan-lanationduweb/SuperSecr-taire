@@ -385,13 +385,14 @@ a:hover {
   background: #fff;
   border-color: #fff;
   color: var(--c-primary-dark);
+  min-height: 48px;
 }
 
 .site-header--overlay .nav-actions .btn-primary:hover {
   background: #fff;
   color: var(--c-primary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-m);
 }
 
 .site-header--overlay .nav-toggle {
@@ -544,6 +545,11 @@ a:hover {
   padding-block: clamp(3rem, 5vw, 4rem);
 }
 
+/* Les colonnes peuvent rétrécir sous la largeur intrinsèque de leur contenu */
+.footer-grid > * {
+  min-width: 0;
+}
+
 .footer-brand .logo-text {
   color: #fff;
   font-size: 1.3rem;
@@ -558,6 +564,75 @@ a:hover {
   font-size: var(--text-sm);
   max-width: 30ch;
   line-height: 1.7;
+}
+
+/* Newsletter — simulée, cohérente avec le reste du prototype */
+.footer-news {
+  margin-top: var(--sp-5);
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 320px;
+}
+
+.footer-news label {
+  font-size: var(--text-sm);
+  color: #c3d1c8;
+  line-height: 1.5;
+}
+
+.footer-news__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-news input {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0.55rem 0.85rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-m);
+  color: #fff;
+  font-size: var(--text-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.footer-news input::placeholder {
+  color: #8ba396;
+}
+
+.footer-news input:focus {
+  outline: none;
+  border-color: var(--c-accent);
+  box-shadow: var(--shadow-focus);
+}
+
+.footer-social {
+  margin-top: var(--sp-5);
+  display: flex;
+  gap: var(--sp-4);
+  list-style: none;
+  padding: 0;
+}
+
+.footer-social a {
+  color: #93aa9d;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding-bottom: 2px;
+  background-image: linear-gradient(var(--c-accent), var(--c-accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size var(--transition), color var(--transition);
+}
+
+.footer-social a:hover {
+  color: #fff;
+  background-size: 100% 2px;
 }
 
 .footer-col h2 {
@@ -601,11 +676,11 @@ a:hover {
   color: #93aa9d;
 }
 
-/* Apparition douce au défilement */
+/* Apparition douce au défilement — quelques pixels, jamais spectaculaire */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 500ms ease, transform 500ms ease;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .reveal.is-visible {

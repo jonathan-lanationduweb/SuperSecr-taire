@@ -61,10 +61,10 @@
 .home-hero__eyebrow {
   font-size: var(--text-xs);
   font-weight: 650;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-accent);
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -72,10 +72,10 @@
   color: #fff;
   font-family: var(--font-sans);
   font-weight: 650;
-  font-size: clamp(2.375rem, 4.9vw, 4.375rem);
-  line-height: 1.08;
+  font-size: clamp(2.375rem, 5vw, 4.5rem);
+  line-height: 1.06;
   letter-spacing: -0.02em;
-  max-width: 860px;
+  max-width: 900px;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.38);
 }
 
@@ -123,13 +123,14 @@
 }
 
 .hero-search__field input {
-  min-height: 52px;
-  padding: 0.6rem 0.95rem;
+  min-height: 54px;
+  padding: 0.6rem 1rem;
   border: 1px solid transparent;
   border-radius: var(--radius-s);
   background: #fff;
   font-size: 1.0625rem;
   color: var(--c-ink);
+  transition: box-shadow var(--transition);
 }
 
 .hero-search__field input:focus {
@@ -139,8 +140,8 @@
 
 .hero-search__submit {
   align-self: end;
-  min-height: 52px;
-  padding-inline: 2rem;
+  min-height: 54px;
+  padding-inline: 2.1rem;
 }
 
 .home-hero__guided {
@@ -272,12 +273,20 @@
   position: relative;
 }
 
-.offer-featured__label {
+/* Badge premium : pastille pleine, posée en tête de carte */
+.offer-featured__badge {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--c-accent);
+  color: var(--c-primary-dark);
   font-size: var(--text-xs);
-  font-weight: 650;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-accent);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-s);
 }
 
 .offer-featured h3 {
@@ -479,29 +488,48 @@
   margin-bottom: var(--sp-3);
 }
 
+/* Grille de petites cartes cliquables plutôt qu'une liste plate */
 .metiers-list ul {
-  columns: 2;
-  column-gap: var(--sp-5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   list-style: none;
   padding: 0;
 }
 
-.metiers-list li {
-  break-inside: avoid;
-}
-
 .metiers-list ul a {
-  display: block;
-  padding: 0.6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: 0.85rem 1rem;
   text-decoration: none;
   color: var(--c-ink);
   font-size: var(--text-sm);
-  border-bottom: 1px solid var(--c-line);
+  font-weight: 600;
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-m);
+  transition: border-color var(--transition), background var(--transition),
+    transform var(--transition);
+}
+
+.metiers-list ul a::after {
+  content: "→";
+  color: var(--c-border-strong);
+  transition: color var(--transition), transform var(--transition);
 }
 
 .metiers-list ul a:hover {
-  color: var(--c-primary);
-  padding-left: 0.3rem;
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+  color: var(--c-primary-dark);
+  transform: translateY(-1px);
+}
+
+.metiers-list ul a:hover::after {
+  color: var(--c-accent-dark);
+  transform: translateX(3px);
 }
 
 .metiers-list__cta {
@@ -549,6 +577,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.article-featured:hover img {
+  transform: scale(1.025);
+}
+
+.article-featured:hover {
+  border-color: var(--c-border-strong);
+  box-shadow: var(--shadow-m);
 }
 
 .article-featured__body {
@@ -588,10 +626,12 @@
 
 .article-meta-line {
   font-size: var(--text-xs);
+  letter-spacing: 0.02em;
   color: var(--c-ink-soft);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.8rem;
+  align-items: center;
+  gap: 0.35rem 0.9rem;
 }
 
 .article-meta-line .cat {
