@@ -33,6 +33,16 @@
       });
     }
 
+    /* En-tête « vivant » : ombre douce dès que la page défile un peu. */
+    var lightHeader = document.querySelector(".site-header--light");
+    if (lightHeader) {
+      var onScroll = function () {
+        lightHeader.classList.toggle("is-scrolled", window.scrollY > 8);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
     /* Marquer le lien de la page courante (aria-current). */
     var current = window.location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".nav-links a").forEach(function (link) {

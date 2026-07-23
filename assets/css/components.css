@@ -30,6 +30,46 @@
   box-shadow: none;
 }
 
+.btn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+/* État de chargement : libellé masqué + fine roue, largeur préservée */
+.btn[aria-busy="true"],
+.btn.is-loading {
+  color: transparent !important;
+  pointer-events: none;
+  position: relative;
+}
+
+.btn[aria-busy="true"]::after,
+.btn.is-loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  color: #fff;
+  animation: btn-spin 600ms linear infinite;
+}
+
+.btn-accent[aria-busy="true"]::after,
+.btn-outline[aria-busy="true"]::after {
+  color: var(--c-primary-dark);
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn[aria-busy="true"]::after,
+  .btn.is-loading::after { animation-duration: 1600ms; }
+}
+
 .btn-primary {
   background: var(--c-primary);
   color: #fff;
@@ -400,7 +440,20 @@
   border: 1px solid var(--c-border-strong);
   border-radius: var(--radius-m);
   background: var(--c-surface);
+  color: var(--c-ink);
   transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--c-border-strong);
+}
+
+/* Survol : la bordure s'affirme légèrement avant le focus */
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--c-ink-soft);
 }
 
 .field input:focus,
@@ -420,6 +473,12 @@
 .field.has-error select,
 .field.has-error textarea {
   border-color: var(--c-error);
+}
+
+.field.has-error input:focus,
+.field.has-error select:focus,
+.field.has-error textarea:focus {
+  box-shadow: 0 0 0 3px var(--c-error-soft);
 }
 
 .field-error {
