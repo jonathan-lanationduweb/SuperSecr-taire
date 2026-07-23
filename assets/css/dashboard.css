@@ -204,7 +204,7 @@
 }
 
 .offer-preview dt {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--c-ink-soft);

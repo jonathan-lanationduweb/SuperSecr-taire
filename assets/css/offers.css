@@ -29,7 +29,7 @@
 }
 
 .search-band__field label {
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: 650;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -238,7 +238,7 @@
 }
 
 .offer-summary-card dt {
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--c-ink-soft);

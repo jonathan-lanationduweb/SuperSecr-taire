@@ -150,7 +150,7 @@ a:hover {
   background: var(--c-bg-alt);
   color: var(--c-ink-soft);
   text-align: center;
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   letter-spacing: 0.03em;
   min-height: var(--banner-h);
   display: flex;

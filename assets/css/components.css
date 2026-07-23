@@ -815,7 +815,7 @@
 }
 
 .chatbot-header p {
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   color: #b9c9bf;
 }
 
@@ -1081,7 +1081,7 @@
   .data-table td[data-label]::before {
     content: attr(data-label);
     display: block;
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--c-ink-soft);
