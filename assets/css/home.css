@@ -177,6 +177,7 @@
   gap: var(--sp-3);
 }
 
+/* Même famille que .btn : hauteur 46, rayon 8, montée légère au survol */
 .hero-btn {
   display: inline-flex;
   align-items: center;
@@ -184,11 +185,16 @@
   gap: 0.55rem;
   height: 46px;
   padding: 0 1.4rem;
-  border-radius: 999px;
+  border-radius: var(--radius-m);
   font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;
-  transition: background var(--transition), border-color var(--transition);
+  transition: background var(--transition), border-color var(--transition),
+    transform var(--transition);
+}
+
+.hero-btn:hover {
+  transform: translateY(-1px);
 }
 
 .hero-btn--ghost {

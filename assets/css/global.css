@@ -76,21 +76,9 @@ a:hover {
   border-block: 1px solid var(--c-line);
 }
 
-.section--alt {
-  background: var(--c-surface);
-  border-block: 1px solid var(--c-line);
-}
-
 .section--tone {
   background: var(--c-bg-alt);
 }
-
-.section--dark {
-  background: var(--c-primary-dark);
-  color: #dbe6de;
-}
-
-.section--dark h2 { color: #fff; }
 
 /* Têtes de section éditoriales : filet + étiquette, plus de variété */
 .section-head {
@@ -107,11 +95,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.section-head--center {
-  margin-inline: auto;
-  text-align: center;
-}
-
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -125,13 +108,6 @@ a:hover {
 }
 
 .eyebrow::before {
-  content: "";
-  width: 26px;
-  height: 2px;
-  background: var(--c-accent);
-}
-
-.section-head--center .eyebrow::after {
   content: "";
   width: 26px;
   height: 2px;

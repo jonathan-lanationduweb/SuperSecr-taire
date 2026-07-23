@@ -222,12 +222,6 @@
   transform: translateY(-2px);
 }
 
-/* Carte à bordure partielle (accent gauche) */
-.card--edge {
-  border-left: 3px solid var(--c-accent);
-  border-radius: 0 var(--radius-m) var(--radius-m) 0;
-}
-
 /* Pastille logo d'entreprise (initiales) */
 .logo-bubble {
   width: 50px;
