@@ -58,51 +58,72 @@
   <main id="contenu">
     <div id="knowhow-detail">
 
-      <!-- En-tête de la publication -->
-      <div class="knowhow-hero">
-        <div class="container">
-          <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <!-- En-tête immersif de la publication -->
+      <header class="kh-hero" id="kh-hero">
+        <div class="kh-hero__media" aria-hidden="true">
+          <img id="kh-hero-img" src="" alt="">
+          <span class="kh-hero__scrim"></span>
+        </div>
+        <div class="container kh-hero__inner">
+          <nav class="breadcrumb breadcrumb--ondark" aria-label="Fil d'Ariane">
             <ol>
               <li><a href="index.html">Accueil</a></li>
               <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
               <li aria-current="page">Publication</li>
             </ol>
           </nav>
-          <div class="knowhow-hero__meta" id="kh-badges"></div>
+          <div class="kh-hero__badges" id="kh-badges"></div>
           <h1 id="kh-title">Chargement de la publication…</h1>
-          <p class="rating-inline" id="kh-hero-rating"></p>
-          <p class="text-muted"><span id="kh-date"></span> · <span id="kh-views"></span></p>
-          <div class="knowhow-author" id="kh-author"></div>
+          <p class="kh-hero__resume" id="kh-hero-resume"></p>
+          <ul class="kh-hero__facts" id="kh-hero-facts" aria-label="Informations clés"></ul>
+          <div class="kh-hero__foot">
+            <div class="kh-hero__author" id="kh-author"></div>
+            <a class="btn btn-accent kh-hero__cta" href="#h-kh-steps">Voir les étapes ↓</a>
+          </div>
         </div>
-      </div>
+      </header>
+
+      <!-- Barre de progression sticky -->
+      <nav class="kh-progress" id="kh-progress" aria-label="Progression dans la lecture">
+        <div class="kh-progress__track"><span class="kh-progress__fill" id="kh-progress-fill"></span></div>
+        <div class="container kh-progress__inner">
+          <a href="#h-kh-intro" data-progress-link>Présentation</a>
+          <a href="#h-kh-steps" data-progress-link>Étapes</a>
+          <a href="#h-kh-result" data-progress-link>Résultat</a>
+          <a href="#h-rating" data-progress-link>Avis</a>
+          <a href="#h-comments" data-progress-link>Commentaires</a>
+        </div>
+      </nav>
 
       <!-- Corps de la publication -->
       <div class="container knowhow-layout">
         <div class="knowhow-main">
-          <img id="kh-image" src="assets/images/sf-resultat.svg" alt="">
-          <section aria-labelledby="h-kh-intro">
+          <!-- Statistiques -->
+          <div class="kh-stats" id="kh-stats" aria-label="Statistiques"></div>
+
+          <section aria-labelledby="h-kh-intro" id="sec-intro">
             <h2 id="h-kh-intro">Présentation</h2>
             <p id="kh-intro"></p>
           </section>
-          <section aria-labelledby="h-kh-steps">
-            <h2 id="h-kh-steps">Les étapes</h2>
-            <ol class="knowhow-steps" id="kh-steps"></ol>
+          <section aria-labelledby="h-kh-steps" id="sec-steps">
+            <h2 id="h-kh-steps">Les étapes, pas à pas</h2>
+            <ol class="kh-timeline" id="kh-steps"></ol>
           </section>
-          <section aria-labelledby="h-kh-tips">
+          <section aria-labelledby="h-kh-tips" id="sec-tips">
             <h2 id="h-kh-tips">Les conseils du professionnel</h2>
-            <ul id="kh-tips" class="check-list"></ul>
+            <div id="kh-tips" class="kh-callouts kh-callouts--tips"></div>
           </section>
-          <section aria-labelledby="h-kh-mistakes">
+          <section aria-labelledby="h-kh-mistakes" id="sec-mistakes">
             <h2 id="h-kh-mistakes">Les erreurs à éviter</h2>
-            <ul id="kh-mistakes" class="check-list"></ul>
+            <div id="kh-mistakes" class="kh-callouts kh-callouts--mistakes"></div>
           </section>
-          <section aria-labelledby="h-kh-result">
+          <section aria-labelledby="h-kh-result" id="sec-result">
             <h2 id="h-kh-result">Le résultat final</h2>
             <div class="knowhow-result">
               <p id="kh-result-text"></p>
             </div>
           </section>
-          <section aria-labelledby="h-kh-gallery">
+          <section aria-labelledby="h-kh-gallery" id="sec-gallery">
             <h2 id="h-kh-gallery">En images</h2>
             <div class="knowhow-gallery" id="kh-gallery"></div>
           </section>
@@ -274,13 +295,27 @@
       <!-- Publications similaires -->
       <section class="knowhow-similar" aria-labelledby="h-kh-similar">
         <div class="container">
-          <div class="section-head">
-            <h2 id="h-kh-similar">D'autres savoir-faire à découvrir</h2>
+          <div class="section-head section-head--row">
+            <div>
+              <span class="eyebrow">À explorer</span>
+              <h2 id="h-kh-similar">D'autres savoir-faire à découvrir</h2>
+            </div>
+            <div class="kh-carousel__nav" aria-hidden="true">
+              <button type="button" class="kh-carousel__btn" data-carousel-prev aria-label="Précédent">←</button>
+              <button type="button" class="kh-carousel__btn" data-carousel-next aria-label="Suivant">→</button>
+            </div>
           </div>
-          <div id="kh-similar" class="knowhow-mosaic"></div>
+          <div id="kh-similar" class="kh-carousel"></div>
         </div>
       </section>
     </div>
+
+    <!-- Lightbox galerie -->
+    <dialog class="kh-lightbox" id="kh-lightbox" aria-label="Image agrandie">
+      <button type="button" class="kh-lightbox__close" data-close-modal aria-label="Fermer">✕</button>
+      <img id="kh-lightbox-img" src="" alt="">
+      <p class="kh-lightbox__caption" id="kh-lightbox-caption"></p>
+    </dialog>
 
     <!-- Modale de signalement -->
     <dialog class="modal" id="report-modal" aria-labelledby="report-title">

@@ -255,7 +255,55 @@
       setupShare(pub);
       setupReport(pub);
       renderSimilar(pub, items);
+      setupProgress();
+      setupCarousel();
     }).catch(function () { SS.dataError(root.querySelector(".container") || root); });
+  }
+
+  /* ---- Barre de progression sticky + surlignage de section ---- */
+  function setupProgress() {
+    var nav = document.getElementById("kh-progress");
+    var fill = document.getElementById("kh-progress-fill");
+    if (!nav) { return; }
+    var links = Array.prototype.slice.call(nav.querySelectorAll("[data-progress-link]"));
+    var targets = links.map(function (a) {
+      return document.querySelector(a.getAttribute("href"));
+    });
+
+    var update = function () {
+      var doc = document.documentElement;
+      var scrollable = doc.scrollHeight - doc.clientHeight;
+      var pct = scrollable > 0 ? Math.min(100, Math.max(0, doc.scrollTop / scrollable * 100)) : 0;
+      if (fill) { fill.style.width = pct + "%"; }
+
+      /* Section active : la dernière dont le haut a dépassé le milieu de l'écran. */
+      var mid = window.innerHeight * 0.35;
+      var activeIndex = 0;
+      targets.forEach(function (t, i) {
+        if (t && t.getBoundingClientRect().top <= mid) { activeIndex = i; }
+      });
+      links.forEach(function (a, i) {
+        a.classList.toggle("is-active", i === activeIndex);
+      });
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
+  /* ---- Carrousel des publications similaires ---- */
+  function setupCarousel() {
+    var track = document.getElementById("kh-similar");
+    if (!track) { return; }
+    var prev = document.querySelector("[data-carousel-prev]");
+    var next = document.querySelector("[data-carousel-next]");
+    var step = function () {
+      var first = track.firstElementChild;
+      return first ? first.getBoundingClientRect().width + 24 : 320;
+    };
+    if (prev) { prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); }); }
+    if (next) { next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); }); }
   }
 
   function trackView(pub) {
@@ -264,22 +312,47 @@
     SS.store.set(APP_CONFIG.storage.knowhowViews, views);
   }
 
+  function difficultyLevel(pub) {
+    var d = (pub.difficulte || "").toLowerCase();
+    if (/debut|facile/.test(d)) { return 1; }
+    if (/confirm|avance|expert/.test(d)) { return 3; }
+    return 2;
+  }
+
   function renderDetail(pub) {
     var e = SS.escapeHtml;
+    var r = combinedRatings(pub);
+    var views = combinedViews(pub);
     document.title = pub.titre + " | Savoir-faire SuperSecrétaire";
 
     setText("kh-title", pub.titre);
+    setText("kh-hero-resume", pub.resume);
     setText("kh-intro", pub.intro);
     setText("kh-result-text", pub.resultat);
-    setText("kh-date", "Publié le " + SS.formatDate(pub.datePublication));
-    setText("kh-views", combinedViews(pub) + " consultations");
+
+    /* Image du hero. */
+    var heroImg = document.getElementById("kh-hero-img");
+    if (heroImg) { heroImg.src = pub.image; heroImg.alt = ""; }
 
     var badges = document.getElementById("kh-badges");
-    badges.innerHTML = '<span class="badge badge--accent">' + e(pub.metier) + "</span>" +
-      '<span class="badge">' + e(pub.categorie) + "</span>" + difficultyBadge(pub) +
+    badges.innerHTML = '<span class="badge badge--accent">' + e(pub.categorie) + "</span>" +
+      '<span class="badge">' + e(pub.metier) + "</span>" + difficultyBadge(pub) +
       (pub.statut && pub.statut !== "publie" ? '<span class="badge badge--moderation">En attente de validation</span>' : "");
 
-    /* Auteur + lien vers sa fiche entreprise si elle existe. */
+    /* Faits clés du hero. */
+    var facts = document.getElementById("kh-hero-facts");
+    if (facts) {
+      var noteHtml = r.total
+        ? '<li><span class="kh-fact__star" aria-hidden="true">★</span>' + String(r.criteres.generale).replace(".", ",") + " · " + r.total + " avis</li>"
+        : "<li>Pas encore d'avis</li>";
+      facts.innerHTML =
+        "<li><span aria-hidden=\"true\">⏱️</span>" + e(pub.duree) + "</li>" +
+        "<li><span aria-hidden=\"true\">📊</span>" + e(pub.difficulteLabel) + "</li>" +
+        noteHtml +
+        "<li><span aria-hidden=\"true\">👁️</span>" + views + " vues</li>";
+    }
+
+    /* Auteur (dans le hero). */
     var initials = (pub.auteur.nom || "?").split(/\s+/).map(function (w) { return w.charAt(0); }).slice(0, 2).join("").toUpperCase();
     var authorBox = document.getElementById("kh-author");
     var companyPart = pub.auteur.entreprise
@@ -292,52 +365,128 @@
       "<p><strong>" + e(pub.auteur.nom) + "</strong>" +
       e(pub.auteur.metier) + (companyPart ? " · " + companyPart : "") + " · " + e(pub.auteur.ville) + "</p>";
 
-    var mainImg = document.getElementById("kh-image");
-    mainImg.src = pub.image;
-    mainImg.alt = pub.imageAlt || pub.titre;
+    /* Statistiques (démo : quelques indicateurs dérivés du nombre de vues). */
+    var stats = document.getElementById("kh-stats");
+    if (stats) {
+      stats.innerHTML = [
+        khStat(views, "vues"),
+        khStat(Math.round(views * 0.22), "sauvegardes"),
+        khStat(Math.round(views * 0.06), "partages"),
+        khStat(r.total, "ont terminé"),
+        khStat(pub.duree, "temps moyen")
+      ].join("");
+    }
 
-    /* Informations pratiques. */
+    /* Informations pratiques : durée en mini-timeline + jauge de difficulté. */
     var info = document.getElementById("kh-infos");
-    info.innerHTML = "<div><dt>Durée</dt><dd>" + e(pub.duree) + "</dd></div>" +
-      (pub.dureeDetail || []).map(function (d) {
-        return "<div><dt>" + e(d.label) + "</dt><dd>" + e(d.valeur) + "</dd></div>";
-      }).join("") +
-      "<div><dt>Difficulté</dt><dd>" + e(pub.difficulteLabel) + "</dd></div>";
+    if (info) {
+      var lvl = difficultyLevel(pub);
+      var segs = [1, 2, 3].map(function (n) {
+        return '<span class="kh-gauge__seg' + (n <= lvl ? " is-on" : "") + '"></span>';
+      }).join("");
+      var duree =
+        '<div class="kh-duree">' +
+          (pub.dureeDetail || []).map(function (d) {
+            return '<div class="kh-duree__row"><span>' + e(d.label) + "</span><strong>" + e(d.valeur) + "</strong></div>";
+          }).join("") +
+          '<div class="kh-duree__total"><span>Total</span><span>' + e(pub.duree) + "</span></div>" +
+        "</div>";
+      info.innerHTML =
+        "<div><dt>Difficulté</dt><dd><span class=\"kh-gauge__label\">" + e(pub.difficulteLabel) + "</span>" +
+          '<span class="kh-gauge" aria-hidden="true">' + segs + "</span></dd></div>" +
+        "<div><dt>Temps détaillé</dt><dd>" + duree + "</dd></div>";
+    }
 
     fillList("kh-materials", pub.materiel);
-    fillList("kh-tips", pub.conseils);
-    fillList("kh-mistakes", pub.erreurs);
 
-    /* Étapes numérotées. */
+    /* Conseils et erreurs en blocs callout. */
+    renderCallouts("kh-tips", pub.conseils, "💡");
+    renderCallouts("kh-mistakes", pub.erreurs, "⚠️");
+
+    /* Étapes en timeline. */
     var steps = document.getElementById("kh-steps");
     steps.innerHTML = (pub.etapes || []).map(function (step) {
-      return '<li class="knowhow-step">' +
+      return '<li class="kh-timeline__item"><div class="kh-timeline__card">' +
         "<h3>" + e(step.titre) + "</h3>" +
         "<p>" + e(step.texte) + "</p>" +
-        (step.image ? '<img src="' + e(step.image) + '" alt="Illustration de l\'étape : ' + e(step.titre) + '" loading="lazy">' : "") +
-        (step.conseil ? '<p class="step-tip"><strong>Conseil du pro :</strong> ' + e(step.conseil) + "</p>" : "") +
-      "</li>";
+        (step.image && /\.(webp|jpg|jpeg|png)$/i.test(step.image)
+          ? '<img src="' + e(step.image) + '" alt="Illustration : ' + e(step.titre) + '" loading="lazy">' : "") +
+        (step.conseil
+          ? '<p class="kh-step-tip"><span class="kh-step-tip__icon" aria-hidden="true">💡</span><span><strong>Astuce du pro : </strong>' + e(step.conseil) + "</span></p>"
+          : "") +
+      "</div></li>";
     }).join("");
 
-    /* Galerie. */
+    /* Galerie cliquable (lightbox). */
     var gallery = document.getElementById("kh-gallery");
-    if (pub.galerie && pub.galerie.length) {
-      gallery.innerHTML = pub.galerie.map(function (g) {
-        return '<img src="' + e(g.image) + '" alt="' + e(g.alt) + '" loading="lazy">';
+    var galItems = (pub.galerie || []).filter(function (g) {
+      return /\.(webp|jpg|jpeg|png)$/i.test(g.image);
+    });
+    if (galItems.length) {
+      gallery.innerHTML = galItems.map(function (g) {
+        return '<button type="button" data-lightbox="' + e(g.image) + '" data-caption="' + e(g.alt) + '">' +
+          '<img src="' + e(g.image) + '" alt="' + e(g.alt) + '" loading="lazy"></button>';
       }).join("");
+      setupLightbox(gallery);
     } else {
       gallery.closest("section").hidden = true;
     }
 
-    /* Lien fiche pro dans la colonne latérale. */
-    var proCard = document.getElementById("kh-pro-card");
-    proCard.innerHTML = "<h2>Le professionnel</h2>" +
-      "<p><strong>" + e(pub.auteur.nom) + "</strong><br>" + e(pub.auteur.metier) +
-      (pub.auteur.entreprise ? "<br>" + e(pub.auteur.entreprise) : "") + "<br>" + e(pub.auteur.ville) + "</p>" +
+    /* Carte professionnel enrichie (colonne latérale). */
+    renderProCard(pub, initials, r);
+  }
+
+  function khStat(value, label) {
+    return '<div class="kh-stat"><strong>' + SS.escapeHtml(String(value)) + "</strong><span>" + SS.escapeHtml(label) + "</span></div>";
+  }
+
+  function renderCallouts(id, items, icon) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    if (!items || !items.length) { el.closest("section").hidden = true; return; }
+    el.innerHTML = items.map(function (it) {
+      return '<div class="kh-callout"><span class="kh-callout__icon" aria-hidden="true">' + icon +
+        "</span><span>" + SS.escapeHtml(it) + "</span></div>";
+    }).join("");
+  }
+
+  function renderProCard(pub, initials, r) {
+    var e = SS.escapeHtml;
+    var box = document.getElementById("kh-pro-card");
+    if (!box) { return; }
+    /* Stats professionnel dérivées (démo). */
+    var tutos = 1 + (pub.id ? pub.id.length % 4 : 1);
+    box.innerHTML =
+      '<span class="kh-pro__avatar" aria-hidden="true">' + e(initials) + "</span>" +
+      '<p class="kh-pro__name"><strong>' + e(pub.auteur.nom) + "</strong></p>" +
+      '<p class="kh-pro__role">' + e(pub.auteur.metier) +
+        (pub.auteur.entreprise ? " · " + e(pub.auteur.entreprise) : "") + "<br>" + e(pub.auteur.ville) + "</p>" +
+      '<span class="kh-pro__verified">✓ Expert vérifié</span>' +
+      '<div class="kh-pro__stats">' +
+        "<div><strong>" + tutos + "</strong><span>tutoriels</span></div>" +
+        "<div><strong>" + r.total + "</strong><span>avis</span></div>" +
+        "<div><strong>" + (r.criteres.generale ? String(r.criteres.generale).replace(".", ",") : "–") + "</strong><span>note</span></div>" +
+      "</div>" +
       (pub.auteur.entrepriseId
-        ? '<div class="knowhow-aside-actions"><a class="btn btn-outline btn-sm" href="entreprise-detail.html?id=' +
-          encodeURIComponent(pub.auteur.entrepriseId) + '">Voir la fiche entreprise</a></div>'
-        : '<p class="text-muted">Fiche entreprise non référencée dans l\'annuaire (démonstration).</p>');
+        ? '<a class="btn btn-outline btn-sm btn-block" href="entreprise-detail.html?id=' +
+          encodeURIComponent(pub.auteur.entrepriseId) + '">Voir son profil</a>'
+        : '<p class="text-muted">Profil non référencé dans l\'annuaire (démonstration).</p>');
+  }
+
+  /* ---- Lightbox galerie ---- */
+  function setupLightbox(container) {
+    var dialog = document.getElementById("kh-lightbox");
+    if (!dialog) { return; }
+    var img = document.getElementById("kh-lightbox-img");
+    var cap = document.getElementById("kh-lightbox-caption");
+    container.addEventListener("click", function (event) {
+      var btn = event.target.closest("[data-lightbox]");
+      if (!btn) { return; }
+      img.src = btn.getAttribute("data-lightbox");
+      img.alt = btn.getAttribute("data-caption") || "";
+      if (cap) { cap.textContent = btn.getAttribute("data-caption") || ""; }
+      SS.openModal(dialog);
+    });
   }
 
   function setText(id, value) {
@@ -445,17 +594,24 @@
   /* ---- Commentaires ---- */
   function commentHTML(c) {
     var e = SS.escapeHtml;
+    var initials = (c.auteur || "?").split(/\s+/).map(function (w) { return w.charAt(0); }).slice(0, 2).join("").toUpperCase();
+    /* Nombre « utile » stable par commentaire (démo). */
+    var useful = 1 + ((c.texte || "").length % 12);
     return '<article class="card comment-card">' +
       '<div class="comment-card__head">' +
-        '<div><span class="who">' + e(c.auteur) + "</span> " +
-        (c.teste ? '<span class="badge badge--remote">Méthode testée</span>' : "") + "</div>" +
-        '<span class="when">' + e(SS.formatDate(c.date)) + "</span>" +
+        '<div class="comment-card__id">' +
+          '<span class="comment-avatar" aria-hidden="true">' + e(initials) + "</span>" +
+          '<div><span class="who">' + e(c.auteur) + "</span> " +
+          (c.teste ? '<span class="badge badge--remote">Méthode testée</span>' : "") +
+          '<br><span class="when">' + e(SS.formatDate(c.date)) + "</span></div>" +
+        "</div>" +
+        '<div class="rating-inline">' + starsHTML(c.note) + "<strong>" + c.note + "/5</strong></div>" +
       "</div>" +
-      '<div class="rating-inline">' + starsHTML(c.note) + "<strong>" + c.note + "/5</strong></div>" +
       (c.titre ? "<h3>" + e(c.titre) + "</h3>" : "") +
       "<p>" + e(c.texte) + "</p>" +
       (c.resultat ? '<p class="comment-result">Résultat obtenu : ' + e(c.resultat) + "</p>" : "") +
       (c.reponsePro ? '<div class="pro-reply"><strong>Réponse du professionnel :</strong> ' + e(c.reponsePro) + "</div>" : "") +
+      '<button type="button" class="comment-useful" data-useful><span aria-hidden="true">👍</span> Utile · <span class="comment-useful__n">' + useful + "</span></button>" +
     "</article>";
   }
 
@@ -469,6 +625,15 @@
     list.innerHTML = all.length
       ? all.map(commentHTML).join("")
       : '<div class="empty-state"><h3>Aucun retour pour le moment</h3><p>Soyez la première personne à partager votre expérience.</p></div>';
+
+    /* Bouton « Utile » : bascule visuelle (démo). */
+    list.querySelectorAll("[data-useful]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var n = btn.querySelector(".comment-useful__n");
+        var on = btn.classList.toggle("is-on");
+        if (n) { n.textContent = Number(n.textContent) + (on ? 1 : -1); }
+      });
+    });
   }
 
   function setupCommentForm(pub) {
