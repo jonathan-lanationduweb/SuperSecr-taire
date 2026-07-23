@@ -2,7 +2,6 @@
  * Vidéo du hero (page d'accueil) : source HD ou SD selon l'écran,
  * lecture automatique silencieuse sauf préférence de mouvement réduit
  * (le poster reste alors affiché), bouton Lire/Suspendre accessible.
- * La vidéo de fond floutée (même séquence en SD) reste synchronisée.
  */
 (function () {
   "use strict";
@@ -11,26 +10,17 @@
     var heroVideo = document.getElementById("hero-video");
     if (!heroVideo) { return; }
 
-    var bgVideo = document.querySelector(".hero-stage__bg");
     var videoToggle = document.getElementById("hero-video-toggle");
     var wantsReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     heroVideo.src = window.innerWidth < 700
       ? heroVideo.getAttribute("data-src-sd")
       : heroVideo.getAttribute("data-src-hd");
-    if (bgVideo) {
-      /* Le fond flouté utilise toujours la version légère. */
-      bgVideo.src = heroVideo.getAttribute("data-src-sd");
-    }
 
     function setVideoState(playing) {
       if (videoToggle) {
         videoToggle.setAttribute("aria-pressed", playing ? "true" : "false");
         videoToggle.textContent = playing ? "Suspendre la vidéo" : "Lire la vidéo";
-      }
-      if (bgVideo) {
-        if (playing) { bgVideo.play().catch(function () { /* fond figé */ }); }
-        else { bgVideo.pause(); }
       }
     }
 

@@ -63,8 +63,6 @@
   --container-narrow: 780px;
   --header-height: 72px;
   --banner-h: 2.25rem;   /* bandeau démo : hauteur stable, déduite du hero */
-  --band-h: 110px;       /* bande blanche sous la vidéo du hero */
-  --stage-py: clamp(16px, 3.2vh, 44px); /* marge verticale autour de la fenêtre */
 
   /* Transitions */
   --transition: 160ms ease;

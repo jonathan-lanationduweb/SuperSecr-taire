@@ -53,22 +53,17 @@
 
 <main id="contenu">
 
-    <!-- ===== Hero immersif : fond vidéo flouté + fenêtre centrale ===== -->
-    <section class="hero-stage" aria-labelledby="hero-title">
-      <video class="hero-stage__bg" aria-hidden="true" tabindex="-1" muted loop playsinline preload="metadata"
-        poster="assets/images/hero-bureau-poster.jpg"></video>
+    <!-- ===== Hero plein écran : vidéo bord à bord, recherche intégrée ===== -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <video class="home-hero__video" id="hero-video" muted loop playsinline preload="metadata"
+        poster="assets/images/hero-bureau-poster.jpg"
+        data-src-hd="assets/videos/hero-bureau.mp4"
+        data-src-sd="assets/videos/hero-bureau-sd.mp4"
+        aria-label="Vidéo d'illustration : un bureau panoramique et lumineux en pleine journée"></video>
+      <div class="home-hero__overlay" aria-hidden="true"></div>
 
-      <div class="hero-frame">
-        <div class="hero-frame__media">
-          <video id="hero-video" muted loop playsinline preload="metadata"
-            poster="assets/images/hero-bureau-poster.jpg"
-            data-src-hd="assets/videos/hero-bureau.mp4"
-            data-src-sd="assets/videos/hero-bureau-sd.mp4"
-            aria-label="Vidéo d'illustration : un bureau panoramique et lumineux en pleine journée"></video>
-          <div class="hero-frame__shade" aria-hidden="true"></div>
-
-        <!-- Navbar unifiée (variante overlay) — source : partials/header.html -->
-        <header class="site-header site-header--overlay">
+      <!-- Navbar unifiée (variante overlay) — source : partials/header.html -->
+      <header class="site-header site-header--overlay">
   <div class="header-inner">
     <a class="logo" href="index.html" aria-label="SuperSecrétaire, retour à l'accueil">
       <span class="logo-mark" aria-hidden="true">S</span>
@@ -95,79 +90,46 @@
   </div>
 </header>
 
-        <!-- Contenu principal en bas à gauche -->
-        <div class="hero-frame__content">
+      <!-- Contenu principal : gauche, centré verticalement -->
+      <div class="home-hero__content">
+        <div class="home-hero__inner">
+          <p class="home-hero__eyebrow">L'emploi du secrétariat, de l'assistanat et de l'administratif</p>
           <h1 id="hero-title">Les métiers administratifs<br>méritent <em>leur propre espace.</em></h1>
-          <p>Offres spécialisées et entreprises identifiées : trouvez votre place dans les métiers du secrétariat et de l'assistanat.</p>
-          <div class="hero-frame__actions">
-            <a class="hero-btn hero-btn--accent" href="offres.html">Trouver un emploi <span aria-hidden="true">↗</span></a>
-            <a class="hero-btn hero-btn--ghost" href="publier-offre.html">Je recrute</a>
-          </div>
-        </div>
+          <p class="home-hero__text">Offres spécialisées, entreprises identifiées : consultez et candidatez librement, sans créer de compte.</p>
 
-        <!-- Rangée basse : découvrir + réassurance -->
-        <div class="hero-frame__bottom">
-          <div class="hero-frame__bottom-left">
-            <a class="hero-scroll" href="#recherche">Découvrir <span aria-hidden="true">↓</span></a>
-            <button type="button" class="hero-video-toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
-          </div>
-          <div class="hero-trust">
-            <span class="hero-trust__avatars" aria-hidden="true"><span>CF</span><span>DL</span><span>NV</span></span>
-            <span class="hero-trust__text">
-              <strong>Offres spécialisées</strong>
-              Candidature sans inscription
-            </span>
-          </div>
-        </div>
-        </div><!-- /hero-frame__media -->
-
-        <!-- Bande blanche -->
-        <div class="hero-band">
-          <p>Pensé pour celles et ceux<br><strong>qui font tourner les entreprises.</strong></p>
-          <ul aria-label="Nos engagements">
-            <li>Offres vérifiées</li>
-            <li>Candidature simple</li>
-            <li>Entreprises identifiées</li>
-            <li>Accompagnement humain</li>
-            <li>Conseils métiers</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Recherche : intro à gauche, assistant de recherche à droite ===== -->
-    <section class="section hero-search-section" id="recherche" aria-labelledby="search-title">
-      <div class="container search-layout">
-        <div class="search-intro">
-          <p class="eyebrow">Par où commencer</p>
-          <h2 id="search-title">Cherchez, ou laissez-vous guider</h2>
-          <p class="search-intro__text">Un métier, une ville, et toutes les offres se consultent
-            librement — sans créer de compte. <span id="hero-offers-count" class="hero-count"></span></p>
-          <p class="search-intro__alt">Vous hésitez sur le métier ou le type de poste&nbsp;?<br>
-            <a class="link-more" href="recherche-guidee.html" data-guided-search-open>Laissez-vous guider — moins d'une minute</a></p>
-        </div>
-        <div class="search-box">
-          <form id="hero-search-form" role="search" aria-label="Rechercher une offre d'emploi">
-            <div class="search-box__field">
+          <form id="hero-search-form" class="hero-search" role="search" aria-label="Rechercher une offre d'emploi">
+            <div class="hero-search__field">
               <label for="search-keyword">Métier ou mot-clé</label>
               <input type="search" id="search-keyword" name="q" placeholder="Secrétaire médicale, assistant…" autocomplete="off">
             </div>
-            <div class="search-box__field">
+            <div class="hero-search__field">
               <label for="search-location">Ville ou département</label>
               <input type="text" id="search-location" name="lieu" placeholder="Lyon, Rhône…" autocomplete="off">
             </div>
-            <button type="submit" class="btn btn-accent btn-lg">Rechercher parmi les offres</button>
+            <button type="submit" class="btn btn-accent hero-search__submit">Rechercher</button>
           </form>
-          <div class="popular-searches" aria-label="Recherches populaires">
-            <span class="popular-searches__label">Recherches fréquentes</span>
-            <div class="popular-searches__chips">
-              <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
-              <a class="chip" href="offres.html?categorie=assistant-direction">Assistant de direction</a>
-              <a class="chip" href="offres.html?categorie=office-manager">Office manager</a>
-              <a class="chip" href="offres.html?categorie=telesecretaire">Télésecrétaire</a>
-              <a class="link-more" href="offres.html">Toutes les offres</a>
-            </div>
+
+          <p class="home-hero__guided">Vous hésitez&nbsp;? <a href="recherche-guidee.html" data-guided-search-open>Laissez-vous guider en moins d'une minute.</a>
+            <span id="hero-offers-count" class="home-hero__count"></span></p>
+
+          <div class="home-hero__actions">
+            <a class="hero-btn hero-btn--ghost" href="offres.html">Trouver un emploi <span aria-hidden="true">↗</span></a>
+            <a class="hero-btn hero-btn--ghost" href="publier-offre.html">Je recrute</a>
           </div>
+        </div>
+      </div>
+
+      <!-- Réassurance posée sur la vidéo -->
+      <div class="home-hero__bottom">
+        <div class="home-hero__inner home-hero__bottom-row">
+          <ul class="hero-assurances" aria-label="Nos engagements">
+            <li>Offres vérifiées</li>
+            <li>Consultation sans inscription</li>
+            <li>Entreprises identifiées</li>
+            <li>Candidature simplifiée</li>
+            <li>Accompagnement humain</li>
+          </ul>
+          <button type="button" class="hero-video-toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
         </div>
       </div>
     </section>

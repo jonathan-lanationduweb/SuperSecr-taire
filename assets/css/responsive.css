@@ -2,35 +2,27 @@
 
 /* ===== Tablette (≤ 1024px) ===== */
 @media (max-width: 1024px) {
-  .hero-frame__media video {
-    height: min(74vh, 640px);
-    height: min(74svh, 640px);
-    min-height: 520px;
+  /* Hero plein écran : titre 48-58 px, formulaire sur deux lignes */
+  .home-hero__content {
+    padding-top: 112px;
   }
 
-  .hero-frame__content {
-    bottom: 108px;
+  .home-hero__content h1 {
+    font-size: clamp(3rem, 6.2vw, 3.625rem);
   }
 
-  .hero-band {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sp-3);
+  .hero-search {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .hero-band ul {
-    justify-content: flex-start;
+  .hero-search__submit {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 
   .home-offers,
   .home-articles {
     grid-template-columns: 1fr;
-  }
-
-  /* Recherche : une seule colonne, l'intro au-dessus du formulaire */
-  .search-layout {
-    grid-template-columns: 1fr;
-    gap: var(--sp-6);
   }
 
   .paths {
@@ -237,46 +229,68 @@
     --sp-8: 3rem;
   }
 
-  /* Hero immersif sur mobile */
-  .hero-frame__media video {
-    height: 78vh;
-    height: 78svh;
-    min-height: 540px;
+  /* Hero plein écran mobile : le contenu peut grandir, rien n'est coupé */
+  .home-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    height: auto;
   }
 
-  .hero-frame__content {
-    bottom: 96px;
+  .home-hero__content {
+    padding-top: 104px;
+    padding-bottom: var(--sp-5);
   }
 
-  .hero-frame__actions .hero-btn {
+  .home-hero__content h1 {
+    font-size: clamp(2.375rem, 8.6vw, 3rem); /* 38 px mobile → 48 px à 768 */
+  }
+
+  .home-hero__text {
+    font-size: 1rem;
+    margin-top: var(--sp-4);
+  }
+
+  /* Formulaire vertical, bouton pleine largeur */
+  .hero-search {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .hero-search__submit {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .home-hero__actions .hero-btn {
     flex: 1;
     justify-content: center;
     min-width: 150px;
   }
 
-  .hero-frame__bottom {
-    height: 84px;
+  .home-hero__count {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.3rem;
   }
 
-  .hero-frame__bottom-left {
-    gap: var(--sp-2);
+  /* Réassurance simplifiée : liste verticale légère */
+  .home-hero__bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    padding-block: var(--sp-4);
   }
 
-  .hero-video-toggle {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.7rem;
+  .hero-assurances {
+    gap: var(--sp-2) var(--sp-4);
+    font-size: 0.875rem;
   }
 
-  .hero-scroll {
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
+  .hero-assurances li {
+    border-left: none;
+    padding-inline: 0;
   }
 
-  .hero-trust > .hero-trust__text {
-    display: none;
-  }
-
-  .search-box form,
   .search-band {
     grid-template-columns: 1fr;
   }
@@ -413,15 +427,6 @@
     padding-bottom: 84px;
   }
 
-  /* Engagements de la bande blanche : liste simple sans filets */
-  .hero-band ul {
-    gap: var(--sp-2) var(--sp-4);
-  }
-
-  .hero-band ul li {
-    border-left: none;
-    padding-inline: 0;
-  }
 
   .kh-row {
     flex-direction: column;
