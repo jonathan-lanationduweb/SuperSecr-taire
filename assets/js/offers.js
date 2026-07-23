@@ -124,7 +124,7 @@
         }
         if (featuredBox && listBox) {
           featuredBox.innerHTML = SS.offerFeatured(recent[0]);
-          listBox.innerHTML = recent.slice(1, 6).map(SS.offerCard).join("");
+          listBox.innerHTML = recent.slice(1, 5).map(SS.offerCard).join("");
         } else if (legacy) {
           legacy.innerHTML = recent.slice(0, 6).map(SS.offerCard).join("");
         }

@@ -265,18 +265,41 @@
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: var(--sp-6);
-  align-items: start;
+  align-items: stretch;
+}
+
+#home-offer-featured {
+  display: flex;
 }
 
 .offer-featured {
+  width: 100%;
   background: var(--c-primary-dark);
   color: #dbe6de;
   border-radius: var(--radius-m);
   padding: clamp(1.75rem, 3vw, 2.75rem);
   display: grid;
+  grid-template-rows: auto auto auto 1fr auto auto;
   gap: var(--sp-4);
-  align-content: start;
   position: relative;
+  overflow: hidden;
+}
+
+/* Halo décoratif discret, cohérent avec le CTA final */
+.offer-featured::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  bottom: -70px;
+  width: 200px;
+  height: 200px;
+  border: 1.5px solid rgba(232, 163, 61, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.offer-featured__meta {
+  align-self: end;
 }
 
 /* Badge premium : pastille pleine, posée en tête de carte */
