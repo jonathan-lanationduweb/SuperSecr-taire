@@ -27,6 +27,12 @@
     grid-template-columns: 1fr;
   }
 
+  /* Recherche : une seule colonne, l'intro au-dessus du formulaire */
+  .search-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+  }
+
   .paths {
     grid-template-columns: 1fr;
     gap: var(--sp-6);
@@ -270,18 +276,16 @@
     display: none;
   }
 
-  .search-panel form,
+  .search-box form,
   .search-band {
     grid-template-columns: 1fr;
   }
 
-  .search-panel__field + .search-panel__field,
   .search-band__field + .search-band__field {
     border-left: none;
     border-top: 1px solid var(--c-line);
   }
 
-  .search-panel form .btn,
   .search-band .btn {
     margin: var(--sp-3);
     border-radius: var(--radius-m);
@@ -401,6 +405,22 @@
   .footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--sp-5);
+  }
+
+  /* Le bouton flottant du chatbot ne doit pas recouvrir la zone légale */
+  .footer-bottom {
+    padding-right: var(--sp-4);
+    padding-bottom: 84px;
+  }
+
+  /* Engagements de la bande blanche : liste simple sans filets */
+  .hero-band ul {
+    gap: var(--sp-2) var(--sp-4);
+  }
+
+  .hero-band ul li {
+    border-left: none;
+    padding-inline: 0;
   }
 
   .kh-row {

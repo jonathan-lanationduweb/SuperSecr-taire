@@ -28,13 +28,15 @@
   /* Typographie */
   --font-serif: "Georgia", "Iowan Old Style", "Times New Roman", serif;
   --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* Échelle relevée (refonte lisibilité) : plancher 13 px,
+     texte secondaire 15 px, titres de section 30-36 px */
   --text-base: 1rem;
-  --text-sm: 0.9rem;
-  --text-xs: 0.78rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.3rem;
-  --text-2xl: 1.7rem;
-  --text-3xl: 2.15rem;
+  --text-sm: 0.9375rem;                       /* 15 px */
+  --text-xs: 0.8125rem;                       /* 13 px — plancher absolu */
+  --text-lg: 1.125rem;                        /* 18 px */
+  --text-xl: 1.375rem;                        /* 22 px — sous-titres */
+  --text-2xl: clamp(1.9rem, 2.6vw, 2.25rem);  /* 30-36 px — h2 de section */
+  --text-3xl: 2.5rem;                         /* 40 px */
   --text-hero: clamp(2.2rem, 4.5vw, 3.4rem);
 
   /* Espacements */

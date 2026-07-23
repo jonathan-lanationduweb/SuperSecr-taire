@@ -48,13 +48,14 @@
     "</article>";
   };
 
-  /* Offre mise en avant (accueil). */
+  /* Offre mise en avant (accueil) : contenu complet + vraies actions. */
   SS.offerFeatured = function (offer) {
     var e = SS.escapeHtml;
     var remote = SS.teletravailLabel(offer.teletravail);
+    var url = "offre-detail.html?id=" + encodeURIComponent(offer.id);
     return '<article class="offer-featured">' +
       '<span class="offer-featured__label">L\'offre à la une</span>' +
-      '<h3><a href="offre-detail.html?id=' + encodeURIComponent(offer.id) + '">' + e(offer.titre) + "</a></h3>" +
+      '<h3><a href="' + url + '">' + e(offer.titre) + "</a></h3>" +
       '<p class="offer-featured__company"><strong>' + e(offer.entrepriseNom) + "</strong> · " + e(offer.ville) +
         " · " + e(offer.contrat) + (remote ? " · " + e(remote) : "") + "</p>" +
       "<p>" + e(offer.resume || offer.description || "") + "</p>" +
@@ -63,6 +64,10 @@
         "<span>" + e(offer.tempsTravail) + "</span>" +
         "<span>Publiée " + e(SS.relativeDate(offer.datePublication)) + "</span>" +
       "</p>" +
+      '<div class="offer-featured__actions">' +
+        '<a class="btn btn-accent" href="' + url + '">Voir l\'offre</a>' +
+        '<a class="link-save" href="' + url + '#candidater">Candidater en 2 minutes</a>' +
+      "</div>" +
     "</article>";
   };
 
