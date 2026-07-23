@@ -67,19 +67,20 @@
             <ol>
               <li><a href="index.html">Accueil</a></li>
               <li><a href="entreprises.html">Annuaire des entreprises</a></li>
-            <li><a href="savoir-faire.html">Savoir-faire &amp; Avis</a></li>
               <li aria-current="page">Fiche entreprise</li>
             </ol>
           </nav>
           <div class="company-hero__grid">
-            <span class="logo-bubble logo-bubble--lg" id="company-bubble" aria-hidden="true"></span>
-            <div>
+            <span class="logo-bubble company-hero__logo" id="company-bubble" aria-hidden="true"></span>
+            <div class="company-hero__id">
+              <div class="company-hero__badges" id="company-hero-badges"></div>
               <h1 id="company-name">Chargement…</h1>
-              <p class="text-muted" id="company-activity"></p>
-              <span class="badge badge--accent" id="company-sector"></span>
+              <p class="company-hero__activity" id="company-activity"></p>
+              <ul class="company-hero__meta" id="company-hero-meta" aria-label="Informations clés"></ul>
             </div>
             <div class="company-hero__actions">
               <a class="btn btn-primary" id="company-contact-btn" href="contact.html">Contacter l'entreprise</a>
+              <a class="btn btn-outline" href="#h-offres" id="company-offers-btn">Voir les offres</a>
             </div>
           </div>
         </div>
@@ -88,33 +89,100 @@
       <!-- Corps de la fiche -->
       <div class="container company-layout">
         <div class="company-main">
+          <!-- Chiffres clés -->
+          <div class="company-stats" id="company-stats" aria-label="Chiffres clés"></div>
+
           <section aria-labelledby="h-presentation">
             <h2 id="h-presentation">Présentation</h2>
             <p id="company-description"></p>
           </section>
+
+          <!-- Pourquoi nous rejoindre -->
+          <section aria-labelledby="h-pourquoi">
+            <h2 id="h-pourquoi">Pourquoi rejoindre notre équipe&nbsp;?</h2>
+            <div class="reasons-grid">
+              <div class="reason-card">
+                <span class="reason-card__icon" aria-hidden="true">🌱</span>
+                <h3>Un environnement stable</h3>
+                <p>Une structure installée et des postes pensés dans la durée, pas dans l'urgence.</p>
+              </div>
+              <div class="reason-card">
+                <span class="reason-card__icon" aria-hidden="true">🤝</span>
+                <h3>Une équipe à taille humaine</h3>
+                <p>On se connaît, on s'entraide : chacun compte et sait à qui s'adresser.</p>
+              </div>
+              <div class="reason-card">
+                <span class="reason-card__icon" aria-hidden="true">📈</span>
+                <h3>Des perspectives d'évolution</h3>
+                <p>Montée en compétences accompagnée et responsabilités qui grandissent avec vous.</p>
+              </div>
+              <div class="reason-card">
+                <span class="reason-card__icon" aria-hidden="true">⚖️</span>
+                <h3>Un équilibre respecté</h3>
+                <p>Des horaires clairs et une organisation qui tient compte de votre vie personnelle.</p>
+              </div>
+            </div>
+          </section>
+
           <section aria-labelledby="h-valeurs">
             <h2 id="h-valeurs">Ses valeurs</h2>
-            <ul id="company-values" class="check-list"></ul>
+            <div id="company-values" class="values-grid-cards"></div>
           </section>
+
           <section aria-labelledby="h-avantages">
             <h2 id="h-avantages">Les avantages proposés</h2>
-            <ul id="company-benefits" class="check-list"></ul>
+            <div id="company-benefits" class="perks-grid"></div>
           </section>
+
+          <!-- Galerie -->
+          <section aria-labelledby="h-galerie">
+            <h2 id="h-galerie">En images</h2>
+            <div class="company-gallery">
+              <figure>
+                <img src="assets/images/photos/hero-accueil.webp" alt="Un poste de travail tourné vers l'accueil" loading="lazy" width="1600" height="1067">
+                <figcaption>Un métier tourné vers l'accueil</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/images/photos/apropos-equipe.webp" alt="Une équipe réunie autour d'une table de travail" loading="lazy" width="1200" height="800">
+                <figcaption>Le travail d'équipe au quotidien</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/images/photos/article-teletravail.webp" alt="Une secrétaire au téléphone devant son ordinateur" loading="lazy" width="1200" height="1800">
+                <figcaption>Organisation et outils modernes</figcaption>
+              </figure>
+            </div>
+            <p class="company-gallery__note">Images d'illustration — SuperSecrétaire est un site de démonstration.</p>
+          </section>
+
           <section aria-labelledby="h-offres">
             <h2 id="h-offres">Offres actuellement disponibles</h2>
             <div id="company-offers" class="company-offers-list"></div>
           </section>
+
           <section aria-labelledby="h-savoir-faire" id="company-knowhow-section" hidden>
             <h2 id="h-savoir-faire">Ses conseils et savoir-faire</h2>
             <p class="text-muted">Les méthodes et conseils publiés par les professionnels de cette entreprise — une façon concrète de vérifier leur expertise avant de les contacter, de candidater ou de demander un devis.</p>
             <div id="company-knowhow" class="company-knowhow-list"></div>
           </section>
+
+          <!-- Appel à l'action final -->
+          <div class="company-cta">
+            <div class="company-cta__copy">
+              <p class="eyebrow">Envie de les rejoindre&nbsp;?</p>
+              <h2>Une opportunité vous intéresse&nbsp;?</h2>
+              <p>Consultez les offres en cours ou écrivez directement à l'entreprise — la candidature reste libre et sans inscription.</p>
+            </div>
+            <div class="company-cta__actions">
+              <a class="btn btn-accent btn-lg" href="#h-offres" id="cta-offers-btn">Postuler à une offre</a>
+              <a class="btn btn-outline btn-outline--light" href="contact.html" id="cta-contact-btn">Contacter l'entreprise</a>
+            </div>
+          </div>
         </div>
 
         <aside class="company-aside" aria-label="Coordonnées de l'entreprise">
           <div class="card company-contact-card">
             <h2>Coordonnées</h2>
-            <dl id="company-coordinates"></dl>
+            <ul id="company-coordinates" class="company-coords"></ul>
           </div>
           <div class="notice notice--demo">Les coordonnées affichées sont fictives : cette fiche fait partie de la démonstration SuperSecrétaire.</div>
         </aside>

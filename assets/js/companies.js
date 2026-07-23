@@ -125,35 +125,76 @@
     withOfferCounts(function (companies, counts, offers) {
       var company = companies.find(function (c) { return c.id === id; }) || companies[0];
       var e = SS.escapeHtml;
+      var offerCount = counts[company.id] || 0;
 
       document.title = company.nom + " – recrutement | SuperSecrétaire";
 
       document.getElementById("company-name").textContent = company.nom;
       document.getElementById("company-activity").textContent = company.activite;
-      document.getElementById("company-sector").textContent = company.secteur;
       document.getElementById("company-description").textContent = company.description;
 
       var bubble = document.getElementById("company-bubble");
       bubble.style.background = company.couleur;
       bubble.textContent = company.initiales;
 
-      var dl = document.getElementById("company-coordinates");
-      dl.innerHTML =
-        "<div><dt>Adresse</dt><dd>" + e(company.adresse) + "</dd></div>" +
-        "<div><dt>Ville</dt><dd>" + e(company.ville) + " — " + e(company.departement) + "</dd></div>" +
-        "<div><dt>Téléphone</dt><dd>" + e(company.telephone) + "</dd></div>" +
-        '<div><dt>Site internet</dt><dd><a href="' + e(company.siteWeb) + '" rel="nofollow">' + e(company.siteWeb.replace("https://", "")) + "</a></dd></div>" +
-        "<div><dt>Effectif</dt><dd>" + e(company.taille) + "</dd></div>";
-
-      fillList("company-values", company.valeurs);
-      fillList("company-benefits", company.avantages);
-
-      var contactBtn = document.getElementById("company-contact-btn");
-      if (contactBtn) {
-        contactBtn.href = "contact.html?entreprise=" + encodeURIComponent(company.nom);
+      /* Badges du hero : secteur + statut de recrutement. */
+      var heroBadges = document.getElementById("company-hero-badges");
+      if (heroBadges) {
+        heroBadges.innerHTML =
+          '<span class="badge badge--accent">' + e(company.secteur) + "</span>" +
+          (offerCount
+            ? '<span class="badge badge--remote">Recrute actuellement</span>'
+            : "");
       }
 
-      /* Offres actuellement disponibles. */
+      /* Ligne de méta : ville, effectif, offres. */
+      var meta = document.getElementById("company-hero-meta");
+      if (meta) {
+        var offerLabel = offerCount
+          ? offerCount + (offerCount > 1 ? " offres en ligne" : " offre en ligne")
+          : "Aucune offre en ce moment";
+        meta.innerHTML =
+          "<li><span aria-hidden=\"true\">📍</span>" + e(company.ville) + " · " + e(company.departement) + "</li>" +
+          "<li><span aria-hidden=\"true\">👥</span>" + e(company.taille) + "</li>" +
+          "<li><span aria-hidden=\"true\">💼</span>" + e(offerLabel) + "</li>";
+      }
+
+      /* Chiffres clés. */
+      var stats = document.getElementById("company-stats");
+      if (stats) {
+        stats.innerHTML = [
+          statTile(company.taille.replace(/\s*salariés?/i, ""), "salariés"),
+          statTile(String(offerCount), offerCount > 1 ? "offres actives" : "offre active"),
+          statTile(company.ville, "en " + company.departement.replace(/\s*\(.*\)/, "")),
+          statTile(company.secteur, "secteur d'activité")
+        ].join("");
+      }
+
+      /* Coordonnées : carte à icônes, plus aérée. */
+      var coords = document.getElementById("company-coordinates");
+      if (coords) {
+        coords.innerHTML =
+          coordRow("📍", "Adresse", e(company.adresse)) +
+          coordRow("🏙️", "Ville", e(company.ville) + " — " + e(company.departement)) +
+          coordRow("☎️", "Téléphone", e(company.telephone)) +
+          coordRow("✉️", "E-mail", e(company.email)) +
+          coordRow("🌐", "Site internet",
+            '<a href="' + e(company.siteWeb) + '" rel="nofollow">' + e(company.siteWeb.replace("https://", "")) + "</a>") +
+          coordRow("🏢", "Secteur", e(company.secteur)) +
+          coordRow("👥", "Effectif", e(company.taille));
+      }
+
+      /* Valeurs → cartes ; avantages → cartes à icône. */
+      renderValueCards("company-values", company.valeurs);
+      renderPerkCards("company-benefits", company.avantages);
+
+      var contactHref = "contact.html?entreprise=" + encodeURIComponent(company.nom);
+      ["company-contact-btn", "cta-contact-btn"].forEach(function (bid) {
+        var b = document.getElementById(bid);
+        if (b) { b.href = contactHref; }
+      });
+
+      /* Offres actuellement disponibles — même composant que la page Offres. */
       var offersBox = document.getElementById("company-offers");
       var companyOffers = offers.filter(function (o) { return o.entrepriseId === company.id; });
       companyOffers.forEach(function (o) { o.couleur = company.couleur; });
@@ -163,9 +204,64 @@
           "<p>Cette entreprise n'a pas d'offre active aujourd'hui. Revenez bientôt ou " +
           '<a href="offres.html">consultez les autres offres</a>.</p></div>';
 
+      /* Sans offre : le CTA « Postuler » invite plutôt à contacter. */
+      if (!companyOffers.length) {
+        var ctaOffers = document.getElementById("cta-offers-btn");
+        if (ctaOffers) {
+          ctaOffers.textContent = "Voir toutes les offres";
+          ctaOffers.href = "offres.html";
+        }
+      }
+
       /* « Ses conseils et savoir-faire » : publications de l'entreprise. */
       renderCompanyKnowhow(company);
     }).catch(function () { SS.dataError(root.querySelector(".container") || root); });
+  }
+
+  function statTile(value, label) {
+    var e = SS.escapeHtml;
+    return '<div class="stat-tile"><strong>' + e(value) + "</strong><span>" + e(label) + "</span></div>";
+  }
+
+  function coordRow(icon, label, valueHtml) {
+    return '<li class="company-coords__row">' +
+      '<span class="company-coords__icon" aria-hidden="true">' + icon + "</span>" +
+      '<span class="company-coords__body"><span class="company-coords__label">' + label + "</span>" +
+      '<span class="company-coords__value">' + valueHtml + "</span></span></li>";
+  }
+
+  function renderValueCards(id, values) {
+    var el = document.getElementById(id);
+    if (!el || !values) { return; }
+    var e = SS.escapeHtml;
+    el.innerHTML = values.map(function (v) {
+      return '<div class="value-card"><span class="value-card__check" aria-hidden="true">✓</span>' +
+        "<p>" + e(v) + "</p></div>";
+    }).join("");
+  }
+
+  /* Icône déduite du libellé de l'avantage (sobre, sans surcharge). */
+  function perkIcon(text) {
+    var t = (text || "").toLowerCase();
+    if (/t[ée]l[ée]travail|distance|remote/.test(t)) { return "🏠"; }
+    if (/mutuelle|sant[ée]|pr[ée]voyance/.test(t)) { return "🩺"; }
+    if (/formation|mont[ée]e|comp[ée]tence/.test(t)) { return "🎓"; }
+    if (/parking|v[ée]lo|transport|m[ée]tro|acc[èe]s/.test(t)) { return "🚉"; }
+    if (/horaire|planning|temps|flex/.test(t)) { return "🗓️"; }
+    if (/13|prime|salaire|r[ée]mun[ée]ration|ticket|repas/.test(t)) { return "💶"; }
+    if (/locaux|bureau|espace|cadre/.test(t)) { return "🏢"; }
+    if (/[ée]quipe|ambiance|convivial/.test(t)) { return "🤝"; }
+    return "✓";
+  }
+
+  function renderPerkCards(id, perks) {
+    var el = document.getElementById(id);
+    if (!el || !perks) { return; }
+    var e = SS.escapeHtml;
+    el.innerHTML = perks.map(function (p) {
+      return '<div class="perk-card"><span class="perk-card__icon" aria-hidden="true">' +
+        perkIcon(p) + "</span><span>" + e(p) + "</span></div>";
+    }).join("");
   }
 
   function renderCompanyKnowhow(company) {

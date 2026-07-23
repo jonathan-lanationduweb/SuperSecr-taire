@@ -85,6 +85,22 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Fiche entreprise : le hero passe en pleine largeur, actions dessous */
+  .company-hero__actions {
+    min-width: 100%;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .company-hero__actions .btn {
+    flex: 1;
+  }
+
+  /* Valeurs : 2 colonnes en tablette */
+  .values-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   /* Hero de la fiche : titre puis panneau d'action empilés, pleine largeur
      (flex-column garantit l'ordre — le wrap laissait le panneau flotter) */
   .offer-hero__grid {
@@ -340,6 +356,43 @@
   /* Offres similaires : une colonne en mobile */
   #similar-offers {
     grid-template-columns: 1fr;
+  }
+
+  /* Fiche entreprise : grilles empilées, lecture confortable */
+  .company-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reasons-grid,
+  .values-grid-cards,
+  .perks-grid,
+  .company-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .company-gallery img {
+    height: 220px;
+  }
+
+  .company-hero__actions {
+    flex-direction: column;
+  }
+
+  .company-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .company-cta__actions {
+    width: 100%;
+  }
+
+  .company-cta__actions .btn {
+    flex: 1;
+  }
+
+  .company-offers-list .offer-row {
+    padding-inline: var(--sp-3);
   }
 
   /* Rangées d'offres : padding réduit dans le conteneur bordé */
