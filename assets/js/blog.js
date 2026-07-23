@@ -67,7 +67,7 @@
         .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
       if (featuredBox && sideBox) {
         featuredBox.innerHTML = articleFeatured(recent[0]);
-        sideBox.innerHTML = recent.slice(1, 4).map(articleCompact).join("");
+        sideBox.innerHTML = recent.slice(1, 3).map(articleCompact).join("");
       } else if (legacy) {
         legacy.innerHTML = recent.slice(0, 3).map(articleCard).join("");
       }

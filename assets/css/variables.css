@@ -33,9 +33,9 @@
   --text-base: 1rem;
   --text-sm: 0.9375rem;                       /* 15 px */
   --text-xs: 0.8125rem;                       /* 13 px — plancher absolu */
-  --text-lg: 1.125rem;                        /* 18 px */
+  --text-lg: 1.1875rem;                       /* 19 px */
   --text-xl: 1.375rem;                        /* 22 px — sous-titres */
-  --text-2xl: clamp(1.9rem, 2.6vw, 2.25rem);  /* 30-36 px — h2 de section */
+  --text-2xl: clamp(2rem, 2.8vw, 2.375rem);   /* 32-38 px — h2 de section */
   --text-3xl: 2.5rem;                         /* 40 px */
   --text-hero: clamp(2.2rem, 4.5vw, 3.4rem);
 
@@ -61,7 +61,7 @@
   /* Mise en page */
   --container: 1200px;
   --container-narrow: 780px;
-  --header-height: 72px;
+  --header-height: 76px;
   --banner-h: 2.25rem;   /* bandeau démo : hauteur stable, déduite du hero */
 
   /* Transitions */

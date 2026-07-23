@@ -68,7 +68,7 @@ a:hover {
 }
 
 .section {
-  padding-block: clamp(4.5rem, 7vw, 6rem); /* 72 → 96 px */
+  padding-block: clamp(5rem, 7.5vw, 6.25rem); /* 80 → 100 px */
 }
 
 .section--surface {
@@ -211,8 +211,8 @@ a:hover {
 
 /* Même pastille « S » que la navbar du hero (cohérence entre pages) */
 .logo-mark {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   background: var(--c-accent);
   color: var(--c-primary-dark);
@@ -230,7 +230,7 @@ a:hover {
 
 .logo-text {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   letter-spacing: -0.01em;
   color: var(--c-primary-dark);
 }
@@ -264,11 +264,11 @@ a:hover {
   display: inline-flex;
   align-items: center;
   line-height: 1;
-  padding: 0.7rem 0.95rem;
+  padding: 0.75rem 0.85rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.906rem;
+  font-size: 0.9375rem;
   transition: background var(--transition), color var(--transition);
 }
 
@@ -340,8 +340,9 @@ a:hover {
 }
 
 .site-header--overlay .header-inner {
-  padding-inline: clamp(20px, 3vw, 40px);
-  min-height: 88px;
+  width: min(1280px, 100% - 64px);
+  margin-inline: auto;
+  min-height: 96px;
 }
 
 .site-header--overlay .logo-text,
@@ -539,8 +540,8 @@ a:hover {
 .footer-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: var(--sp-7);
-  padding-block: var(--sp-7);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(3rem, 5vw, 4rem);
 }
 
 .footer-brand .logo-text {
@@ -561,7 +562,7 @@ a:hover {
 
 .footer-col h2 {
   font-family: var(--font-sans);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 650;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -579,7 +580,7 @@ a:hover {
 .footer-col a {
   color: #c3d1c8;
   text-decoration: none;
-  font-size: var(--text-sm);
+  font-size: 1rem;
 }
 
 .footer-col a:hover {

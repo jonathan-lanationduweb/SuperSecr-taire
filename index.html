@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -55,11 +55,12 @@
 
     <!-- ===== Hero plein écran : vidéo bord à bord, recherche intégrée ===== -->
     <section class="home-hero" aria-labelledby="hero-title">
-      <video class="home-hero__video" id="hero-video" muted loop playsinline preload="metadata"
+      <video class="home-hero__video" id="hero-video" autoplay muted loop playsinline preload="metadata"
+        disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen noremoteplayback"
         poster="assets/images/hero-bureau-poster.jpg"
         data-src-hd="assets/videos/hero-bureau.mp4"
         data-src-sd="assets/videos/hero-bureau-sd.mp4"
-        aria-label="Vidéo d'illustration : un bureau panoramique et lumineux en pleine journée"></video>
+        aria-hidden="true" tabindex="-1"></video>
       <div class="home-hero__overlay" aria-hidden="true"></div>
 
       <!-- Navbar unifiée (variante overlay) — source : partials/header.html -->
@@ -129,7 +130,6 @@
             <li>Candidature simplifiée</li>
             <li>Accompagnement humain</li>
           </ul>
-          <button type="button" class="hero-video-toggle" id="hero-video-toggle" aria-pressed="false">Lire la vidéo</button>
         </div>
       </div>
     </section>
@@ -164,13 +164,13 @@
                 <div><h3>Recherchez librement</h3><p>Par métier, ville, contrat ou télétravail — sans créer de compte.</p></div>
               </li>
               <li class="step-item">
-                <div><h3>Lisez tout, vraiment tout</h3><p>Missions, salaire, avantages et fiche de l'entreprise : rien n'est caché derrière une inscription.</p></div>
+                <div><h3>Lisez tout, vraiment tout</h3><p>Missions, salaire, avantages, fiche entreprise : rien n'est caché.</p></div>
               </li>
               <li class="step-item">
                 <div><h3>Candidatez en deux minutes</h3><p>Un formulaire court, votre CV, et c'est chez l'employeur.</p></div>
               </li>
               <li class="step-item">
-                <div><h3>Restez accompagné(e)</h3><p>Conseils, recherche guidée et une équipe qui répond sous un jour ouvré.</p></div>
+                <div><h3>Restez accompagné(e)</h3><p>Conseils, recherche guidée, réponse sous un jour ouvré.</p></div>
               </li>
             </ol>
             <div class="form-actions">
@@ -261,16 +261,16 @@
         </div>
         <div class="numbered-list">
           <div class="numbered-item">
-            <div><h3>Chaque offre est relue avant publication</h3><p>Intitulé réel, salaire précisé autant que possible, lieu exact : une annonce floue est renvoyée à l'employeur.</p></div>
+            <div><h3>Chaque offre est relue avant publication</h3><p>Intitulé réel, salaire précisé, lieu exact — sinon l'annonce est renvoyée à l'employeur.</p></div>
           </div>
           <div class="numbered-item">
-            <div><h3>Chaque entreprise a une fiche identifiée</h3><p>Activité, adresse, valeurs et offres en cours : vous savez chez qui vous postulez avant d'envoyer votre CV.</p></div>
+            <div><h3>Chaque entreprise a une fiche identifiée</h3><p>Activité, adresse et offres en cours : vous savez chez qui vous postulez.</p></div>
           </div>
           <div class="numbered-item">
-            <div><h3>La consultation reste libre</h3><p>Aucune inscription pour chercher, lire ou candidater. Votre CV part chez l'employeur, pas dans une base commerciale.</p></div>
+            <div><h3>La consultation reste libre</h3><p>Aucune inscription pour chercher ou candidater. Votre CV part chez l'employeur, pas dans une base.</p></div>
           </div>
           <div class="numbered-item">
-            <div><h3>Des humains derrière l'écran</h3><p>Le chatbot répond aux questions simples ; pour le reste, une équipe vous répond sous un jour ouvré.</p></div>
+            <div><h3>Des humains derrière l'écran</h3><p>Le chatbot traite les questions simples ; une équipe répond au reste sous un jour ouvré.</p></div>
           </div>
         </div>
       </div>
