@@ -55,10 +55,13 @@
   </div>
 </header>
 
+  <!-- Barre de progression de lecture -->
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"><span id="reading-progress-fill"></span></div>
+
   <main id="contenu">
-    <!-- En-tête de l'article -->
+    <!-- Hero éditorial -->
     <div class="article-header">
-      <div class="container">
+      <div class="container article-header__inner">
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
           <ol>
             <li><a href="index.html">Accueil</a></li>
@@ -66,9 +69,15 @@
             <li aria-current="page">Article</li>
           </ol>
         </nav>
-        <span class="badge badge--accent" id="article-category">Catégorie</span>
+        <p class="article-eyebrow"><span class="badge badge--accent" id="article-category">Catégorie</span></p>
         <h1 id="article-title">Chargement de l'article…</h1>
-        <div class="article-meta" id="article-meta"></div>
+        <p class="article-dek" id="article-dek"></p>
+        <div class="article-byline" id="article-meta"></div>
+      </div>
+      <div class="container">
+        <figure class="article-cover">
+          <img id="article-cover-img" src="" alt="">
+        </figure>
       </div>
     </div>
 
@@ -77,29 +86,51 @@
       <article class="article-body" id="article-body"></article>
 
       <aside class="article-aside" aria-label="Compléments">
+        <nav class="card aside-card article-toc" id="article-toc-card" aria-label="Sommaire" hidden>
+          <h2>Sommaire</h2>
+          <ul id="article-toc"></ul>
+        </nav>
+
+        <div class="card aside-card article-share">
+          <h2>Partager</h2>
+          <div class="article-share__row" id="article-share"></div>
+        </div>
+
+        <div class="card article-author-card" id="article-author"></div>
+
         <div class="card aside-card">
           <h2>À lire aussi</h2>
           <ul id="aside-articles"></ul>
         </div>
-        <div class="card newsletter-card">
-          <h2>La lettre de SuperSecrétaire</h2>
-          <p>Un conseil pratique et les nouvelles offres, une fois par mois. (Inscription simulée.)</p>
+
+        <div class="card newsletter-card newsletter-card--premium">
+          <span class="newsletter-card__eyebrow">La lettre SuperSecrétaire</span>
+          <h2>Un conseil qui change une semaine de travail.</h2>
+          <p>Une sélection de conseils métiers et les nouvelles offres, une fois par mois. Sans spam, désinscription en un clic.</p>
           <form data-newsletter-form>
             <label class="visually-hidden" for="aside-newsletter-email">Votre adresse e-mail</label>
             <input type="email" id="aside-newsletter-email" placeholder="votre@email.fr" required>
             <button type="submit" class="btn btn-accent">Je m'inscris</button>
           </form>
+          <p class="newsletter-card__note">Déjà 2 300 professionnels de l'administratif abonnés (démonstration).</p>
         </div>
       </aside>
     </div>
 
-    <!-- Articles associés -->
+    <!-- Articles associés (slider) -->
     <section class="related-articles" aria-labelledby="h-related">
       <div class="container">
-        <div class="section-head">
-          <h2 id="h-related">Articles associés</h2>
+        <div class="section-head section-head--row">
+          <div>
+            <span class="eyebrow">À poursuivre</span>
+            <h2 id="h-related">Articles à lire ensuite</h2>
+          </div>
+          <div class="kh-carousel__nav" aria-hidden="true">
+            <button type="button" class="kh-carousel__btn" data-related-prev aria-label="Précédent">←</button>
+            <button type="button" class="kh-carousel__btn" data-related-next aria-label="Suivant">→</button>
+          </div>
         </div>
-        <div id="related-articles" class="grid-3"></div>
+        <div id="related-articles" class="kh-carousel"></div>
       </div>
     </section>
   </main>

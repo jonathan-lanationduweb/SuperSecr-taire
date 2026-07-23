@@ -1361,6 +1361,22 @@
 .comment-useful:hover { border-color: var(--c-accent); color: var(--c-accent-dark); }
 .comment-useful.is-on { background: var(--c-accent-soft); border-color: var(--c-accent); color: var(--c-accent-dark); }
 
+/* ---- Carte d'engagement (j'ai testé / sauvegarder) ---- */
+.kh-engage { padding: var(--sp-5); display: grid; gap: var(--sp-3); }
+.kh-engage .btn { width: 100%; }
+.kh-engage__count {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--c-ink-soft);
+  margin: 0;
+}
+.kh-engage__count strong { color: var(--c-primary-dark); }
+#kh-save.is-on {
+  background: var(--c-accent-soft);
+  border-color: var(--c-accent);
+  color: var(--c-accent-dark);
+}
+
 /* ---- Responsive fiche savoir-faire ---- */
 @media (max-width: 1024px) {
   .kh-stats { grid-template-columns: repeat(3, 1fr); }

@@ -254,10 +254,66 @@
       setupCommentForm(pub);
       setupShare(pub);
       setupReport(pub);
+      setupEngagement(pub);
       renderSimilar(pub, items);
       setupProgress();
       setupCarousel();
     }).catch(function () { SS.dataError(root.querySelector(".container") || root); });
+  }
+
+  /* ---- Engagement : « J'ai testé » (compteur) + Sauvegarder (favori) ---- */
+  function setupEngagement(pub) {
+    var testedBtn = document.getElementById("kh-tested");
+    var countEl = document.getElementById("kh-tested-count");
+    if (testedBtn && countEl) {
+      var TESTED_KEY = "ss_kh_tested";
+      var base = Math.max(3, Math.round(combinedViews(pub) * 0.4));
+      var store = SS.store.get(TESTED_KEY, {});
+      var showCount = function () {
+        var mine = store[pub.id] ? 1 : 0;
+        countEl.innerHTML = "<strong>" + (base + mine) + "</strong> personnes ont testé cette méthode";
+      };
+      var lock = function () {
+        testedBtn.setAttribute("aria-pressed", "true");
+        testedBtn.classList.add("is-active");
+        testedBtn.innerHTML = '<span aria-hidden="true">✓</span> Vous avez testé cette méthode';
+        testedBtn.disabled = true;
+      };
+      showCount();
+      if (store[pub.id]) { lock(); }
+      testedBtn.addEventListener("click", function () {
+        store = SS.store.get(TESTED_KEY, {});
+        store[pub.id] = true;
+        SS.store.set(TESTED_KEY, store);
+        showCount();
+        lock();
+        SS.toast("Merci d'avoir partagé que vous avez testé cette méthode !");
+      });
+    }
+
+    var saveBtn = document.getElementById("kh-save");
+    if (saveBtn) {
+      var SAVE_KEY = "ss_kh_saved";
+      var label = saveBtn.querySelector(".kh-save__label");
+      var icon = saveBtn.querySelector(".kh-save__icon");
+      var sync = function () {
+        var list = SS.store.get(SAVE_KEY, []);
+        var on = list.indexOf(pub.id) !== -1;
+        saveBtn.classList.toggle("is-on", on);
+        saveBtn.setAttribute("aria-pressed", on ? "true" : "false");
+        if (label) { label.textContent = on ? "Enregistré" : "Sauvegarder"; }
+        if (icon) { icon.textContent = on ? "★" : "🔖"; }
+      };
+      sync();
+      saveBtn.addEventListener("click", function () {
+        var list = SS.store.get(SAVE_KEY, []);
+        var i = list.indexOf(pub.id);
+        if (i === -1) { list.push(pub.id); } else { list.splice(i, 1); }
+        SS.store.set(SAVE_KEY, list);
+        sync();
+        SS.toast(i === -1 ? "Tutoriel sauvegardé." : "Tutoriel retiré de vos favoris.");
+      });
+    }
   }
 
   /* ---- Barre de progression sticky + surlignage de section ---- */
