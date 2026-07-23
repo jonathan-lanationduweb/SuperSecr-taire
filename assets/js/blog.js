@@ -189,8 +189,7 @@
 
       var relatedBox = document.getElementById("related-articles");
       if (relatedBox) {
-        relatedBox.innerHTML = related.slice(0, 6).map(articleCard).join("");
-        setupRelatedCarousel();
+        relatedBox.innerHTML = related.slice(0, 3).map(relatedCard).join("");
       }
 
       /* Liste latérale « à lire aussi ». */
@@ -305,18 +304,26 @@
       '<span class="article-author-card__count">' + count + " article" + (count > 1 ? "s" : "") + " publié" + (count > 1 ? "s" : "") + "</span>";
   }
 
-  /* Défilement du carrousel d'articles associés. */
-  function setupRelatedCarousel() {
-    var track = document.getElementById("related-articles");
-    if (!track) { return; }
-    var prev = document.querySelector("[data-related-prev]");
-    var next = document.querySelector("[data-related-next]");
-    var step = function () {
-      var first = track.firstElementChild;
-      return first ? first.getBoundingClientRect().width + 24 : 320;
-    };
-    if (prev) { prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); }); }
-    if (next) { next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); }); }
+  /* Carte éditoriale « à lire ensuite » : image plein cadre, catégorie,
+     titre, résumé, méta et CTA aligné en bas. Toute la carte est cliquable
+     (lien étiré) ; le CTA reste un repère visuel. */
+  function relatedCard(a) {
+    var e = SS.escapeHtml;
+    var url = "article.html?id=" + encodeURIComponent(a.id);
+    return '<article class="related-card">' +
+      '<span class="related-card__media">' +
+        '<img src="' + e(a.image) + '" alt="' + e(a.imageAlt || a.titre) + '" loading="lazy">' +
+      "</span>" +
+      '<div class="related-card__content">' +
+        '<span class="related-card__cat">' + e(a.categorie) + "</span>" +
+        '<h3 class="related-card__title"><a href="' + url + '">' + e(a.titre) + "</a></h3>" +
+        '<p class="related-card__excerpt">' + e(a.resume) + "</p>" +
+        '<div class="related-card__footer">' +
+          '<p class="related-card__meta">' + e(a.auteur) + " · " + e(a.tempsLecture) + " · " + e(SS.formatDate(a.date)) + "</p>" +
+          '<span class="related-card__cta">Lire l\'article <span class="related-card__arrow" aria-hidden="true">→</span></span>' +
+        "</div>" +
+      "</div>" +
+    "</article>";
   }
 
   /* Données structurées Article (SEO). */
