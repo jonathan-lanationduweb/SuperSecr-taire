@@ -75,23 +75,91 @@
   }
 
   /* ---- Liste du blog ---- */
+  /* Badge éditorial déduit du contenu / de la fraîcheur (démo, guide le regard). */
+  function articleBadge(a, index, total) {
+    var t = (a.titre + " " + a.categorie).toLowerCase();
+    if (index === 0) { return { label: "À la une", cls: "badge--accent" }; }
+    if (index <= 2) { return { label: "Nouveau", cls: "badge--remote" }; }
+    if (/guide|comment|checklist|étapes|etapes/.test(t)) { return { label: "Guide", cls: "" }; }
+    return null;
+  }
+
+  /* Carte éditoriale premium (réutilise le composant .related-card). */
+  function blogCard(a, badge) {
+    var e = SS.escapeHtml;
+    var url = "article.html?id=" + encodeURIComponent(a.id);
+    return '<article class="related-card">' +
+      '<span class="related-card__media">' +
+        '<img src="' + e(a.image) + '" alt="' + e(a.imageAlt || a.titre) + '" loading="lazy">' +
+        (badge ? '<span class="related-card__badge badge ' + badge.cls + '">' + e(badge.label) + "</span>" : "") +
+      "</span>" +
+      '<div class="related-card__content">' +
+        '<span class="related-card__cat">' + e(a.categorie) + "</span>" +
+        '<h3 class="related-card__title"><a href="' + url + '">' + e(a.titre) + "</a></h3>" +
+        '<p class="related-card__excerpt">' + e(a.resume) + "</p>" +
+        '<div class="related-card__footer">' +
+          '<p class="related-card__meta">' + e(a.auteur) + " · " + e(a.tempsLecture) + " · " + e(SS.formatDate(a.date)) + "</p>" +
+          '<span class="related-card__cta">Lire l\'article <span class="related-card__arrow" aria-hidden="true">→</span></span>' +
+        "</div>" +
+      "</div>" +
+    "</article>";
+  }
+
+  /* Article phare : image plein cadre + dégradé + contenu superposé. */
+  function blogHero(a) {
+    var e = SS.escapeHtml;
+    var url = "article.html?id=" + encodeURIComponent(a.id);
+    return '<article class="blog-hero__card">' +
+      '<span class="blog-hero__media"><img src="' + e(a.image) + '" alt="' + e(a.imageAlt || a.titre) + '"></span>' +
+      '<span class="blog-hero__scrim" aria-hidden="true"></span>' +
+      '<div class="blog-hero__body">' +
+        '<div class="blog-hero__badges"><span class="badge badge--accent">À la une</span><span class="badge blog-hero__cat">' + e(a.categorie) + "</span></div>" +
+        '<h2 class="blog-hero__title"><a href="' + url + '">' + e(a.titre) + "</a></h2>" +
+        '<p class="blog-hero__resume">' + e(a.resume) + "</p>" +
+        '<div class="blog-hero__foot">' +
+          '<span class="blog-hero__meta">' + e(a.auteur) + " · " + e(a.tempsLecture) + " · " + e(SS.formatDate(a.date)) + "</span>" +
+          '<a class="btn btn-accent" href="' + url + '">Lire l\'article</a>' +
+        "</div>" +
+      "</div>" +
+    "</article>";
+  }
+
   function initBlogList() {
     var grid = document.getElementById("articles-grid");
     if (!grid) { return; }
 
     SS.getArticles().then(function (articles) {
       var state = { category: "", query: "" };
+      var byDate = articles.slice().sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+      var featured = byDate[0];
       var catContainer = document.getElementById("blog-categories");
 
-      /* Boutons de catégories générés à partir des données. */
+      /* Article phare (toujours le plus récent). */
+      var heroBox = document.getElementById("blog-hero");
+      if (heroBox && featured) { heroBox.innerHTML = blogHero(featured); }
+
+      /* Statistiques éditoriales (démonstration). */
+      var statsBox = document.getElementById("blog-stats");
+      if (statsBox) {
+        statsBox.innerHTML = [
+          ["+320", "articles & guides"],
+          ["+150", "professionnels"],
+          ["4,8/5", "note moyenne"],
+          ["+25 000", "lecteurs / mois"]
+        ].map(function (s) {
+          return '<div class="blog-stat"><strong>' + s[0] + "</strong><span>" + s[1] + "</span></div>";
+        }).join("");
+      }
+
+      /* Filtres pilule à partir des catégories réelles. */
       var categories = [];
       articles.forEach(function (a) {
         if (categories.indexOf(a.categorie) === -1) { categories.push(a.categorie); }
       });
       catContainer.innerHTML =
-        '<button type="button" class="chip" data-cat="" aria-pressed="true">Tous les articles</button>' +
+        '<button type="button" class="blog-filter is-active" data-cat="" aria-pressed="true">Tous les articles</button>' +
         categories.map(function (c) {
-          return '<button type="button" class="chip" data-cat="' + SS.escapeHtml(c) + '" aria-pressed="false">' + SS.escapeHtml(c) + "</button>";
+          return '<button type="button" class="blog-filter" data-cat="' + SS.escapeHtml(c) + '" aria-pressed="false">' + SS.escapeHtml(c) + "</button>";
         }).join("");
 
       catContainer.addEventListener("click", function (event) {
@@ -99,41 +167,80 @@
         if (!btn) { return; }
         state.category = btn.getAttribute("data-cat");
         catContainer.querySelectorAll("button").forEach(function (b) {
-          b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+          var on = b === btn;
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+          b.classList.toggle("is-active", on);
         });
         render();
       });
 
+      /* Recherche premium : saisie + bouton effacer. */
       var searchInput = document.getElementById("blog-search-input");
-      searchInput.addEventListener("input", function () {
+      var clearBtn = document.getElementById("blog-search-clear");
+      var onSearch = function () {
         state.query = searchInput.value.trim().toLowerCase();
+        if (clearBtn) { clearBtn.hidden = !searchInput.value; }
         render();
-      });
+      };
+      searchInput.addEventListener("input", onSearch);
       document.getElementById("blog-search-form").addEventListener("submit", function (event) {
         event.preventDefault();
         render();
       });
+      if (clearBtn) {
+        clearBtn.addEventListener("click", function () {
+          searchInput.value = "";
+          searchInput.focus();
+          onSearch();
+        });
+      }
+
+      /* Sidebar : les plus consultés + thèmes. */
+      var mostRead = document.getElementById("blog-most-read");
+      if (mostRead) {
+        mostRead.innerHTML = byDate.slice(0, 5).map(function (a) {
+          return '<li><a href="article.html?id=' + encodeURIComponent(a.id) + '">' +
+            '<span class="blog-side-ranked__cat">' + SS.escapeHtml(a.categorie) + "</span>" +
+            SS.escapeHtml(a.titre) + "</a></li>";
+        }).join("");
+      }
+      var sideCats = document.getElementById("blog-side-cats");
+      if (sideCats) {
+        sideCats.innerHTML = categories.map(function (c) {
+          return '<button type="button" class="blog-side-cat" data-jump-cat="' + SS.escapeHtml(c) + '">' +
+            SS.escapeHtml(c) + "</button>";
+        }).join("");
+        sideCats.addEventListener("click", function (event) {
+          var b = event.target.closest("[data-jump-cat]");
+          if (!b) { return; }
+          var target = catContainer.querySelector('[data-cat="' + b.getAttribute("data-jump-cat").replace(/"/g, '\\"') + '"]');
+          if (target) { target.click(); }
+          document.querySelector(".blog-toolbar").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
 
       function render() {
-        var filtered = articles.filter(function (a) {
+        var filtered = byDate.filter(function (a) {
           if (state.category && a.categorie !== state.category) { return false; }
           if (state.query) {
             var haystack = (a.titre + " " + a.resume + " " + a.categorie).toLowerCase();
             if (haystack.indexOf(state.query) === -1) { return false; }
           }
           return true;
-        }).sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+        });
 
-        if (!filtered.length) {
+        /* Sans filtre actif, l'article phare (déjà en hero) n'est pas répété. */
+        var noFilter = !state.category && !state.query;
+        var list = noFilter ? filtered.filter(function (a) { return a.id !== featured.id; }) : filtered;
+
+        if (!list.length) {
           grid.innerHTML = '<div class="empty-state"><h3>Aucun article trouvé</h3><p>Essayez un autre mot-clé ou une autre catégorie.</p></div>';
           return;
         }
 
-        /* Espace éditorial : le plus récent en grand, la suite en mosaïque. */
-        grid.innerHTML = articleFeatured(filtered[0]) +
-          (filtered.length > 1
-            ? '<div class="articles-mosaic">' + filtered.slice(1).map(articleCard).join("") + "</div>"
-            : "");
+        grid.innerHTML = list.map(function (a, i) {
+          return blogCard(a, articleBadge(a, byDate.indexOf(a), byDate.length));
+        }).join("");
       }
 
       render();

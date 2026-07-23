@@ -56,7 +56,7 @@
 </header>
 
   <main id="contenu">
-    <div class="page-hero">
+    <div class="page-hero page-hero--blog">
       <div class="container">
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
           <ol>
@@ -64,34 +64,85 @@
             <li aria-current="page">Conseils &amp; articles</li>
           </ol>
         </nav>
+        <p class="eyebrow">Le magazine SuperSecrétaire</p>
         <h1>Conseils &amp; articles</h1>
-        <p>Des conseils concrets pour trouver un poste, réussir vos entretiens, découvrir les métiers administratifs — et pour les employeurs, bien recruter.</p>
+        <p class="page-hero__lead">Des conseils concrets pour trouver un poste, réussir vos entretiens et découvrir les métiers administratifs — et, pour les employeurs, bien recruter.</p>
       </div>
     </div>
 
     <div class="container">
-      <!-- Catégories + recherche -->
-      <div class="blog-toolbar">
-        <div class="blog-categories" id="blog-categories" role="group" aria-label="Filtrer par catégorie"></div>
-        <form class="blog-search" id="blog-search-form" role="search" aria-label="Rechercher un article">
-          <label class="visually-hidden" for="blog-search-input">Rechercher un article</label>
-          <input type="search" id="blog-search-input" placeholder="Rechercher un article…">
-        </form>
+      <!-- Article phare -->
+      <div class="blog-hero" id="blog-hero"></div>
+
+      <!-- Statistiques éditoriales -->
+      <div class="blog-stats" id="blog-stats" aria-label="Le magazine en chiffres"></div>
+    </div>
+
+    <div class="container blog-layout">
+      <div class="blog-main">
+        <!-- Filtres + recherche -->
+        <div class="blog-toolbar">
+          <div class="blog-categories" id="blog-categories" role="group" aria-label="Filtrer par catégorie"></div>
+          <form class="blog-search" id="blog-search-form" role="search" aria-label="Rechercher un article">
+            <span class="blog-search__icon" aria-hidden="true">🔍</span>
+            <label class="visually-hidden" for="blog-search-input">Rechercher un article</label>
+            <input type="search" id="blog-search-input" placeholder="Rechercher un conseil, un métier…">
+            <button type="button" class="blog-search__clear" id="blog-search-clear" aria-label="Effacer la recherche" hidden>✕</button>
+          </form>
+        </div>
+
+        <section class="blog-grid" id="articles-grid" aria-label="Liste des articles" aria-live="polite"></section>
       </div>
 
-      <section class="articles-grid" id="articles-grid" aria-label="Liste des articles" aria-live="polite"></section>
-
-      <!-- Newsletter -->
-      <section class="card newsletter-card newsletter-standalone" aria-labelledby="h-newsletter">
-        <h2 id="h-newsletter">La lettre de SuperSecrétaire</h2>
-        <p>Une fois par mois : les nouvelles offres, un conseil pratique et un décryptage métier. Désinscription en un clic. (Inscription simulée dans ce prototype.)</p>
-        <form data-newsletter-form>
-          <label class="visually-hidden" for="newsletter-email">Votre adresse e-mail</label>
-          <input type="email" id="newsletter-email" placeholder="votre@email.fr" required>
-          <button type="submit" class="btn btn-accent">Je m'inscris</button>
-        </form>
-      </section>
+      <!-- Colonne latérale dynamique (desktop) -->
+      <aside class="blog-sidebar" aria-label="À découvrir">
+        <div class="card blog-side-card">
+          <h2>Les plus consultés</h2>
+          <ol class="blog-side-ranked" id="blog-most-read"></ol>
+        </div>
+        <div class="card blog-side-card">
+          <h2>Explorer par thème</h2>
+          <div class="blog-side-cats" id="blog-side-cats"></div>
+        </div>
+        <div class="card blog-side-card">
+          <h2>Recherches fréquentes</h2>
+          <div class="blog-side-tags">
+            <a class="chip" href="offres.html?categorie=secretaire-medicale">Secrétaire médicale</a>
+            <a class="chip" href="offres.html?categorie=assistant-direction">Assistant de direction</a>
+            <a class="chip" href="offres.html?categorie=teletravail">Télétravail</a>
+            <a class="chip" href="offres.html">Toutes les offres</a>
+          </div>
+        </div>
+        <div class="card blog-side-cta">
+          <span class="blog-side-cta__eyebrow">Prêt à postuler&nbsp;?</span>
+          <p>Des dizaines d'offres spécialisées, consultables sans inscription.</p>
+          <a class="btn btn-primary btn-block" href="offres.html">Voir les offres d'emploi</a>
+        </div>
+      </aside>
     </div>
+
+    <!-- Newsletter premium -->
+    <section class="blog-newsletter" aria-labelledby="h-newsletter">
+      <div class="container">
+        <div class="blog-newsletter__panel">
+          <div class="blog-newsletter__copy">
+            <span class="blog-newsletter__eyebrow">La lettre SuperSecrétaire</span>
+            <h2 id="h-newsletter">Un conseil qui change une semaine de travail, chaque mois.</h2>
+            <ul class="blog-newsletter__benefits">
+              <li>1 conseil métier concret par mois</li>
+              <li>Les nouveaux articles en avant-première</li>
+              <li>Une sélection d'offres qui recrutent</li>
+            </ul>
+          </div>
+          <form class="blog-newsletter__form" data-newsletter-form>
+            <label class="visually-hidden" for="newsletter-email">Votre adresse e-mail</label>
+            <input type="email" id="newsletter-email" placeholder="votre@email.fr" required>
+            <button type="submit" class="btn btn-accent">Je m'inscris</button>
+            <p class="blog-newsletter__note">Désinscription en un clic. Inscription simulée dans ce prototype.</p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
